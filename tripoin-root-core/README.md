@@ -80,7 +80,7 @@ X-Tripoin-Signature : 2a6313eeeef26b31fb43e8d9183b44bfe497dd9afa9f961350acc1162a
 ``` 
 
 Authorization&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;: Bearer [value of access_token]<br/>
-X-Tripoin-Key&emsp;&emsp;&nbsp;: refer from id.co.tripoin.core.integration.security.HeaderKeyGenerator<br/>
+X-Tripoin-Key&emsp;&emsp;&nbsp;&nbsp;&nbsp;: refer from id.co.tripoin.core.integration.security.HeaderKeyGenerator<br/>
 X-Tripoin-Signature : if result 400 Bad Request and then find on log "X-Tripoin-Signature"<br/>
 
 > ``tripoin. inc, | 2016-08-30 01:53:33,152 DEBUG| id.co.tripoin.core.integration.provider.SignatureHeaderInbound.initSignature(111) | X-Tripoin-Signature : 2a6313eeeef26b31fb43e8d9183b44bfe497dd9afa9f961350acc1162a9a085d``
