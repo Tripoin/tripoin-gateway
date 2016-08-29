@@ -1,0 +1,111 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>tripoin-util-ui</artifactId>
+	<name>tripoin-util-ui</name>
+	<parent>
+		<groupId>com.tripoin.util</groupId>
+		<artifactId>tripoin-root-util</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<description>Util User Interface Component</description>
+	<organization>
+		<name>Tripoin</name>
+		<url>http://www.tripoin.net</url>
+	</organization>
+	<developers>
+		<developer>
+			<name>Ridla Fadilah</name>
+			<email>ridla.fadilah@gmail.com</email>
+		</developer>
+	</developers>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+		<defaultGoal>install</defaultGoal>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.version}</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<!-- refer vaadin data -->
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-server</artifactId>
+            <version>${vaadin.version}</version>
+            <exclusions>
+				<exclusion>
+					<groupId>com.vaadin</groupId>
+					<artifactId>vaadin-shared</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.vaadin</groupId>
+					<artifactId>vaadin-sass-compiler</artifactId>
+				</exclusion>
+            </exclusions>
+			<scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+			<artifactId>vaadin-client</artifactId>
+            <version>${vaadin.version}</version>
+            <exclusions>
+            	<exclusion>
+            		<groupId>com.vaadin</groupId>
+            		<artifactId>vaadin-server</artifactId>
+            	</exclusion>
+            </exclusions>
+			<scope>provided</scope>
+        </dependency>
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-sass-compiler</artifactId>
+			<version>${vaadin.sass.compiler.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.w3c.css</groupId>
+					<artifactId>sac</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.vaadin.external.flute</groupId>
+					<artifactId>flute</artifactId>
+				</exclusion>
+			</exclusions>
+			<scope>provided</scope>
+		</dependency>
+        <dependency>
+            <groupId>com.vaadin.tapio</groupId>
+            <artifactId>googlemaps</artifactId>
+            <version>${com.vaadin.tapio.version}</version>
+        </dependency>
+		<!-- refer other data -->
+  		<dependency>
+    		<groupId>com.google.code.geocoder-java</groupId>
+    		<artifactId>geocoder-java</artifactId>
+    		<version>${geocoder.version}</version>
+		</dependency>
+        <dependency>
+            <groupId>net.tanesha.recaptcha4j</groupId>
+            <artifactId>recaptcha4j</artifactId>
+            <version>${tanesha.recaptcha.version}</version>
+        </dependency>
+	</dependencies>
+	
+</project>

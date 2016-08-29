@@ -1,0 +1,154 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.tripoin.util</groupId>
+    <artifactId>tripoin-root-util</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    
+	<repositories>
+		<repository>
+			<id>gandewa.tripoin.repository</id>
+			<name>Gandewa Tripoin Repository</name>
+			<url>http://gandewa.tripoin.co.id/repository</url>
+		</repository>
+		<repository>
+			<id>repo.spring.io.milestone</id>
+			<name>Spring Framework Maven Milestone Repository</name>
+			<url>https://repo.spring.io/libs-milestone</url>
+		</repository>
+		<repository>
+			<id>repository.springframework.maven.release</id>
+			<name>Spring Framework Maven Release Repository</name>
+			<url>http://maven.springframework.org/release</url>
+		</repository>
+		<repository>
+			<id>repository.springframework.maven.milestone</id>
+			<name>Spring Framework Maven Milestone Repository</name>
+			<url>http://maven.springframework.org/milestone</url>
+		</repository>
+		<repository>
+			<id>repository.springframework.maven.snapshot</id>
+			<name>Spring Framework Maven Snapshot Repository</name>
+			<url>http://maven.springframework.org/snapshot</url>
+		</repository>	
+		<repository>
+			<id>jboss.repository</id>
+			<name>JBoss repository</name>
+			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
+		</repository>
+		<repository>
+			<id>addons-vaadin</id>
+			<url>http://vaadin.com/nexus/content/repositories/vaadin-addons/org/vaadin/addons</url>
+		</repository>
+		<repository>
+			<id>vaadin-addons</id>
+			<url>http://maven.vaadin.com/vaadin-addons</url>
+		</repository>
+		<repository>
+			<id>vaadin-snapshots</id>
+			<url>http://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>default</id>
+			<name>Default</name>
+			<url>http://central.maven.org/maven2</url>
+		</repository>
+	</repositories>
+	
+	<pluginRepositories>
+		<pluginRepository>
+			<id>vaadin-snapshots</id>
+			<url>http://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+    
+  	<properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+				
+        <!-- Convenience property to set the Maven -->
+		<maven.compiler.version>3.0</maven.compiler.version>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+		
+        <!-- Convenience property to set the Spring Framework version -->
+        <spring.default.version>2.5.6</spring.default.version>
+		<spring.version>4.2.6.RELEASE</spring.version>
+		<spring.core.version>4.2.6.RELEASE</spring.core.version>
+		<spring.orm.version>4.2.6.RELEASE</spring.orm.version>
+		<spring.security.version>3.2.6.RELEASE</spring.security.version>
+        
+        <!-- Convenience property to set the Vaadin -->		
+		<vaadin.version>7.4.6</vaadin.version>
+		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
+		<vaadin.sass.compiler.version>0.9.12</vaadin.sass.compiler.version>
+		<vaadin.spring.version>1.0.0.beta3</vaadin.spring.version>
+		<com.vaadin.tapio.version>1.1.2</com.vaadin.tapio.version>
+		
+        <!-- Convenience property to set the Common -->
+        <commons.logging.version>1.1.3</commons.logging.version>
+        <commons.collections.version>3.1</commons.collections.version>
+        <commons.daemon.version>1.0.15</commons.daemon.version>
+        <commons.dbcp.version>2.0.1</commons.dbcp.version>
+        <commons.lang.version>2.3</commons.lang.version>
+        <commons.beanutils.version>1.9.0</commons.beanutils.version>
+		<commons.fileupload.version>1.2.2</commons.fileupload.version>
+		<commons.io.version>2.4</commons.io.version>
+		<commons.digester>2.1</commons.digester>
+        
+        <!-- Convenience property to set the Other Lib -->
+        <slf4j.version>1.7.21</slf4j.version>
+        <junit.version>4.11</junit.version>
+        <quartz.version>2.2.1</quartz.version>
+        <freemarker.version>2.3.15</freemarker.version>
+        <javax.mail>1.4.3</javax.mail>
+		<javax.servlet.version>3.0.1</javax.servlet.version>
+		<jasypt.version>1.7</jasypt.version>
+        <aopalliance.version>1.0</aopalliance.version>
+        <cglib.version>2.2.2</cglib.version>
+        <jta.version>1.1</jta.version>
+        <jboss.javassist.version>3.6.ga</jboss.javassist.version>
+        <jboss.logging.version>3.1.0.GA</jboss.logging.version>
+        <aspectj.version>1.6.8</aspectj.version>
+        <aspectjweaver.version>1.6.10</aspectjweaver.version>
+        <lambdaj.version>2.3.3</lambdaj.version>
+        <jackson.core.asl.version>1.9.13</jackson.core.asl.version>
+        <jackson-databind.version>2.3.2</jackson-databind.version>
+        <mockito.core.version>1.9.5</mockito.core.version>
+        <hamcrest.version>1.1</hamcrest.version>
+        <javax.el.version>2.2.4</javax.el.version>
+        <tanesha.recaptcha.version>0.0.7</tanesha.recaptcha.version>
+        <geocoder.version>0.16</geocoder.version>
+        <jasperreports.version>6.0.0</jasperreports.version>
+        <jasperreports.fonts.version>6.0.0.extensions</jasperreports.fonts.version>
+        <bcprov-jdk14.version>1.38</bcprov-jdk14.version>
+        <jackson-annotations.version>2.1.4</jackson-annotations.version>
+        <jackson-core.version>2.1.4</jackson-core.version>
+        <jcommon.version>1.0.15</jcommon.version>
+	  	<javax.servlet-api.version>2.5</javax.servlet-api.version>
+	  	<javax.jstl-taglibs.version>1.1.2</javax.jstl-taglibs.version>
+	  	<lucene.core.version>4.5.1</lucene.core.version>
+	  	<itextpdf.version>5.5.0</itextpdf.version>
+    </properties>
+    
+    <modules>
+        <module>tripoin-util-common</module>
+        <module>tripoin-util-multiplex</module>
+        <module>tripoin-util-report</module>
+        <module>tripoin-util-ui</module>
+    </modules>
+
+</project>

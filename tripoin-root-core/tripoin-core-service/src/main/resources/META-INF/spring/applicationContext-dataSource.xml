@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:oxm="http://www.springframework.org/schema/oxm"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:task="http://www.springframework.org/schema/task"  
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-4.1.xsd
+                           http://www.springframework.org/schema/util
+                           http://www.springframework.org/schema/util/spring-util-4.0.xsd
+                           http://www.springframework.org/schema/oxm
+                           http://www.springframework.org/schema/oxm/spring-oxm-4.1.xsd
+                           http://www.springframework.org/schema/tx 
+                           http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+                           http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd">
+    
+     <context:annotation-config/>
+	  
+     <!-- Enable @Transactional support -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+	<!-- Enable @AspectJ support -->
+	<aop:aspectj-autoproxy />    
+		
+	<!-- Property Configurer -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>/WEB-INF/properties-files/resources.properties</value>
+				<value>/WEB-INF/properties-files/datasource.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+    <bean id="dataSource" name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close" lazy-init="false">
+        <property name="driverClass" value="${db.driverclass}"/>
+        <property name="jdbcUrl" value="jdbc:mysql://${db.host}:${db.port}/${db.schemaName}?createDatabaseIfNotExist=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;autoReconnect=true"/>
+        <property name="user" value="${db.username}" />
+        <property name="password" value="${db.password}" />
+        <property name="initialPoolSize" value="3" />
+        <property name="maxPoolSize" value="50" />
+        <property name="minPoolSize" value="20" />
+        <property name="maxIdleTime" value="240" />
+        <property name="maxStatements" value="1000"/>
+        <property name="maxStatementsPerConnection" value="100" />
+        <property name="maxConnectionAge" value="10" />
+        <property name="acquireIncrement" value="5" />
+        <property name="acquireRetryAttempts" value="30" />
+		<property name="acquireRetryDelay" value="1000" />
+		<property name="checkoutTimeout" value="5000" />
+        <property name="idleConnectionTestPeriod" value="120" />
+        <property name="unreturnedConnectionTimeout" value="300" />
+        <property name="maxAdministrativeTaskTime" value="0" />
+        <property name="numHelperThreads" value="6" />
+        <property name="testConnectionOnCheckout" value="true" />
+        <property name="debugUnreturnedConnectionStackTraces" value="false" />
+        <property name="preferredTestQuery" value="SELECT 1" />
+    </bean>
+        
+    <bean id="dataSourceReport" name="dataSourceReport" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close" lazy-init="false">
+        <property name="driverClass" value="${db.driverclass}"/>
+        <property name="jdbcUrl" value="jdbc:mysql://${db.host}:${db.port}/${db.schemaName}?createDatabaseIfNotExist=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;autoReconnect=true"/>
+        <property name="user" value="${db.username}" />
+        <property name="password" value="${db.password}" />
+        <property name="initialPoolSize" value="3" />
+        <property name="maxPoolSize" value="50" />
+        <property name="minPoolSize" value="20" />
+        <property name="maxIdleTime" value="240" />
+        <property name="maxStatements" value="1000"/>
+        <property name="maxStatementsPerConnection" value="100" />
+        <property name="maxConnectionAge" value="10" />
+        <property name="acquireIncrement" value="5" />
+        <property name="acquireRetryAttempts" value="30" />
+		<property name="acquireRetryDelay" value="1000" />
+		<property name="checkoutTimeout" value="5000" />
+        <property name="idleConnectionTestPeriod" value="120" />
+        <property name="unreturnedConnectionTimeout" value="300" />
+        <property name="maxAdministrativeTaskTime" value="0" />
+        <property name="numHelperThreads" value="6" />
+        <property name="testConnectionOnCheckout" value="true" />
+        <property name="debugUnreturnedConnectionStackTraces" value="false" />
+        <property name="preferredTestQuery" value="SELECT 1" />
+    </bean>
+    
+    <bean name="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+    	<constructor-arg index="0" ref="dataSource" />
+    </bean>  
+      
+    <bean name="jdbcCall" class="org.springframework.jdbc.core.simple.SimpleJdbcCall">
+    	<constructor-arg index="0" ref="dataSource" />
+    </bean>    
+    
+    <bean name="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+    	<constructor-arg index="0" ref="dataSource" />
+    </bean>
+    
+</beans>

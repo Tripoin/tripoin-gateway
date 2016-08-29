@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>tripoin-core-dao</artifactId>
+    <name>tripoin-core-dao</name>
+    <parent>
+        <groupId>com.tripoin.core</groupId>
+        <artifactId>tripoin-root-core</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <description>Core Dao Component</description>
+	<organization>
+		<name>Tripoin</name>
+		<url>http://www.tripoin.co.id</url>
+	</organization>
+	<developers>
+		<developer>
+			<name>Ridla Fadilah</name>
+			<email>ridla.fadilah@gmail.com</email>
+		</developer>
+	</developers>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+        <defaultGoal>install</defaultGoal>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.version}</version>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <dependencies> 
+		<!-- refer tripoin-core --> 
+        <dependency>
+            <groupId>com.tripoin.core</groupId>
+            <artifactId>tripoin-core-pojo</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
+
+</project>
