@@ -3,15 +3,19 @@
 #####Maven Import :
 
 * Right Click tripoin-gateway
+
 ![alt tag](https://raw.githubusercontent.com/Tripoin/tripoin-resources/master/tripoin-image/Setting%20Environment%201.png)
 
 * Click Existing Maven Project
+
 ![alt tag](https://raw.githubusercontent.com/Tripoin/tripoin-resources/master/tripoin-image/Setting%20Environment%202.png)
 
 * Click Finish
+
 ![alt tag](https://raw.githubusercontent.com/Tripoin/tripoin-resources/master/tripoin-image/Setting%20Environment%203.png)
 
 * Struktur Maven Tripoin Gateway on Eclipse
+
 ![alt tag](https://raw.githubusercontent.com/Tripoin/tripoin-resources/master/tripoin-image/Setting%20Environment%204.png)
 
 #####Step Tripoin Core :
