@@ -8,8 +8,21 @@
  
 #####Run As Jetty Run :
 
-* Click Run Configuration
+* Click Run Configurations
+
 ![alt tag](https://raw.githubusercontent.com/Tripoin/tripoin-resources/master/tripoin-image/Setting%20Environment%205.png)
+
+* New Jetty Webapp
+
+![alt tag](https://raw.githubusercontent.com/Tripoin/tripoin-resources/master/tripoin-image/Setting%20Environment%206.png)
+
+* Click Browse, select tripoin-core-integration
+
+![alt tag](https://raw.githubusercontent.com/Tripoin/tripoin-resources/master/tripoin-image/Setting%20Environment%207.png)
+
+* Click Run
+
+![alt tag](https://raw.githubusercontent.com/Tripoin/tripoin-resources/master/tripoin-image/Setting%20Environment%208.png)
 
 
 # Reference
