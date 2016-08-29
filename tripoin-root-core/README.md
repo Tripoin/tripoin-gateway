@@ -2,13 +2,14 @@
 
 #####Command line :
 * tripoin-root-core module
+(must be maven compile of tripoin-root-util : [https://github.com/Tripoin/tripoin-gateway/tree/master/tripoin-root-util](https://github.com/Tripoin/tripoin-gateway/tree/master/tripoin-root-util "tripoin-root-util")
 
 > ``mvn clean install -DskipTests``
  
-* tripoin-core-integration module
+#####Run As Jetty Run :
 
-> ``Run As -> Run Jetty``
-> ``Web Application Port Default : 8081``
+* Click Run Configuration
+![alt tag](https://raw.githubusercontent.com/Tripoin/tripoin-resources/master/tripoin-image/Setting%20Environment%205.png)
 
 
 # Reference
