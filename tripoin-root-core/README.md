@@ -67,6 +67,26 @@
 
 ![alt tag](https://raw.githubusercontent.com/Tripoin/tripoin-resources/master/tripoin-image/Unit%20Test%202.png)
 
+* Request [localhost:8080/tripoin-core-integration/api/sample/service](localhost:8080/tripoin-core-integration/api/sample/service "Sample Service")
+
+```java
+Accept              : application/json
+Content-Type        : application/json
+Authorization       : Bearer a774fd0a-6824-4c40-94a7-ffa835d8b086
+X-Tripoin-Key       : 85adc8e352ddf41c0cf4a08ecf93085f
+X-Tripoin-Timestamp : 2016-02-03T10:00:00.000+07:00
+X-Tripoin-Signature : c681ed0a1a51677d4ecd638cf6c7f81f8885650964feb195e03b43ab746cd1a7
+``` 
+
+Authorization : Bearer [value of access_token]
+X-Tripoin-Key : refer from id.co.tripoin.core.integration.security.HeaderKeyGenerator
+X-Tripoin-Signature : if result 400 Bad Request and then find on log "X-Tripoin-Signature"
+
+> ``tripoin. inc, | 2016-08-30 01:53:33,152 DEBUG| id.co.tripoin.core.integration.provider.SignatureHeaderInbound.initSignature(111) | X-Tripoin-Signature : 2a6313eeeef26b31fb43e8d9183b44bfe497dd9afa9f961350acc1162a9a085d``
+
+
+![alt tag](https://raw.githubusercontent.com/Tripoin/tripoin-resources/master/tripoin-image/Unit%20Test%203.png)
+
 
 # Reference
 + Oauth 2.0 : [http://projects.spring.io/spring-security-oauth/docs/oauth2.html](http://projects.spring.io/spring-security-oauth/docs/oauth2.html "OAuth 2 Developers Guide")
