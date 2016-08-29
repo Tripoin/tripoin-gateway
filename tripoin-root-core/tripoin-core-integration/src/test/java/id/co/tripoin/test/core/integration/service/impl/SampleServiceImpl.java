@@ -1,7 +1,7 @@
 package id.co.tripoin.test.core.integration.service.impl;
 
-import id.co.tripoin.core.dto.CurrencyDTORequest;
-import id.co.tripoin.core.dto.CurrencyDTOSample;
+import id.co.tripoin.test.core.dto.CurrencyDTORequest;
+import id.co.tripoin.test.core.dto.CurrencyDTOSample;
 import id.co.tripoin.test.core.integration.service.ISampleService;
 
 import javax.ws.rs.core.Response;

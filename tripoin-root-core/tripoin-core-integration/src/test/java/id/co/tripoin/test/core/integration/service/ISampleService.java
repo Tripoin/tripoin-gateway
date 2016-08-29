@@ -1,6 +1,6 @@
 package id.co.tripoin.test.core.integration.service;
 
-import id.co.tripoin.core.dto.CurrencyDTORequest;
+import id.co.tripoin.test.core.dto.CurrencyDTORequest;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
