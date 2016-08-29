@@ -67,7 +67,7 @@
 
 ![alt tag](https://raw.githubusercontent.com/Tripoin/tripoin-resources/master/tripoin-image/Unit%20Test%202.png)
 
-* Request [localhost:8080/tripoin-core-integration/api/sample/service](localhost:8080/tripoin-core-integration/api/sample/service "Sample Service")
+* Request [http://localhost:8080/tripoin-core-integration/api/sample/service](http://localhost:8080/tripoin-core-integration/api/sample/service "Sample Service")
 
 ```java
 Method              : POST
@@ -85,13 +85,13 @@ X-Tripoin-Signature : if result 400 Bad Request and then find on log "X-Tripoin-
 
 > ``tripoin. inc, | 2016-08-30 01:53:33,152 DEBUG| id.co.tripoin.core.integration.provider.SignatureHeaderInbound.initSignature(111) | X-Tripoin-Signature : 2a6313eeeef26b31fb43e8d9183b44bfe497dd9afa9f961350acc1162a9a085d``
 
-* Response 400 [localhost:8080/tripoin-core-integration/api/sample/service](localhost:8080/tripoin-core-integration/api/sample/service "Sample Service")
+* Response 400 [http://localhost:8080/tripoin-core-integration/api/sample/service](http://localhost:8080/tripoin-core-integration/api/sample/service "Sample Service")
 
 ![alt tag](https://raw.githubusercontent.com/Tripoin/tripoin-resources/master/tripoin-image/Unit%20Test%203.png)
 
 ![alt tag](https://raw.githubusercontent.com/Tripoin/tripoin-resources/master/tripoin-image/Unit%20Test%204.png)
 
-* Response 200 [localhost:8080/tripoin-core-integration/api/sample/service](localhost:8080/tripoin-core-integration/api/sample/service "Sample Service")
+* Response 200 [http://localhost:8080/tripoin-core-integration/api/sample/service](http://localhost:8080/tripoin-core-integration/api/sample/service "Sample Service")
 
 ![alt tag](https://raw.githubusercontent.com/Tripoin/tripoin-resources/master/tripoin-image/Unit%20Test%205.png)
 
