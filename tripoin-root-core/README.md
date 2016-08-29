@@ -1,7 +1,7 @@
 # Run Configurations
 
 #####Command line :
-* tripoin-root-core module
+* tripoin-root-core module<br/>
 (must be maven compile of tripoin-root-util : [https://github.com/Tripoin/tripoin-gateway/tree/master/tripoin-root-util](https://github.com/Tripoin/tripoin-gateway/tree/master/tripoin-root-util "tripoin-root-util")
 
 > ``mvn clean install -DskipTests``
@@ -78,9 +78,9 @@ X-Tripoin-Timestamp : 2016-02-03T10:00:00.000+07:00
 X-Tripoin-Signature : c681ed0a1a51677d4ecd638cf6c7f81f8885650964feb195e03b43ab746cd1a7
 ``` 
 
-Authorization : Bearer [value of access_token]
-X-Tripoin-Key : refer from id.co.tripoin.core.integration.security.HeaderKeyGenerator
-X-Tripoin-Signature : if result 400 Bad Request and then find on log "X-Tripoin-Signature"
+Authorization       : Bearer [value of access_token]<br/>
+X-Tripoin-Key       : refer from id.co.tripoin.core.integration.security.HeaderKeyGenerator<br/>
+X-Tripoin-Signature : if result 400 Bad Request and then find on log "X-Tripoin-Signature"<br/>
 
 > ``tripoin. inc, | 2016-08-30 01:53:33,152 DEBUG| id.co.tripoin.core.integration.provider.SignatureHeaderInbound.initSignature(111) | X-Tripoin-Signature : 2a6313eeeef26b31fb43e8d9183b44bfe497dd9afa9f961350acc1162a9a085d``
 
