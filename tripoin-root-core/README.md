@@ -24,6 +24,49 @@
 
 ![alt tag](https://raw.githubusercontent.com/Tripoin/tripoin-resources/master/tripoin-image/Setting%20Environment%208.png)
 
+#####Error at runtime :
+
+> ``org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'sampleServiceImpl' is defined``
+
+* Exception
+
+![alt tag](https://raw.githubusercontent.com/Tripoin/tripoin-resources/master/tripoin-image/Setting%20Environment%209.png)
+
+#####Troubleshooting :
+
+* Remove from Build Path tripoin-core-integration/src/test/java
+
+![alt tag](https://raw.githubusercontent.com/Tripoin/tripoin-resources/master/tripoin-image/Setting%20Environment%2010.png)
+
+* Use as Source Folder tripoin-core-integration/src/test/java
+
+![alt tag](https://raw.githubusercontent.com/Tripoin/tripoin-resources/master/tripoin-image/Setting%20Environment%2011.png)
+
+* Remove from Build Path tripoin-core-dto/src/test/java
+
+![alt tag](https://raw.githubusercontent.com/Tripoin/tripoin-resources/master/tripoin-image/Setting%20Environment%2012.png)
+
+* Use as Source Folder tripoin-core-dto/src/test/java
+
+![alt tag](https://raw.githubusercontent.com/Tripoin/tripoin-resources/master/tripoin-image/Setting%20Environment%2013.png)
+
+* Run tripoin-core-integration
+
+![alt tag](https://raw.githubusercontent.com/Tripoin/tripoin-resources/master/tripoin-image/Setting%20Environment%2014.png)
+
+
+# Unit Test
+
+##### Testing with DHC Client:
+
+* Request [http://localhost:8080/tripoin-core-integration/oauth/token](http://localhost:8080/tripoin-core-integration/oauth/token "Get Token")
+
+![alt tag](https://raw.githubusercontent.com/Tripoin/tripoin-resources/master/tripoin-image/Unit%20Test%201.png)
+
+* Response [http://localhost:8080/tripoin-core-integration/oauth/token](http://localhost:8080/tripoin-core-integration/oauth/token "Get Token")
+
+![alt tag](https://raw.githubusercontent.com/Tripoin/tripoin-resources/master/tripoin-image/Unit%20Test%202.png)
+
 
 # Reference
 + Oauth 2.0 : [http://projects.spring.io/spring-security-oauth/docs/oauth2.html](http://projects.spring.io/spring-security-oauth/docs/oauth2.html "OAuth 2 Developers Guide")
