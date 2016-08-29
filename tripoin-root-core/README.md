@@ -61,6 +61,14 @@
 
 * Request [http://localhost:8080/tripoin-core-integration/oauth/token](http://localhost:8080/tripoin-core-integration/oauth/token "Get Token")
 
+```java
+Method              : POST
+Accept              : application/json
+Content-Type        : application/x-www-form-urlencoded
+Authorization       : Basic dHJpcG9pbjpwYXNzd29yZA==
+Payload             : grant_type=client_credentials
+``` 
+
 ![alt tag](https://raw.githubusercontent.com/Tripoin/tripoin-resources/master/tripoin-image/Unit%20Test%201.png)
 
 * Response 200 [http://localhost:8080/tripoin-core-integration/oauth/token](http://localhost:8080/tripoin-core-integration/oauth/token "Get Token")
