@@ -85,6 +85,7 @@ Authorization       : Bearer a774fd0a-6824-4c40-94a7-ffa835d8b086
 X-Tripoin-Key       : 85adc8e352ddf41c0cf4a08ecf93085f
 X-Tripoin-Timestamp : 2016-02-03T10:00:00.000+07:00
 X-Tripoin-Signature : 2a6313eeeef26b31fb43e8d9183b44bfe497dd9afa9f961350acc1162a9a085d
+Payload             : {"currencyCode":"IDR"}
 ``` 
 
 Authorization&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;: Bearer [value of access_token]<br/>
