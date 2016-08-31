@@ -6,7 +6,7 @@ package id.co.tripoin.constant.enums;
 public enum EResponseCode {
 
 	RC_SUCCESS(200, "T-000", "Web Service Success"),
-	RC_LOGOUT_SUCCESS(200, "T-000", "Logout Success"),
+	RC_LOGOUT_SUCCESS(200, "T-001", "Logout Success"),
 
 	RC_BAD_REQUEST(400, "T-QQQ", "Web Service Bad Request"),
 	RC_BAD_CREDENTIALS(401, "T-Q01", "Web Service Bad Credentials"),
