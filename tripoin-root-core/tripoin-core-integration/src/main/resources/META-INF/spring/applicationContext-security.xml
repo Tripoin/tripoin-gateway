@@ -16,11 +16,6 @@
 
 	<sec:global-method-security secured-annotations="enabled" proxy-target-class="true" />
 	
-	<!-- Create client details bean for manage client details from database -->
-	<!-- The JdbcClientDetailsService provide default implementation for fetching 
-		the data from oauth_client_details table Other wise we need to create our 
-		custom class that Implement ClientDetailsService Interface and override its 
-		loadClientByClientId method -->
 	<bean id="clientDetails" class="org.springframework.security.oauth2.provider.client.JdbcClientDetailsService">
 		<constructor-arg index="0">
 			<ref bean="dataSource" />
@@ -41,12 +36,15 @@
 		</sec:authentication-provider>
 	</sec:authentication-manager>
 
-	<!-- Oauth Token Service Using Database -->
-	<!-- The JdbcTokenStore class provide the default implementation from access 
-		the token from database. If we want to customize the JDBC implementation 
-		we need to implement TokenStore interface and overrider its methods -->
 	<bean id="tokenStore" class="org.springframework.security.oauth2.provider.token.store.JdbcTokenStore">
 		<constructor-arg ref="dataSource" />
+	</bean>
+	
+	<bean id="access-denied" class="id.co.tripoin.core.integration.handler.TripoinAccessDeniedHandler"/>
+	<bean id="bad-credential" class="id.co.tripoin.core.integration.handler.TripoinBadCredentialsHandler"/>
+	<bean id="invalid-access" class="id.co.tripoin.core.integration.handler.TripoinInvalidTokenHandler"/>
+	<bean id="logoutSuccessHandler" class="id.co.tripoin.core.integration.handler.TripoinLogoutHandler" >
+		<property name="tokenStore" ref="tokenStore"/>
 	</bean>
 
 	<!-- This the service class which is used to access the function of JdbcTokenStore 
@@ -64,6 +62,7 @@
 	<bean id="oAuth2RequestFactory" class="org.springframework.security.oauth2.provider.request.DefaultOAuth2RequestFactory">
 		<constructor-arg ref="clientDetails" />
 	</bean>
+	
 	<bean id="userApprovalHandler" class="org.springframework.security.oauth2.provider.approval.TokenStoreUserApprovalHandler">
 		<property name="requestFactory" ref="oAuth2RequestFactory" />
 		<property name="tokenStore" ref="tokenStore" />
@@ -81,10 +80,7 @@
 		<oauth:password authentication-manager-ref="authenticationManager" />
 	</oauth:authorization-server>
 
-	<!-- A Resource Server serves resources that are protected by the OAuth2 
-		token. Spring OAuth provides a Spring Security authentication filter that 
-		implements this protection. -->
-	<oauth:resource-server id="resourceServerFilter" token-services-ref="tokenServices" resource-id="ws_api" />
+	<oauth:resource-server id="resourceServerFilter" entry-point-ref="invalid-access" token-services-ref="tokenServices" resource-id="ws_api" />
 
 	<!-- Grants access if only grant (or abstain) votes were received. We can 
 		protect REST resource methods with JSR-250 annotations such as @RolesAllowed -->
@@ -96,49 +92,37 @@
 		</property>
 	</bean>
 
-	<!-- If authentication fails and the caller has asked for a specific content 
-		type response, this entry point can send one, along with a standard 401 status -->
-	<bean id="clientAuthenticationEntryPoint" class="org.springframework.security.oauth2.provider.error.OAuth2AuthenticationEntryPoint">
-		<property name="realmName" value="Authorization/client" />
-		<property name="typeName" value="Basic" />
-	</bean>
-
-	<bean id="oauthAuthenticationEntryPoint" class="org.springframework.security.oauth2.provider.error.OAuth2AuthenticationEntryPoint">
-		<property name="realmName" value="Authorization" />
-	</bean>
-
-	<bean id="oauthAccessDeniedHandler" class="org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler" />
-
-	<!-- Allows clients to authenticate using request parameters if included 
-		as a security filter. It is recommended by the specification that you permit 
-		HTTP basic authentication for clients, and not use this filter at all. -->
-	<bean id="clientCredentialsTokenEndpointFilter" class="org.springframework.security.oauth2.provider.client.ClientCredentialsTokenEndpointFilter">
+	<bean id="clientCredentialsTokenEndpointFilter" class="id.co.tripoin.core.integration.handler.TripoinCredentialsTokenFilter">
 		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="authenticationEntryPoint" ref="invalid-access"/>
 	</bean>
 
 	<bean id="oAuth2ClientContextFilter" class="org.springframework.security.oauth2.client.filter.OAuth2ClientContextFilter">
 	</bean>
 
-	<sec:http pattern="/oauth/token" create-session="stateless"
-		authentication-manager-ref="authenticationManager">
-		<sec:intercept-url pattern="/oauth/token"
-			access="IS_AUTHENTICATED_ANONYMOUSLY" />
-		<sec:http-basic entry-point-ref="clientAuthenticationEntryPoint" />
-		<sec:custom-filter ref="clientCredentialsTokenEndpointFilter"
-			before="BASIC_AUTH_FILTER" />
-		<sec:custom-filter ref="oAuth2ClientContextFilter"
-			after="EXCEPTION_TRANSLATION_FILTER	" />
-		<sec:access-denied-handler ref="oauthAccessDeniedHandler" />
+	<sec:http pattern="/oauth/token" create-session="stateless" authentication-manager-ref="authenticationManager">
+		<sec:intercept-url pattern="/oauth/token" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<sec:custom-filter ref="clientCredentialsTokenEndpointFilter" before="BASIC_AUTH_FILTER" />
+		<sec:custom-filter ref="oAuth2ClientContextFilter" after="EXCEPTION_TRANSLATION_FILTER" />
+		<sec:http-basic entry-point-ref="bad-credential"/>
+		<sec:access-denied-handler ref="access-denied"/> 
 	</sec:http>
 	
-	<sec:http pattern="${tripoin.wscontext}/**" create-session="never"
-		authentication-manager-ref="authenticationManager">
+	<sec:http pattern="${tripoin.wscontext}/**" create-session="never" authentication-manager-ref="authenticationManager">
 		<sec:anonymous enabled="false" />
 		<sec:intercept-url pattern="${tripoin.wscontext}/**" access="ROLE_USER, ROLE_ADMIN, ROLE_SUPERADMIN, ROLE_THIRD_PARTY" />
-		<sec:custom-filter ref="resourceServerFilter"
-			before="PRE_AUTH_FILTER" />
-		<sec:http-basic entry-point-ref="oauthAuthenticationEntryPoint" />
-		<sec:access-denied-handler ref="oauthAccessDeniedHandler" />
+		<sec:custom-filter ref="resourceServerFilter" before="PRE_AUTH_FILTER" />
+		<sec:http-basic entry-point-ref="invalid-access"/>
+		<sec:access-denied-handler ref="access-denied"/>
+	</sec:http>
+	
+	<sec:http pattern="/logout" create-session="never" authentication-manager-ref="authenticationManager">
+		<sec:anonymous enabled="false" />
+		<sec:intercept-url pattern="/logout" access="ROLE_USER, ROLE_ADMIN, ROLE_SUPERADMIN, ROLE_THIRD_PARTY" method="GET" />
+			<sec:logout invalidate-session="true" logout-url="/logout" success-handler-ref="logoutSuccessHandler"/>
+		<sec:custom-filter ref="resourceServerFilter" before="PRE_AUTH_FILTER" />
+		<sec:http-basic entry-point-ref="invalid-access"/>
+		<sec:access-denied-handler ref="access-denied"/>
 	</sec:http>
 	
 </beans>

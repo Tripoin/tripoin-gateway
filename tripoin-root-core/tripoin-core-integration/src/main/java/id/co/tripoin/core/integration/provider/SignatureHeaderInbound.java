@@ -1,5 +1,6 @@
 package id.co.tripoin.core.integration.provider;
 
+import id.co.tripoin.constant.enums.EResponseCode;
 import id.co.tripoin.constant.statics.CommonConstant;
 import id.co.tripoin.constant.statics.ResourcePropertiesConstant;
 import id.co.tripoin.core.integration.security.HeaderKeyGenerator;
@@ -12,8 +13,6 @@ import java.text.ParseException;
 
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,6 +41,7 @@ public class SignatureHeaderInbound implements ContainerRequestFilter {
 	private String body;
 	private String signature;
 	private ByteArrayOutputStream entity;
+	private EResponseCode responseCode;
 
 	@Value(ResourcePropertiesConstant.PARAM_HEADER_KEY)
 	private String paramKey;
@@ -69,24 +69,29 @@ public class SignatureHeaderInbound implements ContainerRequestFilter {
 					context.getHeaders().containsKey(paramSignature)){
 				// TODO: Validate X-Tripoin-Key
 				if(!headerKey.key().equals(context.getHeaderString(paramKey))){
-					throw new Exception();
+					this.setResponseCode(EResponseCode.RC_BAD_TRIPOIN_KEY);
+					throw new Exception(getResponseCode().getResponseMsg());
 				}
 				// TODO: Validate X-Tripoin-Timestamp
 				try {
 					FormatDateConstant.ISO8601.parse(context.getHeaderString(paramTimestamp));	
 				} catch (ParseException e) {
-					throw new Exception();
+					this.setResponseCode(EResponseCode.RC_BAD_TRIPOIN_TIMESTAMP);
+					throw new Exception(getResponseCode().getResponseMsg());
 				}
 				// TODO: Validate X-Tripoin-Signature
 				initSignature(context);
 				if(!signature.equals(context.getHeaderString(paramSignature))){
-					throw new Exception();
+					this.setResponseCode(EResponseCode.RC_BAD_TRIPOIN_SIGNATURE);
+					throw new Exception(getResponseCode().getResponseMsg());
 				}				
 			}else{
+				this.setResponseCode(EResponseCode.RC_BAD_REQUEST);
 				throw new Exception();
 			}
 		} catch (Exception e) {
-			context.abortWith(Response.status(Status.BAD_REQUEST).build());
+			LOGGER.error("Error Header : "+e.getMessage());
+			ExecutionProvider.getInstance().abort(context, this.getResponseCode());
 		}
 	}
 
@@ -120,6 +125,14 @@ public class SignatureHeaderInbound implements ContainerRequestFilter {
 	 */
 	private String rawPath(String path){
 		return path.substring(path.indexOf(wscontext.concat("/")));
+	}
+
+	public EResponseCode getResponseCode() {
+		return responseCode;
+	}
+
+	public void setResponseCode(EResponseCode responseCode) {
+		this.responseCode = responseCode;
 	}
 	
 }

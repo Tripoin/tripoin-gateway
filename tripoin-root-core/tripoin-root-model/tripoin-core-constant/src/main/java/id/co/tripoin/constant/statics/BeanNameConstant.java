@@ -8,4 +8,7 @@ public final class BeanNameConstant {
 	public static final String SYSTEM_PARAMETER_SERVICE_BEAN = "systemParameterService";
 	public static final String SYSTEM_PARAMETER_DAO_BEAN = "systemParameterDao";
 	
+	// TODO: Uncomment for testing
+	public static final String SAMPLE_SERVICE_BEAN = "sampleServiceImpl";
+	
 }

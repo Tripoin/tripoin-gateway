@@ -1,5 +1,6 @@
 package id.co.tripoin.test.core.integration.service.impl;
 
+import id.co.tripoin.constant.statics.BeanNameConstant;
 import id.co.tripoin.test.core.dto.CurrencyDTORequest;
 import id.co.tripoin.test.core.dto.CurrencyDTOSample;
 import id.co.tripoin.test.core.integration.service.ISampleService;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author <a href="ridla.fadilah@gmail.com">Ridla Fadilah</a>
  **/
-@Component("sampleServiceImpl")
+@Component(BeanNameConstant.SAMPLE_SERVICE_BEAN)
 public class SampleServiceImpl implements ISampleService {
 
 	@Override
