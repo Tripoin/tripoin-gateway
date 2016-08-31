@@ -1,5 +1,6 @@
 package id.co.tripoin.test.core.integration.service;
 
+import id.co.tripoin.constant.statics.RoleConstant;
 import id.co.tripoin.test.core.dto.CurrencyDTORequest;
 
 import javax.ws.rs.Consumes;
@@ -10,6 +11,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import org.springframework.security.access.annotation.Secured;
 
 /**
  * <b>Description:</b><br>
@@ -35,6 +38,7 @@ public interface ISampleService {
 	 * @param currencyCode
 	 * @return
 	 */
+	@Secured({RoleConstant.ROLE_USER})
 	@POST
 	public Response postCurrency(CurrencyDTORequest currencyCode);
 
@@ -48,6 +52,9 @@ public interface ISampleService {
 	 * @param currencyCode
 	 * @return
 	 */
+	
+
+	@Secured({RoleConstant.ROLE_USER})
 	@GET
 	@Path("/{currencyCode}")
 	public Response getCurrency(@PathParam("currencyCode") String currencyCode);

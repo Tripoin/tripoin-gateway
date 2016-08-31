@@ -12,8 +12,8 @@
            http://www.springframework.org/schema/security
            http://www.springframework.org/schema/security/spring-security-3.2.xsd
            http://www.springframework.org/schema/security/oauth2
-           http://www.springframework.org/schema/security/spring-security-oauth2-1.0.xsd">
-
+           http://www.springframework.org/schema/security/spring-security-oauth2-2.0.xsd">
+	
 	<!-- Create client details bean for manage client details from database -->
 	<!-- The JdbcClientDetailsService provide default implementation for fetching 
 		the data from oauth_client_details table Other wise we need to create our 
@@ -25,21 +25,16 @@
 		</constructor-arg>
 	</bean>
 
-	<!-- Configure Authentication manager -->
 	<bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
 		<constructor-arg name="strength" value="11" />
 	</bean>
 
-	<!-- This class is the custom implementation of UserDetailSerive Interface 
-		that provide by the spring, which we Need to implement and override its method. 
-		But for Oauth spring provide us ClientDetailsUserDetailsService, which already 
-		implement UserDetailSerive Interface and override its method. -->
-	<bean id="clientDetailsUserService" class="org.springframework.security.oauth2.provider.client.ClientDetailsUserDetailsService">
-		<constructor-arg ref="clientDetails" />
+	<bean id="tripoinUserDetailsService" class="id.co.tripoin.core.integration.security.TripoinUserDetailsService">
+		<property name="jdbcTemplate" ref="jdbcTemplate"/>
 	</bean>
 
 	<sec:authentication-manager alias="authenticationManager">
-		<sec:authentication-provider user-service-ref="clientDetailsUserService">
+		<sec:authentication-provider user-service-ref="tripoinUserDetailsService">
 			<sec:password-encoder ref="passwordEncoder" />
 		</sec:authentication-provider>
 	</sec:authentication-manager>
@@ -137,7 +132,7 @@
 	<sec:http pattern="${tripoin.wscontext}/**" create-session="never"
 		authentication-manager-ref="authenticationManager">
 		<sec:anonymous enabled="false" />
-		<sec:intercept-url pattern="${tripoin.wscontext}/**" access="ROLE_USER" />
+		<sec:intercept-url pattern="${tripoin.wscontext}/**" access="ROLE_USER, ROLE_ADMIN, ROLE_SUPERADMIN, ROLE_THIRD_PARTY" />
 		<sec:custom-filter ref="resourceServerFilter"
 			before="PRE_AUTH_FILTER" />
 		<sec:http-basic entry-point-ref="oauthAuthenticationEntryPoint" />
