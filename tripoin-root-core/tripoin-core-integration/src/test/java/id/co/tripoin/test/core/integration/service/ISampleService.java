@@ -51,8 +51,7 @@ public interface ISampleService {
 	 * 
 	 * @param currencyCode
 	 * @return
-	 */
-	
+	 */	
 
 	@Secured({RoleConstant.ROLE_USER})
 	@GET

@@ -7,7 +7,7 @@
         <context-param>
 	        <param-name>contextConfigLocation</param-name>
 	        <param-value>
-	             /WEB-INF/config/resourceIntegration.xml        
+	             /WEB-INF/config/servlet-context.xml        
 	        </param-value>
     	</context-param>
     	

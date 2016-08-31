@@ -13,6 +13,8 @@
            http://www.springframework.org/schema/security/spring-security-3.2.xsd
            http://www.springframework.org/schema/security/oauth2
            http://www.springframework.org/schema/security/spring-security-oauth2-2.0.xsd">
+
+	<sec:global-method-security secured-annotations="enabled" proxy-target-class="true" />
 	
 	<!-- Create client details bean for manage client details from database -->
 	<!-- The JdbcClientDetailsService provide default implementation for fetching 
@@ -128,7 +130,7 @@
 			after="EXCEPTION_TRANSLATION_FILTER	" />
 		<sec:access-denied-handler ref="oauthAccessDeniedHandler" />
 	</sec:http>
-
+	
 	<sec:http pattern="${tripoin.wscontext}/**" create-session="never"
 		authentication-manager-ref="authenticationManager">
 		<sec:anonymous enabled="false" />
