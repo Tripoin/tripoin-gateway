@@ -26,20 +26,17 @@ public class SystemParameterDaoImpl implements ISystemParameterDao {
 
 	@Override
 	public SystemParameter loadValue(String code) throws Exception {
-		SystemParameter systemParameter = (SystemParameter)jdbcTemplate.queryForObject(QueryConstant.SYS_PARAM_LOAD_VALUE, new Object[]{code}, systemParameterMapper);
-		return systemParameter;
+		return jdbcTemplate.queryForObject(QueryConstant.SYS_PARAM_LOAD_VALUE, new Object[]{code}, systemParameterMapper);
 	}
 
 	@Override
 	public List<SystemParameter> listValue(Object[] code) throws Exception {
-		List<SystemParameter> systemParameterList = jdbcTemplate.query(QueryConstant.SYS_PARAM_LIST_VALUE, code, systemParameterMapper);
-		return systemParameterList;
+		return jdbcTemplate.query(QueryConstant.SYS_PARAM_LIST_VALUE, code, systemParameterMapper);
 	}
 
 	@Override
 	public List<SystemParameter> getAllSystemParameter() throws Exception {
-		List<SystemParameter> systemParameterList = jdbcTemplate.query(QueryConstant.SYS_PARAM_ALL, systemParameterMapper);
-		return systemParameterList;
+		return jdbcTemplate.query(QueryConstant.SYS_PARAM_ALL, systemParameterMapper);
 	}
 
 }
