@@ -17,27 +17,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 /**
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
  */
-public class ExecutionProvider {
-
-	private static ExecutionProvider instance = null;
-	private ExecutionProvider() {}
-
-	public static ExecutionProvider getInstance() {
-		if (instance == null) {
-			instance = new ExecutionProvider();
-		}
-		return instance;
-	}
+public abstract class AbstractProvider {
 	
-	public void abort(ContainerRequestContext context, EResponseCode responseCode) throws JsonProcessingException{
+	public void abort(ContainerRequestContext context) throws JsonProcessingException{
 		ResponseData responseData = new ResponseData();
-		responseData.setResponseCode(responseCode.getResponseCode());
-		responseData.setResponseMsg(responseCode.getResponseMsg());
+		responseData.setResponseCode(getResponseCode().getResponseCode());
+		responseData.setResponseMsg(getResponseCode().getResponseMsg());
 		ObjectMapper mapperJson = new ObjectMapper();
-		ResponseBuilder responseBuilder = Response.status(responseCode.getHttpResponse());
+		ResponseBuilder responseBuilder = Response.status(getResponseCode().getHttpResponse());
 		responseBuilder.entity(mapperJson.writeValueAsString(responseData));
 		responseBuilder.header(CommonConstant.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
 		context.abortWith(responseBuilder.build());
 	}
+
+	public abstract EResponseCode getResponseCode();
 	
 }

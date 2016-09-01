@@ -30,7 +30,7 @@ import com.tripoin.util.time.FormatDateConstant;
  * 
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a></br>
  */
-public class SignatureHeaderInbound implements ContainerRequestFilter {
+public class SignatureHeaderInbound extends AbstractProvider implements ContainerRequestFilter {
 	
 	private static Logger LOGGER = LoggerFactory.getLogger(SignatureHeaderInbound.class);	
 	private String apiKey;
@@ -91,7 +91,7 @@ public class SignatureHeaderInbound implements ContainerRequestFilter {
 			}
 		} catch (Exception e) {
 			LOGGER.error("Error Header : "+e.getMessage());
-			ExecutionProvider.getInstance().abort(context, this.getResponseCode());
+			super.abort(context);
 		}
 	}
 
