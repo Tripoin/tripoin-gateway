@@ -21,8 +21,6 @@
                            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
                            http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd">
 	
-	<import resource="applicationContext-scan.xml"/>
-	
 	<!-- Enable @AspectJ support -->
 	<aop:aspectj-autoproxy />
 	
@@ -39,7 +37,7 @@
 				<property name="databasePlatform" value="${db.dialect}" />
 			</bean>
 		</property>
-		<property name="packagesToScan" value="com.tripoin.core.pojo"/>
+		<property name="packagesToScan" value="id.co.tripoin.core.pojo"/>
 	</bean>
      
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">

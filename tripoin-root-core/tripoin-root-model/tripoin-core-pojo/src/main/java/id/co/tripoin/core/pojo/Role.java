@@ -10,22 +10,30 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+
 
 /**
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
  */
 @Entity
 @Table(name=TableNameConstant.SEC_ROLE)
-public class Role implements IBasePojo {
+public class Role implements IBasePojo, GrantedAuthority {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 5208531126588851646L;
 	private Integer id;
-	private String code;
+	private String authority;
 	private Integer status;
 	private String remarks;
+
+	public Role() {}
+	
+	public Role(String authority) {
+		setAuthority(authority);
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -38,13 +46,14 @@ public class Role implements IBasePojo {
 		this.id = id;
 	}
 
+	@Override
 	@Column(name = "role_code", unique = true, length = 50)
-	public String getCode() {
-		return code;
+	public String getAuthority() {
+		return authority;
 	}
-
-	public void setCode(String code) {
-		this.code = code;
+	
+	public void setAuthority(String authority) {
+		this.authority = authority;
 	}
 
 	@Column(name = "role_status")
@@ -74,7 +83,7 @@ public class Role implements IBasePojo {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((code == null) ? 0 : code.hashCode());
+		result = prime * result + ((authority == null) ? 0 : authority.hashCode());
 		return result;
 	}
 
@@ -87,17 +96,17 @@ public class Role implements IBasePojo {
 		if (getClass() != obj.getClass())
 			return false;
 		Role other = (Role) obj;
-		if (code == null) {
-			if (other.code != null)
+		if (authority == null) {
+			if (other.authority != null)
 				return false;
-		} else if (!code.equals(other.code))
+		} else if (!authority.equals(other.authority))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Role [code=" + code + "]";
+		return "Role [code=" + authority + "]";
 	}
 	
 }

@@ -25,7 +25,7 @@
     	<property name="headerKey" ref="headerKeyGenerator" />
     </bean>
     
-	<context:component-scan base-package="id.co.tripoin.core.integration.service">
+	<context:component-scan base-package="id.co.tripoin.core.integration.endpoint">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
     </context:component-scan>
 

@@ -36,5 +36,15 @@
 		</jaxrs:providers>
     </jaxrs:server>
     <!-- End Sample : Uncomment for testing -->
+        
+    <jaxrs:server id="profileWebService" address="/profile">
+        <jaxrs:serviceBeans>
+        	<ref bean="profileEndpoint"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+			<ref bean="jsonProvider"/>
+			<ref bean="signatureHeaderInbound"/>
+		</jaxrs:providers>
+    </jaxrs:server>
     
 </beans>
