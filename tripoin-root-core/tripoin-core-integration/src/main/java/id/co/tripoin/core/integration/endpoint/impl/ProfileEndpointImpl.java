@@ -5,8 +5,8 @@ import id.co.tripoin.constant.statics.BeanNameConstant;
 import id.co.tripoin.constant.statics.InfoMarkerConstant;
 import id.co.tripoin.core.dto.response.ProfileDataResponse;
 import id.co.tripoin.core.integration.endpoint.IProfileEndpoint;
-import id.co.tripoin.core.integration.endpoint.UserAuthentication;
 import id.co.tripoin.core.integration.handler.base.ABaseResponseHandler;
+import id.co.tripoin.core.integration.servlet.UserAuthentication;
 import id.co.tripoin.core.pojo.Profile;
 import id.co.tripoin.core.service.IProfileService;
 

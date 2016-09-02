@@ -1,9 +1,12 @@
-package id.co.tripoin.core.integration.endpoint;
+package id.co.tripoin.core.integration.servlet;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
+ * <b>User Authentication Context:</b></br>
+ * &emsp;&emsp;&emsp;For load current <i>Username</i></br>
+ * 
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
  */
 public class UserAuthentication {
