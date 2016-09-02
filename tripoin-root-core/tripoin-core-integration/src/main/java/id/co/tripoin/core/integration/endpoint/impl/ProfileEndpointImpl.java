@@ -26,7 +26,7 @@ public class ProfileEndpointImpl extends ABaseResponseHandler implements IProfil
 	private static Logger LOGGER = LoggerFactory.getLogger(ProfileEndpointImpl.class);	
 	
 	@Autowired
-	IProfileService profileService;
+	private IProfileService profileService;
 
 	@Override
 	public Response getProfile() {
