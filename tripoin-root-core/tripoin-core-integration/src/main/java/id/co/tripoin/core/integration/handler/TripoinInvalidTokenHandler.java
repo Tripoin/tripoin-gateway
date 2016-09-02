@@ -2,6 +2,7 @@ package id.co.tripoin.core.integration.handler;
 
 import id.co.tripoin.constant.enums.EResponseCode;
 import id.co.tripoin.constant.statics.CommonConstant;
+import id.co.tripoin.core.integration.handler.base.AbstractHandler;
 
 import java.io.IOException;
 

@@ -8,8 +8,8 @@ import id.co.tripoin.core.dto.request.AuthenticationDataRequest;
 import id.co.tripoin.core.integration.endpoint.IAuthenticationEndpoint;
 import id.co.tripoin.core.integration.endpoint.UserAuthentication;
 import id.co.tripoin.core.integration.exception.UsernameFaultException;
-import id.co.tripoin.core.integration.handler.ABaseResponseHandler;
-import id.co.tripoin.core.integration.handler.ILogoutContext;
+import id.co.tripoin.core.integration.handler.base.ABaseResponseHandler;
+import id.co.tripoin.core.integration.handler.base.ILogoutContext;
 import id.co.tripoin.core.pojo.SecurityUserDetails;
 import id.co.tripoin.core.service.util.IAuthenticationService;
 

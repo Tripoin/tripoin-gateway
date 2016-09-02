@@ -4,7 +4,7 @@ import id.co.tripoin.constant.enums.EResponseCode;
 import id.co.tripoin.constant.statics.CommonConstant;
 import id.co.tripoin.constant.statics.InfoMarkerConstant;
 import id.co.tripoin.constant.statics.ResourcePropertiesConstant;
-import id.co.tripoin.core.integration.handler.ABaseResponseHandler;
+import id.co.tripoin.core.integration.handler.base.ABaseResponseHandler;
 import id.co.tripoin.core.integration.security.HeaderKeyGenerator;
 import id.co.tripoin.core.integration.security.HeaderSignatureGenerator;
 

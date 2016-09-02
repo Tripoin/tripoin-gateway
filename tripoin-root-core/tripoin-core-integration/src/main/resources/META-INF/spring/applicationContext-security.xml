@@ -41,7 +41,7 @@
 	<bean id="access-denied" class="id.co.tripoin.core.integration.handler.TripoinAccessDeniedHandler"/>
 	<bean id="bad-credential" class="id.co.tripoin.core.integration.handler.TripoinBadCredentialsHandler"/>
 	<bean id="invalid-access" class="id.co.tripoin.core.integration.handler.TripoinInvalidTokenHandler"/>
-	<bean id="logoutContext" class="id.co.tripoin.core.integration.handler.LogoutContextImpl" >
+	<bean id="logoutContext" class="id.co.tripoin.core.integration.handler.base.LogoutContextImpl" >
 		<property name="tokenStore" ref="tokenStore"/>
 	</bean>
 	<bean id="logoutSuccessHandler" class="id.co.tripoin.core.integration.handler.TripoinLogoutHandler" >

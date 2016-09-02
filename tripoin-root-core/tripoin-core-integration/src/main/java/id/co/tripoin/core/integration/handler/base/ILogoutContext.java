@@ -1,4 +1,4 @@
-package id.co.tripoin.core.integration.handler;
+package id.co.tripoin.core.integration.handler.base;
 
 import java.io.IOException;
 
