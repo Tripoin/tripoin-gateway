@@ -5,6 +5,7 @@ package id.co.tripoin.constant.statics;
  */
 public final class PathNameConstant {
 
+	public static final String PATH_OAUTH_TOKEN = "/oauth/token";
 	public static final String PATH_PROFILE = "/profile";
 	public static final String PATH_AUTHENTICATION_CHANGE = "/change";
 	

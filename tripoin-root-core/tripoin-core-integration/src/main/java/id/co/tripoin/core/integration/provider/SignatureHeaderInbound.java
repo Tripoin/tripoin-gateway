@@ -2,6 +2,7 @@ package id.co.tripoin.core.integration.provider;
 
 import id.co.tripoin.constant.enums.EResponseCode;
 import id.co.tripoin.constant.statics.CommonConstant;
+import id.co.tripoin.constant.statics.InfoMarkerConstant;
 import id.co.tripoin.constant.statics.ResourcePropertiesConstant;
 import id.co.tripoin.core.integration.security.HeaderKeyGenerator;
 import id.co.tripoin.core.integration.security.HeaderSignatureGenerator;
@@ -90,7 +91,7 @@ public class SignatureHeaderInbound extends AbstractProvider implements Containe
 				throw new Exception();
 			}
 		} catch (Exception e) {
-			LOGGER.error("Error Header : "+e.getMessage());
+			LOGGER.error(InfoMarkerConstant.ERR_SIGNATURE, e.getMessage());
 			super.abort(context);
 		}
 	}

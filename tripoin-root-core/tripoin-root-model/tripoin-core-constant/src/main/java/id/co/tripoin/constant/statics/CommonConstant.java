@@ -13,5 +13,8 @@ public final class CommonConstant {
 	public static final String REALM_BEARER = BEARER.concat(REALM).concat("\"oauth\"");
 	public static final String WWW_AUTHANTICATE = "WWW-Authenticate";
 	public static final String CONTENT_TYPE = "Content-Type";
+	public static final String METHOD_POST = "POST";
+	public static final String CLIENT_IDENTIFIER = "client_id";
+	public static final String CLIENT_SECRET = "client_secret";
 	
 }

@@ -1,5 +1,8 @@
 package id.co.tripoin.core.integration.servlet;
 
+import id.co.tripoin.constant.statics.ApplicationContextConstant;
+import id.co.tripoin.constant.statics.InfoMarkerConstant;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -24,23 +27,16 @@ public class TripoinIntegrationServlet extends DispatcherServlet {
 	 */
 	private static final long serialVersionUID = -2658977332610074003L;
 	private static Logger LOGGER = LoggerFactory.getLogger(TripoinIntegrationServlet.class);
-	
-    private static final String CONTEXT_CONFIG_LOCATION_PARAMETER = "contextConfigLocation";
-    
-    /**
-     * Spring Application Context
-     */
-    private transient ApplicationContext applicationContext;
-    
+    private transient ApplicationContext applicationContext;    
     private LocaleResolver localeResolver;
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
         applicationContext = WebApplicationContextUtils.getWebApplicationContext(config.getServletContext());
-        if (config.getInitParameter(CONTEXT_CONFIG_LOCATION_PARAMETER) != null) {
+        if (config.getInitParameter(ApplicationContextConstant.CONTEXT_CONFIG_LOCATION_PARAMETER) != null) {
             XmlWebApplicationContext context = new XmlWebApplicationContext();
             context.setParent(applicationContext);
-            context.setConfigLocation(config.getInitParameter(CONTEXT_CONFIG_LOCATION_PARAMETER));
+            context.setConfigLocation(config.getInitParameter(ApplicationContextConstant.CONTEXT_CONFIG_LOCATION_PARAMETER));
             context.setServletConfig(config);
             context.setServletContext(config.getServletContext());
             context.refresh();
@@ -59,23 +55,22 @@ public class TripoinIntegrationServlet extends DispatcherServlet {
             this.localeResolver = (LocaleResolver) context.getBean(DispatcherServlet.LOCALE_RESOLVER_BEAN_NAME,
                     LocaleResolver.class);
             if (LOGGER.isDebugEnabled()) {
-                LOGGER.debug("Using LocaleResolver [" + this.localeResolver + "]");
+                LOGGER.debug(InfoMarkerConstant.DEB_LOCALE_RESOLVER,this.localeResolver);
             }
         } catch (NoSuchBeanDefinitionException ex) {
             this.localeResolver = new SessionLocaleResolver();
             if (LOGGER.isDebugEnabled()) {
-                LOGGER.debug("Unable to locate LocaleResolver with name '"
-                        + DispatcherServlet.LOCALE_RESOLVER_BEAN_NAME + "' using default [" + localeResolver + "]");
+                LOGGER.debug(InfoMarkerConstant.DEB_LOCALE_RESOLVER_BEAN, new Object[]{DispatcherServlet.LOCALE_RESOLVER_BEAN_NAME, localeResolver});
             }
         }
 	}
 	
 	public void startupInitialized(ServletContext servletContext) {
-		LOGGER.debug("Initializing context...");
+		LOGGER.debug(InfoMarkerConstant.DEB_INITIALIZING_SERVLET);
 		try{
 			RegisterContext.getInstance().init(applicationContext, servletContext);
 		} catch (Exception e) {
-			LOGGER.error("Error Initialized Web Service Integration", e);		
+			LOGGER.error(InfoMarkerConstant.ERR_INITIALIZING_SERVLET, e);		
 		}
 }
 }

@@ -8,6 +8,7 @@ import id.co.tripoin.core.dto.request.AuthenticationDataRequest;
 import id.co.tripoin.core.integration.endpoint.AbstractEndpoint;
 import id.co.tripoin.core.integration.endpoint.IAuthenticationEndpoint;
 import id.co.tripoin.core.integration.endpoint.UserAuthentication;
+import id.co.tripoin.core.integration.exception.UsernameFaultException;
 import id.co.tripoin.core.integration.handler.ILogoutContext;
 import id.co.tripoin.core.pojo.SecurityUserDetails;
 import id.co.tripoin.core.service.util.IAuthenticationService;
@@ -18,8 +19,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import com.tripoin.util.exception.UsernameFaultException;
 
 /**
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
@@ -38,7 +37,7 @@ public class AuthenticationEndpointImpl extends AbstractEndpoint implements IAut
 
 	@Override
 	public Response postChange(AuthenticationDataRequest authenticationDataRequest) {
-		try {			
+		try {
 			if(!authenticationDataRequest.getOldAccess().isEmpty() && !authenticationDataRequest.getNewAccess().isEmpty()){
 				SecurityUserDetails securityUserDetails = authenticationService.login(UserAuthentication.getInstance().getCurrentUsername());
 				if(!securityUserDetails.getPassword().equals(authenticationDataRequest.getOldAccess()) ||
@@ -51,7 +50,7 @@ public class AuthenticationEndpointImpl extends AbstractEndpoint implements IAut
 			}else
 				throw new UsernameFaultException(InfoMarkerConstant.ERR_PASSWORD_NOT_VALID);
 		} catch (UsernameFaultException ufe) {
-			LOGGER.error(InfoMarkerConstant.ERR_AUTHENTICATION_ENDPOINT, ufe);
+			LOGGER.error(InfoMarkerConstant.ERR_AUTHENTICATION_ENDPOINT, ufe.getMessage());
 			this.setResponseCode(EResponseCode.RC_ACCESS_NOT_VALID);
 			return abort();
 		} catch (Exception e) {

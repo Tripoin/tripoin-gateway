@@ -1,5 +1,6 @@
 package id.co.tripoin.core.integration.security;
 
+import id.co.tripoin.constant.statics.InfoMarkerConstant;
 import id.co.tripoin.core.pojo.SecurityUserDetails;
 import id.co.tripoin.core.service.util.IAuthenticationService;
 
@@ -33,7 +34,7 @@ public class TripoinUserDetailsService implements UserDetailsService {
 		try {
 			securityUserDetails = authenticationService.login(username);
 		} catch (Exception e) {
-			LOGGER.error("Error User Details Service",e);
+			LOGGER.error(InfoMarkerConstant.ERR_USER_DETAILS_SERVICE,e);
 			throw new UsernameNotFoundException(username);
 		}		
 		if(securityUserDetails != null){

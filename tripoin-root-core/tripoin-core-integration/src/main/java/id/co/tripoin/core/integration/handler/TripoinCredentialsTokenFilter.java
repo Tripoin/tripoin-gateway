@@ -1,5 +1,9 @@
 package id.co.tripoin.core.integration.handler;
 
+import id.co.tripoin.constant.statics.CommonConstant;
+import id.co.tripoin.constant.statics.InfoMarkerConstant;
+import id.co.tripoin.constant.statics.PathNameConstant;
+
 import java.io.IOException;
 
 import javax.servlet.FilterChain;
@@ -28,7 +32,7 @@ public class TripoinCredentialsTokenFilter extends AbstractAuthenticationProcess
 	private boolean allowOnlyPost;
 
 	public TripoinCredentialsTokenFilter() {
-		this("/oauth/token");
+		this(PathNameConstant.PATH_OAUTH_TOKEN);
 	}
 
 	public TripoinCredentialsTokenFilter(String path) {
@@ -73,13 +77,13 @@ public class TripoinCredentialsTokenFilter extends AbstractAuthenticationProcess
 			HttpServletResponse response) throws AuthenticationException,
 			IOException, ServletException {
 		if ((this.allowOnlyPost)
-				&& (!("POST".equalsIgnoreCase(request.getMethod())))) {
+				&& (!(CommonConstant.METHOD_POST.equalsIgnoreCase(request.getMethod())))) {
 			throw new HttpRequestMethodNotSupportedException(
-					request.getMethod(), new String[] { "POST" });
+					request.getMethod(), new String[] { CommonConstant.METHOD_POST });
 		}
 
-		String clientId = request.getParameter("client_id");
-		String clientSecret = request.getParameter("client_secret");
+		String clientId = request.getParameter(CommonConstant.CLIENT_IDENTIFIER);
+		String clientSecret = request.getParameter(CommonConstant.CLIENT_SECRET);
 
 		Authentication authentication = SecurityContextHolder.getContext()
 				.getAuthentication();
@@ -88,7 +92,7 @@ public class TripoinCredentialsTokenFilter extends AbstractAuthenticationProcess
 		}
 
 		if (clientId == null) {
-			throw new BadCredentialsException("No client credentials presented");
+			throw new BadCredentialsException(InfoMarkerConstant.INF_BAD_CREDENTIAL_EXCEPTION);
 		}
 
 		if (clientSecret == null) {
@@ -125,7 +129,7 @@ public class TripoinCredentialsTokenFilter extends AbstractAuthenticationProcess
 				uri = uri.substring(0, pathParamIndex);
 			}
 
-			String clientId = request.getParameter("client_id");
+			String clientId = request.getParameter(CommonConstant.CLIENT_IDENTIFIER);
 
 			if (clientId == null) {
 				return false;

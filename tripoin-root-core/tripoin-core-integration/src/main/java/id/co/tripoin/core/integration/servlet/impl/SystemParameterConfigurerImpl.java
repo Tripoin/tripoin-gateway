@@ -2,6 +2,7 @@ package id.co.tripoin.core.integration.servlet.impl;
 
 import id.co.tripoin.constant.statics.ApplicationContextConstant;
 import id.co.tripoin.constant.statics.BeanNameConstant;
+import id.co.tripoin.constant.statics.InfoMarkerConstant;
 import id.co.tripoin.core.integration.servlet.AConfigureContext;
 import id.co.tripoin.core.service.util.ISystemParameterService;
 
@@ -35,7 +36,7 @@ public class SystemParameterConfigurerImpl extends AConfigureContext {
 		try {
 			return systemParameterService.getMapSystemParameter();
 		} catch (Exception e) {
-			LOGGER.error("System Parameter Initialized", e);
+			LOGGER.error(InfoMarkerConstant.ERR_SYSTEM_PARAMETER_CONFIGURE, e);
 			return null;
 		}
 	}

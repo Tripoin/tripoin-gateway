@@ -1,6 +1,7 @@
 package id.co.tripoin.core.integration.handler;
 
 import id.co.tripoin.constant.statics.CommonConstant;
+import id.co.tripoin.constant.statics.InfoMarkerConstant;
 
 import java.io.IOException;
 
@@ -46,7 +47,7 @@ public class LogoutContextImpl implements ILogoutContext {
 		try {
 			SecurityContextHolder.clearContext();
 		} catch (Exception e) {
-			LOGGER.error("Error on logout", e);
+			LOGGER.error(InfoMarkerConstant.ERR_LOGOUT, e);
 		}
 	}
 
@@ -56,7 +57,6 @@ public class LogoutContextImpl implements ILogoutContext {
 
 	public void setRequest(HttpServletRequest request) {
 		this.request = request;
-	}
-	
+	}	
 
 }
