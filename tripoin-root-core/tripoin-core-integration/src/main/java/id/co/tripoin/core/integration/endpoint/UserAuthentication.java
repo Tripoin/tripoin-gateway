@@ -6,14 +6,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
 /**
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
  */
-public class AuthenticationEndpoint {
+public class UserAuthentication {
 
-	private static AuthenticationEndpoint instance = null;
-	private AuthenticationEndpoint() {}
+	private static UserAuthentication instance = null;
+	private UserAuthentication() {}
 
-	public static AuthenticationEndpoint getInstance() {
+	public static UserAuthentication getInstance() {
 		if (instance == null) {
-			instance = new AuthenticationEndpoint();
+			instance = new UserAuthentication();
 		}
 		return instance;
 	}

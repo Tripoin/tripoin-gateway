@@ -9,4 +9,6 @@ public interface IAuthenticationService {
 
 	public SecurityUserDetails login(String username) throws Exception;
 	
+	public int change(String username, String secret) throws Exception;
+	
 }

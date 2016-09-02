@@ -22,4 +22,9 @@ public class AuthenticationServiceImpl implements IAuthenticationService {
 		return authenticationDao.login(username);
 	}
 
+	@Override
+	public int change(String username, String secret) throws Exception {
+		return authenticationDao.change(username, secret);
+	}
+
 }

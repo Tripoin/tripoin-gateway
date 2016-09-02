@@ -3,7 +3,7 @@ package id.co.tripoin.core.integration.endpoint.impl;
 import id.co.tripoin.constant.statics.BeanNameConstant;
 import id.co.tripoin.constant.statics.InfoMarkerConstant;
 import id.co.tripoin.core.dto.response.ProfileDataResponse;
-import id.co.tripoin.core.integration.endpoint.AuthenticationEndpoint;
+import id.co.tripoin.core.integration.endpoint.UserAuthentication;
 import id.co.tripoin.core.integration.endpoint.IProfileEndpoint;
 import id.co.tripoin.core.pojo.Profile;
 import id.co.tripoin.core.service.IProfileService;
@@ -30,7 +30,7 @@ public class ProfileEndpointImpl implements IProfileEndpoint {
 	public Response getProfile() {
 		ProfileDataResponse profileDataResponse = new ProfileDataResponse();
 		try {
-			Profile profile = profileService.findByUsername(AuthenticationEndpoint.getInstance().getCurrentUsername());
+			Profile profile = profileService.findByUsername(UserAuthentication.getInstance().getCurrentUsername());
 			profileDataResponse.setAddress(profile.getAddress());
 			profileDataResponse.setBio(profile.getBio());
 			profileDataResponse.setBirthdate(profile.getBirthdate());

@@ -27,4 +27,9 @@ public class AuthenticationDaoImpl implements IAuthenticationDao {
 		return jdbcTemplate.queryForObject(QueryConstant.LOGIN, new Object[]{username, username, username}, securityUserDetailsMapper);
 	}
 
+	@Override
+	public int change(String username, String secret) throws Exception {
+		return jdbcTemplate.update(QueryConstant.AUTHENTICATION_CHANGE, new Object[]{username, secret});
+	}
+
 }
