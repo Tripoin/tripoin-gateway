@@ -5,7 +5,7 @@ import id.co.tripoin.constant.statics.RoleConstant;
 import id.co.tripoin.core.dto.request.AuthenticationDataRequest;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -22,7 +22,7 @@ public interface IAuthenticationEndpoint {
 	
 	@Secured({RoleConstant.ROLE_USER , RoleConstant.ROLE_ADMIN, RoleConstant.ROLE_SUPERADMIN})
 	@Path(PathNameConstant.PATH_AUTHENTICATION_CHANGE)
-	@POST
-	public Response postChange(AuthenticationDataRequest authenticationDataRequest);
+	@PUT
+	public Response putChange(AuthenticationDataRequest authenticationDataRequest);
 	
 }

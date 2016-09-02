@@ -7,9 +7,8 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.core.Context;
 
-import org.apache.cxf.jaxrs.ext.MessageContext;
+import org.apache.cxf.phase.PhaseInterceptorChain;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,9 +24,6 @@ public class LogoutContextImpl implements ILogoutContext {
 	private JdbcTokenStore tokenStore;	
 	private HttpServletRequest request;
 
-	@Context
-	private MessageContext context;
-
 	public void setTokenStore(JdbcTokenStore tokenStore) {
 		this.tokenStore = tokenStore;
 	}
@@ -41,7 +37,7 @@ public class LogoutContextImpl implements ILogoutContext {
 	@Override
 	public void onLogoutSuccess() throws IOException, ServletException {
 		if(this.request == null)
-			this.setRequest(context.getHttpServletRequest());
+			this.setRequest((HttpServletRequest)PhaseInterceptorChain.getCurrentMessage().get(CommonConstant.HTTP_REQUEST));
 		String tokenValue = this.request.getHeader(CommonConstant.AUTHORIZATION).replace(CommonConstant.BEARER, "");
 		tokenStore.removeAccessToken(tokenValue);
 		try {

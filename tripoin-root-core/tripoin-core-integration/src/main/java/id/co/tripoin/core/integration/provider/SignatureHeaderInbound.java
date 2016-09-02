@@ -4,6 +4,7 @@ import id.co.tripoin.constant.enums.EResponseCode;
 import id.co.tripoin.constant.statics.CommonConstant;
 import id.co.tripoin.constant.statics.InfoMarkerConstant;
 import id.co.tripoin.constant.statics.ResourcePropertiesConstant;
+import id.co.tripoin.core.integration.handler.ABaseResponseHandler;
 import id.co.tripoin.core.integration.security.HeaderKeyGenerator;
 import id.co.tripoin.core.integration.security.HeaderSignatureGenerator;
 
@@ -31,7 +32,7 @@ import com.tripoin.util.time.FormatDateConstant;
  * 
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a></br>
  */
-public class SignatureHeaderInbound extends AbstractProvider implements ContainerRequestFilter {
+public class SignatureHeaderInbound extends ABaseResponseHandler implements ContainerRequestFilter {
 	
 	private static Logger LOGGER = LoggerFactory.getLogger(SignatureHeaderInbound.class);	
 	private String apiKey;
@@ -70,29 +71,29 @@ public class SignatureHeaderInbound extends AbstractProvider implements Containe
 					context.getHeaders().containsKey(paramSignature)){
 				// TODO: Validate X-Tripoin-Key
 				if(!headerKey.key().equals(context.getHeaderString(paramKey))){
-					this.setResponseCode(EResponseCode.RC_BAD_TRIPOIN_KEY);
+					this.responseCode = EResponseCode.RC_BAD_TRIPOIN_KEY;
 					throw new Exception(getResponseCode().getResponseMsg());
 				}
 				// TODO: Validate X-Tripoin-Timestamp
 				try {
 					FormatDateConstant.ISO8601.parse(context.getHeaderString(paramTimestamp));	
 				} catch (ParseException e) {
-					this.setResponseCode(EResponseCode.RC_BAD_TRIPOIN_TIMESTAMP);
+					this.responseCode = EResponseCode.RC_BAD_TRIPOIN_TIMESTAMP;
 					throw new Exception(getResponseCode().getResponseMsg());
 				}
 				// TODO: Validate X-Tripoin-Signature
 				initSignature(context);
 				if(!signature.equals(context.getHeaderString(paramSignature))){
-					this.setResponseCode(EResponseCode.RC_BAD_TRIPOIN_SIGNATURE);
+					this.responseCode = EResponseCode.RC_BAD_TRIPOIN_SIGNATURE;
 					throw new Exception(getResponseCode().getResponseMsg());
 				}				
 			}else{
-				this.setResponseCode(EResponseCode.RC_BAD_REQUEST);
+				this.responseCode = EResponseCode.RC_BAD_REQUEST;
 				throw new Exception();
 			}
 		} catch (Exception e) {
 			LOGGER.error(InfoMarkerConstant.ERR_SIGNATURE, e.getMessage());
-			super.abort(context);
+			context.abortWith(this.abort());
 		}
 	}
 
@@ -128,12 +129,9 @@ public class SignatureHeaderInbound extends AbstractProvider implements Containe
 		return path.substring(path.indexOf(wscontext.concat("/")));
 	}
 
+	@Override
 	public EResponseCode getResponseCode() {
 		return responseCode;
-	}
-
-	public void setResponseCode(EResponseCode responseCode) {
-		this.responseCode = responseCode;
 	}
 	
 }
