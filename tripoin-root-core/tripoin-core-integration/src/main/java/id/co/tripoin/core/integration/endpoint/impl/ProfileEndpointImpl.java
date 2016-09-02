@@ -6,7 +6,7 @@ import id.co.tripoin.constant.statics.InfoMarkerConstant;
 import id.co.tripoin.core.dto.response.ProfileDataResponse;
 import id.co.tripoin.core.integration.endpoint.IProfileEndpoint;
 import id.co.tripoin.core.integration.handler.base.ABaseResponseHandler;
-import id.co.tripoin.core.integration.servlet.UserAuthentication;
+import id.co.tripoin.core.integration.servlet.UserAuthenticationContext;
 import id.co.tripoin.core.pojo.Profile;
 import id.co.tripoin.core.service.IProfileService;
 
@@ -32,7 +32,7 @@ public class ProfileEndpointImpl extends ABaseResponseHandler implements IProfil
 	public Response getProfile() {
 		ProfileDataResponse profileDataResponse = new ProfileDataResponse();
 		try {
-			Profile profile = profileService.findByUsername(UserAuthentication.getInstance().getCurrentUsername());
+			Profile profile = profileService.findByUsername(UserAuthenticationContext.getInstance().getCurrentUsername());
 			profileDataResponse.setAddress(profile.getAddress());
 			profileDataResponse.setBio(profile.getBio());
 			profileDataResponse.setBirthdate(profile.getBirthdate());

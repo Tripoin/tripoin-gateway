@@ -9,14 +9,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
  * 
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
  */
-public class UserAuthentication {
+public class UserAuthenticationContext {
 
-	private static UserAuthentication instance = null;
-	private UserAuthentication() {}
+	private static UserAuthenticationContext instance = null;
+	private UserAuthenticationContext() {}
 
-	public static UserAuthentication getInstance() {
+	public static UserAuthenticationContext getInstance() {
 		if (instance == null) {
-			instance = new UserAuthentication();
+			instance = new UserAuthenticationContext();
 		}
 		return instance;
 	}

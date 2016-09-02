@@ -9,7 +9,7 @@ import id.co.tripoin.core.integration.endpoint.IAuthenticationEndpoint;
 import id.co.tripoin.core.integration.exception.UsernameFaultException;
 import id.co.tripoin.core.integration.handler.base.ABaseResponseHandler;
 import id.co.tripoin.core.integration.handler.base.ILogoutContext;
-import id.co.tripoin.core.integration.servlet.UserAuthentication;
+import id.co.tripoin.core.integration.servlet.UserAuthenticationContext;
 import id.co.tripoin.core.pojo.SecurityUserDetails;
 import id.co.tripoin.core.service.util.IAuthenticationService;
 
@@ -39,11 +39,11 @@ public class AuthenticationEndpointImpl extends ABaseResponseHandler implements 
 	public Response putChange(AuthenticationDataRequest authenticationDataRequest) {
 		try {
 			if(!authenticationDataRequest.getOldAccess().isEmpty() && !authenticationDataRequest.getNewAccess().isEmpty()){
-				SecurityUserDetails securityUserDetails = authenticationService.login(UserAuthentication.getInstance().getCurrentUsername());
+				SecurityUserDetails securityUserDetails = authenticationService.login(UserAuthenticationContext.getInstance().getCurrentUsername());
 				if(!securityUserDetails.getPassword().equals(authenticationDataRequest.getOldAccess()) ||
 						securityUserDetails.getPassword().isEmpty())
 					throw new UsernameFaultException(InfoMarkerConstant.ERR_PASSWORD_NOT_VALID);
-				int result = authenticationService.change(authenticationDataRequest.getNewAccess(), UserAuthentication.getInstance().getCurrentUsername());
+				int result = authenticationService.change(authenticationDataRequest.getNewAccess(), UserAuthenticationContext.getInstance().getCurrentUsername());
 				if(result != 1)
 					throw new Exception();
 				logoutContext.onLogoutSuccess();
