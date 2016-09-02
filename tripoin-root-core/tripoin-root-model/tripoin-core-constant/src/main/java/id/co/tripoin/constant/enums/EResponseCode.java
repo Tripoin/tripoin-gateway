@@ -31,7 +31,7 @@ public enum EResponseCode {
 	RC_TYPEFILE_NOTALLOW(405, "T-Q19", "Type File not Allowed"),
 	RC_MAX_FILE_SIZE(413, "T-Q20", "Maximum file upload"),
 	RC_DATA_USED(400, "T-Q21", "Some data already being used"),
-	RC_ACCESS_NOT_VALID(400, "T-Q22", "Old Access not valid"),
+	RC_ACCESS_NOT_VALID(400, "T-Q22", "Current Access not valid"),
 	
 	RC_FAILURE(500, "T-VVV", "Web Service Failure"),	
 	RC_FAIL_UPLOAD(503, "T-V01", "File upload failure");
