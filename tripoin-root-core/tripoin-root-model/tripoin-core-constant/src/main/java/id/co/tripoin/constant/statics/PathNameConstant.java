@@ -7,6 +7,7 @@ public final class PathNameConstant {
 
 	public static final String PATH_OAUTH_TOKEN = "/oauth/token";
 	public static final String PATH_PROFILE = "/profile";
-	public static final String PATH_AUTHENTICATION_CHANGE = "/change";
+	public static final String PATH_CHANGE = "/change";
+	public static final String PATH_LOCALE = "/locale";
 	
 }

@@ -3,7 +3,9 @@ package id.co.tripoin.core.integration.endpoint.impl;
 import id.co.tripoin.constant.enums.EResponseCode;
 import id.co.tripoin.constant.statics.BeanNameConstant;
 import id.co.tripoin.constant.statics.InfoMarkerConstant;
+import id.co.tripoin.core.dto.response.I18NLocaleDataResponse;
 import id.co.tripoin.core.dto.response.ProfileDataResponse;
+import id.co.tripoin.core.dto.response.RoleDataResponse;
 import id.co.tripoin.core.integration.endpoint.IProfileEndpoint;
 import id.co.tripoin.core.integration.handler.base.ABaseResponseHandler;
 import id.co.tripoin.core.integration.servlet.UserAuthenticationContext;
@@ -42,6 +44,13 @@ public class ProfileEndpointImpl extends ABaseResponseHandler implements IProfil
 			profileDataResponse.setPhone(profile.getPhone());
 			profileDataResponse.setPhoto(profile.getPhoto());
 			profileDataResponse.setUsername(profile.getUser().getUsername());
+			RoleDataResponse roleDataResponse = new RoleDataResponse();
+			roleDataResponse.setCode(profile.getUser().getRole().getAuthority());
+			profileDataResponse.setAuthority(roleDataResponse);
+			I18NLocaleDataResponse i18NLocaleDataResponse = new I18NLocaleDataResponse();
+			i18NLocaleDataResponse.setCode(profile.getI18NLocale().getCode());
+			i18NLocaleDataResponse.setLanguage(profile.getI18NLocale().getLanguage());
+			profileDataResponse.setLocale(i18NLocaleDataResponse);
 		} catch (Exception e) {
 			LOGGER.error(InfoMarkerConstant.ERR_ENDPOINT, e);
 			return abort();

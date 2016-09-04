@@ -1,5 +1,6 @@
 package id.co.tripoin.core.integration.servlet;
 
+import id.co.tripoin.core.integration.servlet.impl.I18NLocaleConfigureImpl;
 import id.co.tripoin.core.integration.servlet.impl.SystemParameterConfigurerImpl;
 
 import javax.servlet.ServletContext;
@@ -24,6 +25,8 @@ public class RegisterContext {
 	public void init(ApplicationContext applicationContext, ServletContext servletContext) {
 		IConfigureContext configSysParameter = new SystemParameterConfigurerImpl(applicationContext);
 		servletContext.setAttribute(configSysParameter.getKey(), configSysParameter.getValue());
+		IConfigureContext configI18NLocale = new I18NLocaleConfigureImpl(applicationContext);
+		servletContext.setAttribute(configI18NLocale.getKey(), configI18NLocale.getValue());
 	}
 
 }

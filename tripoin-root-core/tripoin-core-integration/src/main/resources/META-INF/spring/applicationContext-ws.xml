@@ -27,6 +27,7 @@
     <jaxrs:server id="profileWebService" address="/profile">
         <jaxrs:serviceBeans>
         	<ref bean="profileEndpoint"/>
+        	<ref bean="i18NLocaleProfileEndpoint"/>
         </jaxrs:serviceBeans>
         <jaxrs:providers>
 			<ref bean="jsonProvider"/>

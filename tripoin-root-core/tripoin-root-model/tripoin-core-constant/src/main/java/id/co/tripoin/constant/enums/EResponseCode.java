@@ -32,6 +32,8 @@ public enum EResponseCode {
 	RC_MAX_FILE_SIZE(413, "T-Q20", "Maximum file upload"),
 	RC_DATA_USED(400, "T-Q21", "Some data already being used"),
 	RC_ACCESS_NOT_VALID(400, "T-Q22", "Current Access not valid"),
+	RC_LOCALE_NOT_NULL(400, "T-Q23", "Locale Code not null"),
+	RC_LOCALE_NOT_FOUND(400, "T-Q24", "Locale not found"),
 	
 	RC_FAILURE(500, "T-VVV", "Web Service Failure"),	
 	RC_FAIL_UPLOAD(503, "T-V01", "File upload failure");

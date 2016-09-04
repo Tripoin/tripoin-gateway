@@ -42,6 +42,7 @@ public class Profile extends AAuditTrail {
     private String forgotUUID;
     private Timestamp forgotExpired;
     private User user;
+    private I18NLocale i18NLocale;
     
     @Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -172,7 +173,17 @@ public class Profile extends AAuditTrail {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+
+	@OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "locale_id", nullable = false)
+	public I18NLocale getI18NLocale() {
+		return i18NLocale;
+	}
+
+	public void setI18NLocale(I18NLocale i18nLocale) {
+		i18NLocale = i18nLocale;
+	}
+
 	@Override
 	public String tableName() {
 		return TableNameConstant.MST_PROFILE;

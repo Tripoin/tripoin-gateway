@@ -1,12 +1,13 @@
 package id.co.tripoin.core.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import id.co.tripoin.constant.statics.BeanNameConstant;
 import id.co.tripoin.core.dao.IProfileDao;
+import id.co.tripoin.core.pojo.I18NLocale;
 import id.co.tripoin.core.pojo.Profile;
 import id.co.tripoin.core.service.IProfileService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
@@ -30,6 +31,11 @@ public class ProfileServiceImpl implements IProfileService {
 	@Override
 	public Profile findByUsername(String username) {
 		return profileDao.findByUsername(username);
+	}
+
+	@Override
+	public int setProfileLocale(I18NLocale i18NLocale, String username) {
+		return profileDao.setProfileLocale(i18NLocale, username);
 	}	
 
 }

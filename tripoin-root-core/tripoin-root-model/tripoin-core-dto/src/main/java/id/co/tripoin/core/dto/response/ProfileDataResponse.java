@@ -22,6 +22,8 @@ public class ProfileDataResponse implements Serializable {
 	private String phone;
 	private String photo;
 	private String bio;
+	private RoleDataResponse authority;
+	private I18NLocaleDataResponse locale;
 
 	public String getEmail() {
 		return email;
@@ -93,6 +95,22 @@ public class ProfileDataResponse implements Serializable {
 
 	public void setBio(String bio) {
 		this.bio = bio;
+	}
+
+	public RoleDataResponse getAuthority() {
+		return authority;
+	}
+
+	public void setAuthority(RoleDataResponse authority) {
+		this.authority = authority;
+	}
+
+	public I18NLocaleDataResponse getLocale() {
+		return locale;
+	}
+
+	public void setLocale(I18NLocaleDataResponse locale) {
+		this.locale = locale;
 	}
 
 }

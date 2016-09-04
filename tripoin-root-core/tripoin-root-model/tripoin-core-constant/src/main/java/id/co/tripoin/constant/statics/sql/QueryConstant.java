@@ -18,5 +18,10 @@ public final class QueryConstant {
 			+ "WHERE ocd.client_id = ? OR mp.profile_email = ? OR mp.profile_phone = ?";
 	public static final String AUTHENTICATION_CHANGE = "UPDATE oauth_client_details "
 			+ "SET client_secret = ? WHERE client_id = ?";
+	public static final String SELECT_PROFILE_USERNAME = "SELECT p FROM Profile p WHERE p.user.username = :username";
+	public static final String UPDATE_LOCALE_PROFILE = "UPDATE Profile SET i18NLocale = "
+			+ ":"+FieldConstant.FIELD_I18NLOCALE+" WHERE user = "
+			+ "(SELECT u FROM User u WHERE u.username = "
+			+ ":"+FieldConstant.FIELD_USERNAME+")";
 
 }

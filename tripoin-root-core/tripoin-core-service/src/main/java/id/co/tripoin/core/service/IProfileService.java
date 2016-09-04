@@ -1,5 +1,6 @@
 package id.co.tripoin.core.service;
 
+import id.co.tripoin.core.pojo.I18NLocale;
 import id.co.tripoin.core.pojo.Profile;
 
 /**
@@ -12,5 +13,7 @@ public interface IProfileService {
 	public Profile findByPhone(String phone);
 	
 	public Profile findByUsername(String username);
+	
+	public int setProfileLocale(I18NLocale i18NLocale, String username);
 	
 }

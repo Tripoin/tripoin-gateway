@@ -2,7 +2,7 @@ package id.co.tripoin.core.integration.endpoint;
 
 import id.co.tripoin.constant.statics.PathNameConstant;
 import id.co.tripoin.constant.statics.RoleConstant;
-import id.co.tripoin.core.dto.request.AuthenticationDataRequest;
+import id.co.tripoin.core.dto.request.I18NLocaleDataRequest;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.PUT;
@@ -18,11 +18,12 @@ import org.springframework.security.access.annotation.Secured;
  */
 @Produces({MediaType.APPLICATION_JSON})
 @Consumes({MediaType.APPLICATION_JSON})
-public interface IAuthenticationEndpoint {
-	
+@Path(PathNameConstant.PATH_LOCALE)
+public interface ILocaleProfileEndpoint {
+
 	@Secured({RoleConstant.ROLE_USER , RoleConstant.ROLE_ADMIN, RoleConstant.ROLE_SUPERADMIN})
-	@Path(PathNameConstant.PATH_CHANGE)
 	@PUT
-	public Response putChange(AuthenticationDataRequest authenticationDataRequest);
+	@Path(PathNameConstant.PATH_CHANGE)
+	public Response putLocaleProfile(I18NLocaleDataRequest i18NLocaleDataRequest);
 	
 }
