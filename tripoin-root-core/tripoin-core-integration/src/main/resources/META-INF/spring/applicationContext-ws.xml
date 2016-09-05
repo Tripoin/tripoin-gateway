@@ -35,4 +35,14 @@
 		</jaxrs:providers>
     </jaxrs:server>
     
+    <jaxrs:server id="mediaWebService" address="/media">
+        <jaxrs:serviceBeans>
+        	<ref bean="mediaEndpoint"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+			<ref bean="jsonProvider"/>
+			<ref bean="signatureHeaderInbound"/>
+		</jaxrs:providers>
+    </jaxrs:server>
+    
 </beans>
