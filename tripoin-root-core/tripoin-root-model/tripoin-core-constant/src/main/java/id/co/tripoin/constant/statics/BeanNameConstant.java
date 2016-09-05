@@ -10,6 +10,7 @@ public final class BeanNameConstant {
 	public static final String AUTHENTICATION_SERVICE_BEAN = "authenticationService";
 	public static final String AUTHENTICATION_DAO_BEAN = "authenticationDao";
 	public static final String AUTHENTICATION_ENDPOINT_BEAN = "authenticationEndpoint";
+	public static final String CONNECTION_ENDPOINT_BEAN = "connectionEndpoint";
 	public static final String I18NLOCALE_SERVICE_BEAN = "i18NLocaleService";
 	public static final String I18NLOCALE_PROFILE_ENDPOINT_BEAN = "i18NLocaleProfileEndpoint";
 	public static final String PROFILE_SERVICE_BEAN = "profileService";
