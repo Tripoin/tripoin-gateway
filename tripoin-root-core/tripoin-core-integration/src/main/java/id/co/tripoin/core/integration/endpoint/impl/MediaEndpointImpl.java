@@ -1,19 +1,18 @@
 package id.co.tripoin.core.integration.endpoint.impl;
 
-import id.co.tripoin.constant.statics.BeanNameConstant;
-import id.co.tripoin.constant.statics.InfoMarkerConstant;
-import id.co.tripoin.core.dto.request.MediaDataRequest;
-import id.co.tripoin.core.dto.response.MediaDataResponse;
-import id.co.tripoin.core.integration.endpoint.IMediaEndpoint;
-import id.co.tripoin.core.pojo.Media;
-import id.co.tripoin.core.service.IMediaService;
-
 import javax.ws.rs.core.Response;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import id.co.tripoin.constant.statics.BeanNameConstant;
+import id.co.tripoin.constant.statics.InfoMarkerConstant;
+import id.co.tripoin.core.dto.response.MediaDataResponse;
+import id.co.tripoin.core.integration.endpoint.IMediaEndpoint;
+import id.co.tripoin.core.pojo.Media;
+import id.co.tripoin.core.service.IMediaService;
 
 /**
  * @author <a href="mailto:rudy.fridian91@gmail.com">Rudy Fridian</a>
