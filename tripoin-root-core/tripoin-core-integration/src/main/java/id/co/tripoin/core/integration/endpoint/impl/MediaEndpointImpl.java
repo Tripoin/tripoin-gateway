@@ -28,11 +28,10 @@ public class MediaEndpointImpl implements IMediaEndpoint {
 	IMediaService mediaService;
 
 	@Override
-	public Response getMedia(MediaDataRequest mediaDataRequest) {
+	public Response getMedia(String apiTypeCode) {
 		MediaDataResponse mediaDataResponse = new MediaDataResponse();
 		try {
-			LOGGER.debug(mediaDataRequest.getApiTypeCode());
-			Media media = mediaService.findByApiTypeCode(mediaDataRequest.getApiTypeCode());
+			Media media = mediaService.findByApiTypeCode(apiTypeCode);
 			mediaDataResponse.setApiTypeCode(media.getApiTypeCode());
 			mediaDataResponse.setApiTypeName(media.getApiTypeName());
 			mediaDataResponse.setApiTypeIdentifier(media.getApiTypeIdentifier());
