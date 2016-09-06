@@ -13,24 +13,24 @@
 <fontFamilies>
 
 	<fontFamily name="Open Sans">
-		<normal>com/tripoin/util/report/fonts/OpenSans/OpenSans-Regular.ttf</normal>
-		<bold>com/tripoin/util/report/fonts/OpenSans/OpenSans-Bold.ttf</bold>
-		<italic>com/tripoin/util/report/fonts/OpenSans/OpenSans-Italic.ttf</italic>
-		<boldItalic>com/tripoin/util/report/fonts/OpenSans/OpenSans-BoldItalic.ttf</boldItalic>
+		<normal>id/co/tripoin/util/report/fonts/OpenSans/OpenSans-Regular.ttf</normal>
+		<bold>id/co/tripoin/util/report/fonts/OpenSans/OpenSans-Bold.ttf</bold>
+		<italic>id/co/tripoin/util/report/fonts/OpenSans/OpenSans-Italic.ttf</italic>
+		<boldItalic>id/co/tripoin/util/report/fonts/OpenSans/OpenSans-BoldItalic.ttf</boldItalic>
 		<pdfEncoding>Identity-H</pdfEncoding>
 		<pdfEmbedded>true</pdfEmbedded>
 	</fontFamily>
 
 	<fontFamily name="Open Sans Light">
-		<normal>com/tripoin/util/report/fonts/OpenSansLight/OpenSans-Light.ttf</normal>
-		<italic>com/tripoin/util/report/fonts/OpenSansLight/OpenSans-LightItalic.ttf</italic>
+		<normal>id/co/tripoin/util/report/fonts/OpenSansLight/OpenSans-Light.ttf</normal>
+		<italic>id/co/tripoin/util/report/fonts/OpenSansLight/OpenSans-LightItalic.ttf</italic>
 		<pdfEncoding>Identity-H</pdfEncoding>
 		<pdfEmbedded>true</pdfEmbedded>
 	</fontFamily>
 
 	<fontFamily name="Open Sans Semi Bold">
-		<normal>com/tripoin/util/report/fonts/OpenSansSemiBold/OpenSans-Semibold.ttf</normal>
-		<italic>com/tripoin/util/report/fonts/OpenSansSemiBold/OpenSans-SemiboldItalic.ttf</italic>
+		<normal>id/co/tripoin/util/report/fonts/OpenSansSemiBold/OpenSans-Semibold.ttf</normal>
+		<italic>id/co/tripoin/util/report/fonts/OpenSansSemiBold/OpenSans-SemiboldItalic.ttf</italic>
 		<pdfEncoding>Identity-H</pdfEncoding>
 		<pdfEmbedded>true</pdfEmbedded>
 	</fontFamily>
