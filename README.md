@@ -25,3 +25,7 @@
 #####Step Tripoin Core :
 
 + tripoin-root-core : [https://github.com/Tripoin/tripoin-gateway/tree/master/tripoin-root-core](https://github.com/Tripoin/tripoin-gateway/tree/master/tripoin-root-core "tripoin-root-core")
+
+#####Step Tripoin Web :
+
++ tripoin-root-web : [https://github.com/Tripoin/tripoin-gateway/tree/master/tripoin-root-web](https://github.com/Tripoin/tripoin-gateway/tree/master/tripoin-root-web "tripoin-root-web")

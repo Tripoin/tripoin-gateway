@@ -4,7 +4,8 @@
 * *tripoin-web-ui\src\main\webapp\WEB-INF\properties-files\resources-web-application.properties*
 
 #####Command line :
-######Mode Debug
+(must be maven compile of tripoin-root-util : [https://github.com/Tripoin/tripoin-gateway/tree/master/tripoin-root-util](https://github.com/Tripoin/tripoin-gateway/tree/master/tripoin-root-util "tripoin-root-util"))
+(must be maven compile of tripoin-root-core : [https://github.com/Tripoin/tripoin-gateway/tree/master/tripoin-root-core](https://github.com/Tripoin/tripoin-gateway/tree/master/tripoin-root-core "tripoin-root-core"))
 
 + *tripoin-web-service* module
 
