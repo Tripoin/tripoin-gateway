@@ -1,4 +1,4 @@
-window.com_tripoin_util_ui_chart_AbstractHighChart = function () {
+window.id_co_tripoin_util_ui_chart_AbstractHighChart = function () {
 
 	this.onStateChange = function () {
 		// read state
