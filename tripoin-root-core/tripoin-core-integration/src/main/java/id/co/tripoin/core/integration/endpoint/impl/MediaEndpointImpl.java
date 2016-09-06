@@ -11,7 +11,7 @@ import id.co.tripoin.constant.statics.BeanNameConstant;
 import id.co.tripoin.constant.statics.InfoMarkerConstant;
 import id.co.tripoin.core.dto.response.MediaDataResponse;
 import id.co.tripoin.core.integration.endpoint.IMediaEndpoint;
-import id.co.tripoin.core.pojo.Media;
+import id.co.tripoin.core.pojo.APIType;
 import id.co.tripoin.core.service.IMediaService;
 
 /**
@@ -30,16 +30,16 @@ public class MediaEndpointImpl implements IMediaEndpoint {
 	public Response getMedia(String apiTypeCode) {
 		MediaDataResponse mediaDataResponse = new MediaDataResponse();
 		try {
-			Media media = mediaService.findByApiTypeCode(apiTypeCode);
-			mediaDataResponse.setApiTypeCode(media.getApiTypeCode());
-			mediaDataResponse.setApiTypeName(media.getApiTypeName());
-			mediaDataResponse.setApiTypeIdentifier(media.getApiTypeIdentifier());
-			mediaDataResponse.setApiTypeSecret(media.getApiTypeSecret());
-			mediaDataResponse.setApiTypeHost(media.getApiTypeHost());
-			mediaDataResponse.setApiTypePort(media.getApiTypePort());
-			mediaDataResponse.setApiTypeProtocol(media.getApiTypeProtocol());
-			mediaDataResponse.setApiTypeRedirect(media.getApiTypeRedirect());
-			mediaDataResponse.setApiTypeExpired(media.getApiTypeExpired());
+			APIType aPIType = mediaService.findByApiTypeCode(apiTypeCode);
+			mediaDataResponse.setApiTypeCode(aPIType.getApiTypeCode());
+			mediaDataResponse.setApiTypeName(aPIType.getApiTypeName());
+			mediaDataResponse.setApiTypeIdentifier(aPIType.getApiTypeIdentifier());
+			mediaDataResponse.setApiTypeSecret(aPIType.getApiTypeSecret());
+			mediaDataResponse.setApiTypeHost(aPIType.getApiTypeHost());
+			mediaDataResponse.setApiTypePort(aPIType.getApiTypePort());
+			mediaDataResponse.setApiTypeProtocol(aPIType.getApiTypeProtocol());
+			mediaDataResponse.setApiTypeRedirect(aPIType.getApiTypeRedirect());
+			mediaDataResponse.setApiTypeExpired(aPIType.getApiTypeExpired());
 		} catch (Exception e) {
 			LOGGER.error(InfoMarkerConstant.ERR_PROFILE_ENDPOINT, e);
 			return Response.serverError().build();

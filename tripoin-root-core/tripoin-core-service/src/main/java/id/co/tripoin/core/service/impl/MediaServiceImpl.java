@@ -1,8 +1,8 @@
 package id.co.tripoin.core.service.impl;
 
 import id.co.tripoin.constant.statics.BeanNameConstant;
-import id.co.tripoin.core.dao.IMediaDao;
-import id.co.tripoin.core.pojo.Media;
+import id.co.tripoin.core.dao.IAPITypeDao;
+import id.co.tripoin.core.pojo.APIType;
 import id.co.tripoin.core.service.IMediaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +15,12 @@ import org.springframework.stereotype.Service;
 public class MediaServiceImpl implements IMediaService{
 
 	@Autowired
-	private IMediaDao mediaDao;
+	private IAPITypeDao aPITypeDao;
 	
 	@Override
-	public Media findByApiTypeCode(String apiCode) {
+	public APIType findByApiTypeCode(String apiCode) {
 		// TODO Auto-generated method stub
-		return mediaDao.findByApiTypeCode(apiCode);
+		return aPITypeDao.findByApiTypeCode(apiCode);
 	}
 
 }

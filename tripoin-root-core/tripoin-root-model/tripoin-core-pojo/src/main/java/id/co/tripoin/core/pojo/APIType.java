@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name=TableNameConstant.MST_API_TYPE)
-public class Media extends AAuditTrail {
+public class APIType extends AAuditTrail {
 
 	/**
 	 * 
