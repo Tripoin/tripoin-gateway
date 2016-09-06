@@ -1,5 +1,7 @@
 package com.tripoin.util.time;
 
+import id.co.tripoin.util.time.TimeAgo;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
