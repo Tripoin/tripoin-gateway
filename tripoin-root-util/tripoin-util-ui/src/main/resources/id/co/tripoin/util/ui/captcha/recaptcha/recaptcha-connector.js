@@ -1,4 +1,4 @@
-window.id_co_tripoin_util_ui_captcha_ReCaptcha =
+window.id_co_tripoin_util_ui_captcha_recaptcha_ReCaptcha =
 function() {
     var element = this.getElement();
 
