@@ -1,5 +1,7 @@
 package id.co.tripoin.core.integration.endpoint;
 
+import id.co.tripoin.constant.statics.PathNameConstant;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -13,9 +15,10 @@ import javax.ws.rs.core.Response;
  */
 @Produces({ MediaType.APPLICATION_JSON })
 @Consumes({ MediaType.APPLICATION_JSON })
-public interface IMediaEndpoint {
+public interface IAPITypeEndpoint {
 
 	@GET
-	@Path("{apiTypeCode}")
-	public Response getMedia(@PathParam("apiTypeCode") String apiTypeCode);
+	@Path(PathNameConstant.PATH_API_TYPE_CODE)
+	public Response getMedia(@PathParam(value = PathNameConstant.PARAM_API_TYPE_CODE) String apiTypeCode);
+	
 }

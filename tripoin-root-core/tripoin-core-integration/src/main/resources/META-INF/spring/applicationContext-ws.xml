@@ -44,9 +44,9 @@
 		</jaxrs:providers>
     </jaxrs:server>
     
-    <jaxrs:server id="mediaWebService" address="/media">
+    <jaxrs:server id="apiTypeWebService" address="/type">
         <jaxrs:serviceBeans>
-        	<ref bean="mediaEndpoint"/>
+        	<ref bean="apiTypeEndpoint"/>
         </jaxrs:serviceBeans>
         <jaxrs:providers>
 			<ref bean="jsonProvider"/>

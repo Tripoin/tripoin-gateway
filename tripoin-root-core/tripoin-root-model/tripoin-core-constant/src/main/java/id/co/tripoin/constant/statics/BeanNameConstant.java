@@ -15,7 +15,7 @@ public final class BeanNameConstant {
 	public static final String I18NLOCALE_PROFILE_ENDPOINT_BEAN = "i18NLocaleProfileEndpoint";
 	public static final String PROFILE_SERVICE_BEAN = "profileService";
 	public static final String PROFILE_ENDPOINT_BEAN = "profileEndpoint";
-	public static final String MEDIA_SERVICE_BEAN = "mediaService";
-	public static final String MEDIA_ENDPOINT_BEAN = "mediaEndpoint";
+	public static final String API_TYPE_SERVICE_BEAN = "apiTypeService";
+	public static final String API_TYPE_ENDPOINT_BEAN = "apiTypeEndpoint";
 	
 }
