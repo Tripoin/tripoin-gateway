@@ -4,7 +4,7 @@
     <artifactId>tripoin-core-service</artifactId>
     <name>tripoin-core-service</name>
     <parent>
-        <groupId>com.tripoin.core</groupId>
+        <groupId>id.co.tripoin.core</groupId>
         <artifactId>tripoin-root-core</artifactId>
         <version>1.0.0</version>
     </parent>
@@ -46,12 +46,12 @@
     <dependencies>
 		<!-- refer tripoin-core -->	
         <dependency>
-            <groupId>com.tripoin.core</groupId>
+            <groupId>id.co.tripoin.core</groupId>
             <artifactId>tripoin-core-dao</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>com.tripoin.core</groupId>
+            <groupId>id.co.tripoin.core</groupId>
             <artifactId>tripoin-core-dto</artifactId>
             <version>1.0.0</version>
             <exclusions>

@@ -1,9 +1,8 @@
 package id.co.tripoin.core.integration.security;
 
 import id.co.tripoin.constant.statics.EncryptionConstant;
-
-import com.tripoin.util.encryption.HexSHA256Generator;
-import com.tripoin.util.encryption.HmacGenerator;
+import id.co.tripoin.util.encryption.HexSHA256Generator;
+import id.co.tripoin.util.encryption.HmacGenerator;
 
 /**
  * <b>Algorithm Encription X-Tripoin-Signature:</b></br>

@@ -5,7 +5,7 @@
 	<name>tripoin-core-integration</name>
 	<packaging>war</packaging>
 	<parent>
-		<groupId>com.tripoin.core</groupId>
+		<groupId>id.co.tripoin.core</groupId>
 		<artifactId>tripoin-root-core</artifactId>
 		<version>1.0.0</version>
 	</parent>
@@ -65,7 +65,7 @@
 	<dependencies>
 		<!-- refer tripoin-core -->
 		<dependency>
-			<groupId>com.tripoin.core</groupId>
+			<groupId>id.co.tripoin.core</groupId>
 			<artifactId>tripoin-core-service</artifactId>
 			<version>1.0.0</version>
 			<exclusions>
@@ -76,12 +76,12 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>com.tripoin.util</groupId>
+			<groupId>id.co.tripoin.util</groupId>
 			<artifactId>tripoin-util-common</artifactId>
 			<version>${tripoin.util.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.tripoin.util</groupId>
+			<groupId>id.co.tripoin.util</groupId>
 			<artifactId>tripoin-util-multiplex</artifactId>
 			<version>${tripoin.util.version}</version>
 		</dependency>

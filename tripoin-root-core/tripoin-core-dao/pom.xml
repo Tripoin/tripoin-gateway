@@ -4,7 +4,7 @@
     <artifactId>tripoin-core-dao</artifactId>
     <name>tripoin-core-dao</name>
     <parent>
-        <groupId>com.tripoin.core</groupId>
+        <groupId>id.co.tripoin.core</groupId>
         <artifactId>tripoin-root-core</artifactId>
         <version>1.0.0</version>
     </parent>
@@ -46,7 +46,7 @@
     <dependencies> 
 		<!-- refer tripoin-core --> 
         <dependency>
-            <groupId>com.tripoin.core</groupId>
+            <groupId>id.co.tripoin.core</groupId>
             <artifactId>tripoin-core-pojo</artifactId>
             <version>1.0.0</version>
         </dependency>

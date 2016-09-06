@@ -5,7 +5,7 @@
 	<artifactId>tripoin-core-dto</artifactId>
 	<name>tripoin-core-dto</name>
 	<parent>
-		<groupId>com.tripoin.core</groupId>
+		<groupId>id.co.tripoin.core</groupId>
 		<artifactId>tripoin-root-model</artifactId>
 		<version>1.0.0</version>
 	</parent>

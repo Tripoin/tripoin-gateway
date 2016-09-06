@@ -3,6 +3,7 @@ package id.co.tripoin.core.integration.security;
 import id.co.tripoin.constant.statics.ApplicationContextConstant;
 import id.co.tripoin.constant.statics.EncryptionConstant;
 import id.co.tripoin.constant.statics.SystemParameterKeyConstant;
+import id.co.tripoin.util.encryption.HmacGenerator;
 
 import java.util.Map;
 
@@ -10,8 +11,6 @@ import javax.servlet.ServletContext;
 
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import com.tripoin.util.encryption.HmacGenerator;
 
 /**
  * <b>Algorithm Encription X-Tripoin-Key:</b></br>

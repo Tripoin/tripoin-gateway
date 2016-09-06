@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>id.co.tripoin.util</groupId>
-    <artifactId>tripoin-root-util</artifactId>
+    <groupId>id.co.tripoin.web</groupId>
+    <artifactId>tripoin-root-web</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
     
@@ -46,6 +46,19 @@
 			<url>http://maven.vaadin.com/vaadin-addons</url>
 		</repository>
 		<repository>
+			<id>default</id>
+			<name>Default</name>
+			<url>http://central.maven.org/maven2</url>
+		</repository>		
+		<repository>
+			<id>gwt-mobile-webkit</id>
+			<url>http://gwt-mobile-webkit.googlecode.com/svn/repo</url>
+		</repository>
+		<repository>
+			<id>nuxeo nexus public</id>
+    		<url>https://maven.nuxeo.org/nexus/content/repositories/public</url>
+		</repository>
+		<repository>
 			<id>vaadin-snapshots</id>
 			<url>http://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
 			<releases>
@@ -54,11 +67,6 @@
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
-		</repository>
-		<repository>
-			<id>default</id>
-			<name>Default</name>
-			<url>http://central.maven.org/maven2</url>
 		</repository>
 	</repositories>
 	
@@ -74,81 +82,89 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-    
-  	<properties>
+
+	<properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-				
+		<project.encoding>UTF-8</project.encoding>
+		<project.source.version>1.7</project.source.version>
+		<project.target.version>1.7</project.target.version>
+		
+		<tripoin.util.version>1.0.0</tripoin.util.version>
+        				
+        <!-- Convenience property to set the Spring Framework version -->
+		<spring.version>4.2.6.RELEASE</spring.version>
+		<spring.security.version>3.2.6.RELEASE</spring.security.version>
+		
         <!-- Convenience property to set the Maven -->
 		<maven.compiler.version>3.0</maven.compiler.version>
+		<maven.dependency.plugin.version>2.9</maven.dependency.plugin.version>
+		<maven.resources.plugin.version>2.6</maven.resources.plugin.version>
+		<maven.jar.plugin.version>2.5</maven.jar.plugin.version>
+		<maven.clean.plugin.version>2.4.1</maven.clean.plugin.version>
+		<maven.install.plugin.version>2.4</maven.install.plugin.version>
+		<maven.war.plugin.version>2.3</maven.war.plugin.version>
+		<maven.failsafe.plugin.version>2.16</maven.failsafe.plugin.version>
+		<yuicompressor.maven.plugin.version>1.5.1</yuicompressor.maven.plugin.version>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
-		
-        <!-- Convenience property to set the Spring Framework version -->
-        <spring.default.version>2.5.6</spring.default.version>
-		<spring.version>4.2.6.RELEASE</spring.version>
-		<spring.core.version>4.2.6.RELEASE</spring.core.version>
-		<spring.orm.version>4.2.6.RELEASE</spring.orm.version>
-		<spring.security.version>3.2.6.RELEASE</spring.security.version>
         
+        <!-- Convenience property to set the Common -->
+		<commons.fileupload.version>1.2.2</commons.fileupload.version>
+		<commons.io.version>2.4</commons.io.version>
+		
+        <!-- Convenience property to set the Hibernate version -->
+		<hibernate.validator.version>5.1.0.CR1</hibernate.validator.version>
+		
         <!-- Convenience property to set the Vaadin -->		
 		<vaadin.version>7.4.6</vaadin.version>
 		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 		<vaadin.sass.compiler.version>0.9.12</vaadin.sass.compiler.version>
 		<vaadin.spring.version>1.0.0.beta3</vaadin.spring.version>
+		<vaadin.addons.aceeditor.version>0.8.14</vaadin.addons.aceeditor.version>
 		<com.vaadin.tapio.version>1.1.2</com.vaadin.tapio.version>
+		<vaadin.grid.util.version>1.0.8</vaadin.grid.util.version>
+		<vaadin.jcrop.version>1.1.2</vaadin.jcrop.version>
 		
-        <!-- Convenience property to set the Common -->
-        <commons.logging.version>1.1.3</commons.logging.version>
-        <commons.collections.version>3.1</commons.collections.version>
-        <commons.daemon.version>1.0.15</commons.daemon.version>
-        <commons.dbcp.version>2.0.1</commons.dbcp.version>
-        <commons.lang.version>2.3</commons.lang.version>
-        <commons.beanutils.version>1.9.0</commons.beanutils.version>
-		<commons.fileupload.version>1.2.2</commons.fileupload.version>
-		<commons.io.version>2.4</commons.io.version>
-		<commons.digester>2.1</commons.digester>
-        
+        <!-- Convenience property to set the Jetty Lib -->
+		<jetty.plugin.version>9.2.3.v20140905</jetty.plugin.version>
+		<jetty.server.version>8.1.12.v20130726</jetty.server.version>
+                        
         <!-- Convenience property to set the Other Lib -->
-        <slf4j.version>1.7.21</slf4j.version>
-        <junit.version>4.11</junit.version>
-        <quartz.version>2.2.1</quartz.version>
         <freemarker.version>2.3.15</freemarker.version>
-        <javax.mail>1.4.3</javax.mail>
 		<javax.servlet.version>3.0.1</javax.servlet.version>
+		<javax.validation.version>1.0.0.GA</javax.validation.version>
 		<jasypt.version>1.7</jasypt.version>
-        <aopalliance.version>1.0</aopalliance.version>
-        <cglib.version>2.2.2</cglib.version>
-        <jta.version>1.1</jta.version>
-        <jboss.javassist.version>3.6.ga</jboss.javassist.version>
-        <jboss.logging.version>3.1.0.GA</jboss.logging.version>
-        <aspectj.version>1.6.8</aspectj.version>
-        <aspectjweaver.version>1.6.10</aspectjweaver.version>
         <lambdaj.version>2.3.3</lambdaj.version>
         <jackson.core.asl.version>1.9.13</jackson.core.asl.version>
         <jackson-databind.version>2.3.2</jackson-databind.version>
         <mockito.core.version>1.9.5</mockito.core.version>
+		<xalan.version>2.7.1</xalan.version>
+		<xerces.version>2.10.0</xerces.version>
+		<nekohtml.version>1.9.19</nekohtml.version>
+		<asm.version>5.0.3</asm.version>
+		<portlet.version>2.0</portlet.version>
+		<eclipse.lifecycle.mapping.version>1.0.0</eclipse.lifecycle.mapping.version>
+		<google.kaptcha.version>2.3</google.kaptcha.version>
+		<httpclient.version>4.3.1</httpclient.version>
         <hamcrest.version>1.1</hamcrest.version>
-        <javax.el.version>2.2.4</javax.el.version>
-        <tanesha.recaptcha.version>0.0.7</tanesha.recaptcha.version>
-        <geocoder.version>0.16</geocoder.version>
-        <jasperreports.version>6.0.0</jasperreports.version>
-        <jasperreports.fonts.version>6.0.0.extensions</jasperreports.fonts.version>
-        <bcprov-jdk14.version>1.38</bcprov-jdk14.version>
-        <jackson-annotations.version>2.1.4</jackson-annotations.version>
-        <jackson-core.version>2.1.4</jackson-core.version>
-        <jcommon.version>1.0.15</jcommon.version>
-	  	<javax.servlet-api.version>2.5</javax.servlet-api.version>
-	  	<javax.jstl-taglibs.version>1.1.2</javax.jstl-taglibs.version>
-	  	<lucene.core.version>4.5.1</lucene.core.version>
-	  	<itextpdf.version>5.5.0</itextpdf.version>
+        <junit.version>4.11</junit.version>
     </properties>
-    
-    <modules>
-        <module>tripoin-util-common</module>
-        <module>tripoin-util-multiplex</module>
-        <module>tripoin-util-report</module>
-        <module>tripoin-util-ui</module>
-    </modules>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.vaadin</groupId>
+				<artifactId>vaadin-bom</artifactId>
+				<version>${vaadin.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+	<modules>
+		<module>tripoin-web-service</module>
+		<module>tripoin-web-ui</module>
+	</modules>
 </project>
