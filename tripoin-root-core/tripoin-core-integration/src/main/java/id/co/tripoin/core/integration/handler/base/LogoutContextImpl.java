@@ -1,7 +1,7 @@
 package id.co.tripoin.core.integration.handler.base;
 
-import id.co.tripoin.constant.statics.CommonConstant;
-import id.co.tripoin.constant.statics.InfoMarkerConstant;
+import id.co.tripoin.core.constant.statics.CommonConstant;
+import id.co.tripoin.core.constant.statics.InfoMarkerConstant;
 
 import java.io.IOException;
 

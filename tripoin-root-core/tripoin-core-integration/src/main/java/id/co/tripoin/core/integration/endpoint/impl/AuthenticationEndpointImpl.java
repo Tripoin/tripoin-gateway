@@ -1,8 +1,8 @@
 package id.co.tripoin.core.integration.endpoint.impl;
 
-import id.co.tripoin.constant.enums.EResponseCode;
-import id.co.tripoin.constant.statics.BeanNameConstant;
-import id.co.tripoin.constant.statics.InfoMarkerConstant;
+import id.co.tripoin.core.constant.enums.EResponseCode;
+import id.co.tripoin.core.constant.statics.BeanNameConstant;
+import id.co.tripoin.core.constant.statics.InfoMarkerConstant;
 import id.co.tripoin.core.dto.ResponseData;
 import id.co.tripoin.core.dto.request.AuthenticationDataRequest;
 import id.co.tripoin.core.integration.endpoint.IAuthenticationEndpoint;
@@ -27,7 +27,6 @@ import org.springframework.stereotype.Component;
 public class AuthenticationEndpointImpl extends ABaseResponseHandler implements IAuthenticationEndpoint {
 	
 	private static Logger LOGGER = LoggerFactory.getLogger(AuthenticationEndpointImpl.class);
-	private EResponseCode responseCode;
 	
 	@Autowired
 	private IAuthenticationService authenticationService;

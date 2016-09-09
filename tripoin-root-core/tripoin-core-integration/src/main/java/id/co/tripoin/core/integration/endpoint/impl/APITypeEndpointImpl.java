@@ -7,8 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import id.co.tripoin.constant.statics.BeanNameConstant;
-import id.co.tripoin.constant.statics.InfoMarkerConstant;
+import id.co.tripoin.core.constant.statics.BeanNameConstant;
+import id.co.tripoin.core.constant.statics.InfoMarkerConstant;
 import id.co.tripoin.core.dto.response.MediaDataResponse;
 import id.co.tripoin.core.integration.endpoint.IAPITypeEndpoint;
 import id.co.tripoin.core.pojo.APIType;

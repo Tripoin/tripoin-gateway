@@ -1,6 +1,6 @@
 package id.co.tripoin.core.integration.endpoint;
 
-import id.co.tripoin.constant.statics.RoleConstant;
+import id.co.tripoin.core.constant.statics.RoleConstant;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;

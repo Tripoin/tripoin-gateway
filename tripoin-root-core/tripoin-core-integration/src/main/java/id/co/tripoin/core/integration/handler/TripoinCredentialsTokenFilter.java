@@ -1,8 +1,8 @@
 package id.co.tripoin.core.integration.handler;
 
-import id.co.tripoin.constant.statics.CommonConstant;
-import id.co.tripoin.constant.statics.InfoMarkerConstant;
-import id.co.tripoin.constant.statics.PathNameConstant;
+import id.co.tripoin.core.constant.statics.CommonConstant;
+import id.co.tripoin.core.constant.statics.InfoMarkerConstant;
+import id.co.tripoin.core.constant.statics.PathNameConstant;
 
 import java.io.IOException;
 

@@ -3,7 +3,7 @@ package id.co.tripoin.core.service.util.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import id.co.tripoin.constant.statics.BeanNameConstant;
+import id.co.tripoin.core.constant.statics.BeanNameConstant;
 import id.co.tripoin.core.dao.util.IAuthenticationDao;
 import id.co.tripoin.core.pojo.SecurityUserDetails;
 import id.co.tripoin.core.service.util.IAuthenticationService;

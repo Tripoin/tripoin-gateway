@@ -1,5 +1,6 @@
 package id.co.tripoin.core.integration.handler.base;
 
+import id.co.tripoin.core.constant.enums.EResponseCode;
 import id.co.tripoin.core.dto.ResponseData;
 
 import javax.ws.rs.core.Response;
@@ -11,6 +12,8 @@ import org.springframework.http.MediaType;
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
  */
 public abstract class ABaseResponseHandler implements IBaseResponseHandler {
+	
+	protected EResponseCode responseCode = EResponseCode.RC_FAILURE;
 
 	@Override
 	public Response abort() {

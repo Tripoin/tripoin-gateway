@@ -1,8 +1,8 @@
 package id.co.tripoin.core.integration.endpoint.impl;
 
-import id.co.tripoin.constant.enums.EResponseCode;
-import id.co.tripoin.constant.statics.BeanNameConstant;
-import id.co.tripoin.constant.statics.InfoMarkerConstant;
+import id.co.tripoin.core.constant.enums.EResponseCode;
+import id.co.tripoin.core.constant.statics.BeanNameConstant;
+import id.co.tripoin.core.constant.statics.InfoMarkerConstant;
 import id.co.tripoin.core.dto.response.I18NLocaleDataResponse;
 import id.co.tripoin.core.dto.response.ProfileDataResponse;
 import id.co.tripoin.core.dto.response.RoleDataResponse;

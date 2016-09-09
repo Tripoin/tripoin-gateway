@@ -7,7 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import id.co.tripoin.constant.statics.BeanNameConstant;
+import id.co.tripoin.core.constant.statics.BeanNameConstant;
 import id.co.tripoin.core.dao.II18NLocaleDao;
 import id.co.tripoin.core.pojo.I18NLocale;
 import id.co.tripoin.core.service.II18NLocaleService;

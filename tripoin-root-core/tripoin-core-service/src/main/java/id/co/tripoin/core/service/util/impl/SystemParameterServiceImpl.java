@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import id.co.tripoin.constant.statics.BeanNameConstant;
+import id.co.tripoin.core.constant.statics.BeanNameConstant;
 import id.co.tripoin.core.dao.util.ISystemParameterDao;
 import id.co.tripoin.core.pojo.SystemParameter;
 import id.co.tripoin.core.service.util.ISystemParameterService;

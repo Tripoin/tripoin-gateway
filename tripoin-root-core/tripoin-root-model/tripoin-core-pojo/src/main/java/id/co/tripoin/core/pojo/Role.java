@@ -1,6 +1,6 @@
 package id.co.tripoin.core.pojo;
 
-import id.co.tripoin.constant.statics.TableNameConstant;
+import id.co.tripoin.core.constant.statics.TableNameConstant;
 import id.co.tripoin.core.pojo.base.IBasePojo;
 
 import javax.persistence.Column;

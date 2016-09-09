@@ -1,6 +1,6 @@
 package id.co.tripoin.core.integration.security;
 
-import id.co.tripoin.constant.statics.EncryptionConstant;
+import id.co.tripoin.core.constant.statics.EncryptionConstant;
 import id.co.tripoin.util.encryption.HexSHA256Generator;
 import id.co.tripoin.util.encryption.HmacGenerator;
 

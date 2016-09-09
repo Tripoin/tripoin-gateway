@@ -1,9 +1,9 @@
 package id.co.tripoin.core.integration.endpoint.impl;
 
-import id.co.tripoin.constant.enums.EResponseCode;
-import id.co.tripoin.constant.statics.ApplicationContextConstant;
-import id.co.tripoin.constant.statics.BeanNameConstant;
-import id.co.tripoin.constant.statics.InfoMarkerConstant;
+import id.co.tripoin.core.constant.enums.EResponseCode;
+import id.co.tripoin.core.constant.statics.ApplicationContextConstant;
+import id.co.tripoin.core.constant.statics.BeanNameConstant;
+import id.co.tripoin.core.constant.statics.InfoMarkerConstant;
 import id.co.tripoin.core.dto.ResponseData;
 import id.co.tripoin.core.dto.request.I18NLocaleDataRequest;
 import id.co.tripoin.core.integration.endpoint.ILocaleProfileEndpoint;
@@ -31,7 +31,6 @@ import org.springframework.stereotype.Component;
 public class LocaleProfileEndpointImpl extends ABaseResponseHandler implements ILocaleProfileEndpoint {
 
 	private static Logger LOGGER = LoggerFactory.getLogger(LocaleProfileEndpointImpl.class);
-	private EResponseCode responseCode;
 	
 	@Autowired
 	private ServletContext context;

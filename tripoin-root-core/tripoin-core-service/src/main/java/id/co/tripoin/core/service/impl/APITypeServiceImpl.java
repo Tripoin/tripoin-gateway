@@ -1,6 +1,6 @@
 package id.co.tripoin.core.service.impl;
 
-import id.co.tripoin.constant.statics.BeanNameConstant;
+import id.co.tripoin.core.constant.statics.BeanNameConstant;
 import id.co.tripoin.core.dao.IAPITypeDao;
 import id.co.tripoin.core.pojo.APIType;
 import id.co.tripoin.core.service.IAPITypeService;

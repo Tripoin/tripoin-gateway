@@ -1,6 +1,6 @@
 package id.co.tripoin.core.service.impl;
 
-import id.co.tripoin.constant.statics.BeanNameConstant;
+import id.co.tripoin.core.constant.statics.BeanNameConstant;
 import id.co.tripoin.core.dao.IProfileDao;
 import id.co.tripoin.core.pojo.I18NLocale;
 import id.co.tripoin.core.pojo.Profile;

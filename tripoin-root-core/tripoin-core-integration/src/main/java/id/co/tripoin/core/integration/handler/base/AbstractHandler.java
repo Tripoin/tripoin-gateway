@@ -3,7 +3,7 @@ package id.co.tripoin.core.integration.handler.base;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import id.co.tripoin.constant.enums.EResponseCode;
+import id.co.tripoin.core.constant.enums.EResponseCode;
 import id.co.tripoin.core.dto.ResponseData;
 
 import javax.servlet.http.HttpServletResponse;

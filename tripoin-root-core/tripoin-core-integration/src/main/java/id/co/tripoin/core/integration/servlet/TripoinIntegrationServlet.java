@@ -1,7 +1,7 @@
 package id.co.tripoin.core.integration.servlet;
 
-import id.co.tripoin.constant.statics.ApplicationContextConstant;
-import id.co.tripoin.constant.statics.InfoMarkerConstant;
+import id.co.tripoin.core.constant.statics.ApplicationContextConstant;
+import id.co.tripoin.core.constant.statics.InfoMarkerConstant;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;

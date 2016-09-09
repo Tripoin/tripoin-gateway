@@ -1,9 +1,9 @@
 package id.co.tripoin.core.integration.provider;
 
-import id.co.tripoin.constant.enums.EResponseCode;
-import id.co.tripoin.constant.statics.CommonConstant;
-import id.co.tripoin.constant.statics.InfoMarkerConstant;
-import id.co.tripoin.constant.statics.ResourcePropertiesConstant;
+import id.co.tripoin.core.constant.enums.EResponseCode;
+import id.co.tripoin.core.constant.statics.CommonConstant;
+import id.co.tripoin.core.constant.statics.InfoMarkerConstant;
+import id.co.tripoin.core.constant.statics.ResourcePropertiesConstant;
 import id.co.tripoin.core.integration.handler.base.ABaseResponseHandler;
 import id.co.tripoin.core.integration.security.HeaderKeyGenerator;
 import id.co.tripoin.core.integration.security.HeaderSignatureGenerator;
@@ -42,7 +42,6 @@ public class SignatureHeaderInbound extends ABaseResponseHandler implements Cont
 	private String body;
 	private String signature;
 	private ByteArrayOutputStream entity;
-	private EResponseCode responseCode;
 
 	@Value(ResourcePropertiesConstant.PARAM_HEADER_KEY)
 	private String paramKey;
@@ -91,7 +90,7 @@ public class SignatureHeaderInbound extends ABaseResponseHandler implements Cont
 				throw new Exception();
 			}
 		} catch (Exception e) {
-			LOGGER.error(InfoMarkerConstant.ERR_SIGNATURE, e.getMessage());
+			LOGGER.error(InfoMarkerConstant.ERR_SIGNATURE, e);
 			context.abortWith(this.abort());
 		}
 	}
@@ -103,10 +102,15 @@ public class SignatureHeaderInbound extends ABaseResponseHandler implements Cont
 	 * 
 	 * @param context
 	 */
-	private void initSignature(ContainerRequestContext context){				
+	private void initSignature(ContainerRequestContext context) throws Exception {				
 		this.entity = TransformInputStream.toByteArray(context.getEntityStream());
 		this.apiKey = headerKey.key();
-		this.accessToken = context.getHeaderString(CommonConstant.AUTHORIZATION).replace(CommonConstant.BEARER, "");
+		try {
+			this.accessToken = context.getHeaderString(CommonConstant.AUTHORIZATION).replace(CommonConstant.BEARER, "");			
+		} catch (Exception e) {
+			this.responseCode = EResponseCode.RC_INVALID_TOKEN;
+			throw new Exception();
+		}
 		this.method = context.getMethod();
 		this.body = new String(this.entity.toByteArray());
 		this.path = rawPath(context.getUriInfo().getAbsolutePath().getRawPath());

@@ -1,7 +1,7 @@
 package id.co.tripoin.core.integration.endpoint;
 
-import id.co.tripoin.constant.statics.PathNameConstant;
-import id.co.tripoin.constant.statics.RoleConstant;
+import id.co.tripoin.core.constant.statics.PathNameConstant;
+import id.co.tripoin.core.constant.statics.RoleConstant;
 import id.co.tripoin.core.dto.request.AuthenticationDataRequest;
 
 import javax.ws.rs.Consumes;

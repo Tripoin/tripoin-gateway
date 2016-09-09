@@ -1,6 +1,6 @@
 package id.co.tripoin.core.integration.handler;
 
-import id.co.tripoin.constant.enums.EResponseCode;
+import id.co.tripoin.core.constant.enums.EResponseCode;
 import id.co.tripoin.core.integration.handler.base.AbstractHandler;
 import id.co.tripoin.core.integration.handler.base.ILogoutContext;
 

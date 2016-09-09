@@ -1,7 +1,7 @@
 package id.co.tripoin.core.dao;
 
-import id.co.tripoin.constant.statics.sql.FieldConstant;
-import id.co.tripoin.constant.statics.sql.QueryConstant;
+import id.co.tripoin.core.constant.statics.sql.FieldConstant;
+import id.co.tripoin.core.constant.statics.sql.QueryConstant;
 import id.co.tripoin.core.pojo.I18NLocale;
 import id.co.tripoin.core.pojo.Profile;
 

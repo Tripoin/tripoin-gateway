@@ -12,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import id.co.tripoin.constant.statics.TableNameConstant;
+import id.co.tripoin.core.constant.statics.TableNameConstant;
 import id.co.tripoin.core.pojo.base.IBasePojo;
 
 /**

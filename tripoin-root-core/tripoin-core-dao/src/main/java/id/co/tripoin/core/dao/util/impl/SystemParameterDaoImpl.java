@@ -7,8 +7,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import id.co.tripoin.constant.statics.BeanNameConstant;
-import id.co.tripoin.constant.statics.sql.QueryConstant;
+import id.co.tripoin.core.constant.statics.BeanNameConstant;
+import id.co.tripoin.core.constant.statics.sql.QueryConstant;
 import id.co.tripoin.core.dao.util.ISystemParameterDao;
 import id.co.tripoin.core.mapper.SystemParameterMapper;
 import id.co.tripoin.core.pojo.SystemParameter;

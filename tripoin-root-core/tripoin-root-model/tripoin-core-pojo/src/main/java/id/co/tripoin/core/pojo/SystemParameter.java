@@ -3,7 +3,7 @@ package id.co.tripoin.core.pojo;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-import id.co.tripoin.constant.statics.TableNameConstant;
+import id.co.tripoin.core.constant.statics.TableNameConstant;
 import id.co.tripoin.core.pojo.base.ABaseAuditTrail;
 
 /**

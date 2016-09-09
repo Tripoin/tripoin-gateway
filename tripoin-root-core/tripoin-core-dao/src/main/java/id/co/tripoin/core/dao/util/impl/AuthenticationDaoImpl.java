@@ -1,7 +1,7 @@
 package id.co.tripoin.core.dao.util.impl;
 
-import id.co.tripoin.constant.statics.BeanNameConstant;
-import id.co.tripoin.constant.statics.sql.QueryConstant;
+import id.co.tripoin.core.constant.statics.BeanNameConstant;
+import id.co.tripoin.core.constant.statics.sql.QueryConstant;
 import id.co.tripoin.core.dao.util.IAuthenticationDao;
 import id.co.tripoin.core.mapper.SecurityUserDetailsMapper;
 import id.co.tripoin.core.pojo.SecurityUserDetails;

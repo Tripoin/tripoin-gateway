@@ -1,6 +1,6 @@
 package id.co.tripoin.core.integration.handler.base;
 
-import id.co.tripoin.constant.enums.EResponseCode;
+import id.co.tripoin.core.constant.enums.EResponseCode;
 
 import javax.ws.rs.core.Response;
 
