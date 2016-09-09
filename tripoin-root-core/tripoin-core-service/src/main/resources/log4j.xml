@@ -17,7 +17,7 @@
     </logger>
 
     <logger name="org.apache">
-        <level value="TRACE"/>
+        <level value="ERROR"/>
     </logger>
 
     <logger name="net.sf.jasperreports">
@@ -27,12 +27,8 @@
     <logger name="com.mchange.v2">
         <level value="ERROR"/>
     </logger>
-    
-    <!-- <logger name="org.springframework">
-        <level value="ALL"/>
-    </logger> -->
 
-    <logger name="com.tripoin.core">
+    <logger name="id.co.tripoin.core">
         <level value="ALL"/>
     </logger>
 
