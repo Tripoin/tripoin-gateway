@@ -1,5 +1,6 @@
 package id.co.tripoin.core.pojo;
 
+import java.math.BigInteger;
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -19,6 +20,7 @@ public class SystemParameter extends ABaseAuditTrail {
 	private String code;
 	private String value;
 
+	@Override
 	public Long getId() {
 		return id;
 	}
@@ -135,7 +137,7 @@ public class SystemParameter extends ABaseAuditTrail {
 
 	@Override
 	public String tableName() {
-		return TableNameConstant.SYS_SYSTEM_PARAMETER;
+		return TableNameConstant.System.SYS_SYSTEM_PARAMETER;
 	}
 
 	@Override
@@ -166,6 +168,12 @@ public class SystemParameter extends ABaseAuditTrail {
 	@Override
 	public String toString() {
 		return "SystemParameter [id=" + id + ", code=" + code + ", value=" + value + "]";
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

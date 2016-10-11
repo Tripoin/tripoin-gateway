@@ -30,9 +30,10 @@ public class APITypeEndpointImpl implements IAPITypeEndpoint {
 	public Response getMedia(String apiTypeCode) {
 		MediaDataResponse mediaDataResponse = new MediaDataResponse();
 		try {
+			LOGGER.info("API TYPE CODE : {}".concat(apiTypeCode));
 			APIType aPIType = apiTypeService.findByApiTypeCode(apiTypeCode);
-			mediaDataResponse.setApiTypeCode(aPIType.getApiTypeCode());
-			mediaDataResponse.setApiTypeName(aPIType.getApiTypeName());
+			mediaDataResponse.setApiTypeCode(aPIType.getCode());
+			mediaDataResponse.setApiTypeName(aPIType.getName());
 			mediaDataResponse.setApiTypeIdentifier(aPIType.getApiTypeIdentifier());
 			mediaDataResponse.setApiTypeSecret(aPIType.getApiTypeSecret());
 			mediaDataResponse.setApiTypeHost(aPIType.getApiTypeHost());

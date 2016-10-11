@@ -23,18 +23,18 @@ public class I18NLocaleServiceImpl implements II18NLocaleService {
 	
 	@Override
 	public List<I18NLocale> getAll() {
-		return i18NLocaleDao.findAllByOrderByLanguageAsc();
+		return i18NLocaleDao.findAllByOrderByNameAsc();
 	}
 
 	@Override
 	public List<I18NLocale> getAllListByStatus() {
-		return i18NLocaleDao.findByStatusOrderByLanguageAsc(1);
+		return i18NLocaleDao.findByStatusOrderByNameAsc(1);
 	}
 
 	@Override
 	public Map<String, I18NLocale> getAllMapByStatus() {
 		Map<String, I18NLocale> mapI18NLocale = new HashMap<String, I18NLocale>();
-		for(I18NLocale i18nLocale : i18NLocaleDao.findByStatusOrderByLanguageAsc(1))
+		for(I18NLocale i18nLocale : i18NLocaleDao.findByStatusOrderByNameAsc(1))
 			mapI18NLocale.put(i18nLocale.getCode(), i18nLocale);
 		return mapI18NLocale;
 	}

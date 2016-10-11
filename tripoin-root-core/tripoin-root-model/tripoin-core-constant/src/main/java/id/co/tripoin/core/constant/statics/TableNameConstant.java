@@ -3,13 +3,22 @@ package id.co.tripoin.core.constant.statics;
 /**
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
  */
-public final class TableNameConstant {
+public interface TableNameConstant {
 
-	public static final String SYS_SYSTEM_PARAMETER = "sys_system_parameter";
-	public static final String MST_LOCALE = "mst_locale";
-	public static final String SEC_USER_DETAILS = "sec_user_details";
-	public static final String SEC_ROLE = "sec_role";
-	public static final String MST_PROFILE = "mst_profile";
-	public static final String MST_API_TYPE = "mst_api_type";
+	interface Security{
+		String SEC_USER_DETAILS = "sec_user_details";
+		String MST_PROFILE = "mst_profile";
+		String SEC_ROLE = "sec_role";
+		String MST_LOCALE = "mst_locale";
+	}
 	
+	interface System{
+		String SYS_SYSTEM_PARAMETER = "sys_system_parameter";		
+	}
+	
+	interface Master{
+		String MST_API_TYPE = "mst_api_type";
+		String MST_MERCHANDISE_TYPE = "mst_merchandise_type";
+		String MST_MERCHANDISE_BRAND = "mst_merchandise_brand";
+	}
 }

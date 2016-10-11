@@ -31,8 +31,8 @@ public class AuthenticationEndpointImpl extends ABaseResponseHandler implements 
 	@Autowired
 	private IAuthenticationService authenticationService;
 	
-	@Autowired
-	private ILogoutContext logoutContext;
+	/*@Autowired
+	private ILogoutContext logoutContext;*/
 
 	@Override
 	public Response putChange(AuthenticationDataRequest authenticationDataRequest) {
@@ -45,7 +45,7 @@ public class AuthenticationEndpointImpl extends ABaseResponseHandler implements 
 				int result = authenticationService.change(authenticationDataRequest.getNewAccess(), UserAuthenticationContext.getInstance().getCurrentUsername());
 				if(result != 1)
 					throw new Exception();
-				logoutContext.onLogoutSuccess();
+				/*logoutContext.onLogoutSuccess();*/
 			}else
 				throw new UsernameFaultException(InfoMarkerConstant.ERR_PASSWORD_NOT_VALID);
 		} catch (UsernameFaultException ufe) {

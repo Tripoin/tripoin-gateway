@@ -11,9 +11,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface II18NLocaleDao extends JpaRepository<I18NLocale, Long> {
 
-	public List<I18NLocale> findAllByOrderByLanguageAsc();
+	public List<I18NLocale> findAllByOrderByNameAsc();
 
-	public List<I18NLocale> findByStatusOrderByLanguageAsc(Integer status);
+	public List<I18NLocale> findByStatusOrderByNameAsc(Integer status);
 	
 	public I18NLocale findByCodeAndStatus(String code, Integer status);
 	

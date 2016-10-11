@@ -1,5 +1,6 @@
 package id.co.tripoin.core.pojo;
 
+import java.math.BigInteger;
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -21,7 +22,7 @@ import id.co.tripoin.core.pojo.base.AAuditTrail;
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
  */
 @Entity
-@Table(name=TableNameConstant.MST_PROFILE)
+@Table(name=TableNameConstant.Security.MST_PROFILE)
 public class Profile extends AAuditTrail {
 
 	/**
@@ -31,6 +32,7 @@ public class Profile extends AAuditTrail {
 
 	private Long id;
     private String email;
+    private String code;
     private String name;
     private String gender;
     private Date birthdate;
@@ -47,6 +49,7 @@ public class Profile extends AAuditTrail {
     @Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="profile_id")
+    @Override
 	public Long getId() {
 		return id;
 	}
@@ -64,6 +67,16 @@ public class Profile extends AAuditTrail {
 	public void setEmail(String email) {
 		this.email = email;
 	} 
+	
+	public void setCode(String code) {
+		this.code = code;
+	}
+	
+	@Column(name="profile_code", length=150)
+	@Override
+	public String getCode() {
+		return code;
+	}
 
 	@Column(name="profile_name", length=150)
     public String getName() {
@@ -186,7 +199,7 @@ public class Profile extends AAuditTrail {
 
 	@Override
 	public String tableName() {
-		return TableNameConstant.MST_PROFILE;
+		return TableNameConstant.Security.MST_PROFILE;
 	}
 
 	@Override
@@ -229,6 +242,6 @@ public class Profile extends AAuditTrail {
 	@Override
 	public String toString() {
 		return "Profile [email=" + email + ", name=" + name + ", phone=" + phone + "]";
-	}
+	}	
 
 }

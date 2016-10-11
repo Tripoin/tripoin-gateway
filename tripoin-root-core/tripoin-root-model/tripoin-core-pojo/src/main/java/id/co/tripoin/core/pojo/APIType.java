@@ -1,5 +1,7 @@
 package id.co.tripoin.core.pojo;
 
+import java.math.BigInteger;
+
 import id.co.tripoin.core.constant.statics.TableNameConstant;
 import id.co.tripoin.core.pojo.base.AAuditTrail;
 
@@ -15,7 +17,7 @@ import javax.validation.constraints.NotNull;
  * @author <a href="mailto:rudy.fridian91@gmail.com">Rudy Fridian</a>
  */
 @Entity
-@Table(name=TableNameConstant.MST_API_TYPE)
+@Table(name=TableNameConstant.Master.MST_API_TYPE)
 public class APIType extends AAuditTrail {
 
 	/**
@@ -24,8 +26,8 @@ public class APIType extends AAuditTrail {
 	private static final long serialVersionUID = -6244317712417803145L;
 	
 	private Long id;
-    private String apiTypeCode;
-    private String apiTypeName;
+    private String code;
+    private String name;
     private String apiTypeIdentifier;
     private String apiTypeSecret;
     private String apiTypeHost;
@@ -37,32 +39,34 @@ public class APIType extends AAuditTrail {
     @Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="api_type_id")
+	@Override
 	public Long getId() {
 		return id;
-	}
-
-	public void setId(Long id) {
+	}    
+    
+    public void setId(Long id) {
 		this.id = id;
 	}
 
-	@Column(name="api_type_code", unique=true, length=150)
-    @NotNull
-	public String getApiTypeCode() {
-		return apiTypeCode;
-	}
 
-	public void setApiTypeCode(String apiTypeCode) {
-		this.apiTypeCode = apiTypeCode;
+	@Column(name="api_type_code", unique=true, length=150)
+	@Override
+	public String getCode() {
+		return code;
 	}
 
 	@Column(name="api_type_name", unique=true, length=255)
-    @NotNull
-	public String getApiTypeName() {
-		return apiTypeName;
+	@Override
+	public String getName() {
+		return name;
+	}		
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
-	public void setApiTypeName(String apiTypeName) {
-		this.apiTypeName = apiTypeName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Column(name="api_type_identifier", unique=true, length=150)
@@ -139,7 +143,9 @@ public class APIType extends AAuditTrail {
 	@Override
 	public String tableName() {
 		// TODO Auto-generated method stub
-		return TableNameConstant.MST_API_TYPE;
+		return TableNameConstant.Master.MST_API_TYPE;
 	}
+
+	
 
 }

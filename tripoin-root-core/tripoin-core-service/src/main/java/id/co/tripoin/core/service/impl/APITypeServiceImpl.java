@@ -12,15 +12,15 @@ import org.springframework.stereotype.Service;
  * @author <a href="mailto:rudy.fridian91@gmail.com">Rudy Fridian</a>
  */
 @Service(BeanNameConstant.API_TYPE_SERVICE_BEAN)
-public class APITypeServiceImpl implements IAPITypeService{
+public class APITypeServiceImpl implements IAPITypeService {
 
 	@Autowired
 	private IAPITypeDao aPITypeDao;
-	
+
 	@Override
 	public APIType findByApiTypeCode(String apiCode) {
 		// TODO Auto-generated method stub
-		return aPITypeDao.findByApiTypeCode(apiCode);
+		return aPITypeDao.findByCode(apiCode);
 	}
 
 }

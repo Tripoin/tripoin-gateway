@@ -1,5 +1,7 @@
 package id.co.tripoin.core.pojo;
 
+import java.math.BigInteger;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +17,7 @@ import id.co.tripoin.core.pojo.base.AAuditTrail;
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
  */
 @Entity
-@Table(name=TableNameConstant.MST_LOCALE)
+@Table(name=TableNameConstant.Security.MST_LOCALE)
 public class I18NLocale extends AAuditTrail {
 
 	/**
@@ -25,14 +27,16 @@ public class I18NLocale extends AAuditTrail {
 	
 	private Long id;
 	private String code;
+	private String name;
 	private String language;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="locale_id")
+	@Override
 	public Long getId() {
 		return id;
-	}
+	}   
 	
 	public void setId(Long id) {
 		this.id = id;
@@ -48,19 +52,19 @@ public class I18NLocale extends AAuditTrail {
 		this.code = code;
 	}
 
-	@Column(name="locale_language")
-    @NotNull
-	public String getLanguage() {
-		return language;
+	@Column(name="locale_name")
+	@Override
+	public String getName() {
+		return name;
 	}
-
-	public void setLanguage(String language) {
-		this.language = language;
+	
+	public void setName(String name) {
+		this.name = name;
 	}
-
+	   
 	@Override
 	public String tableName() {
-		return TableNameConstant.MST_LOCALE;
+		return TableNameConstant.Security.MST_LOCALE;
 	}
 
 	@Override

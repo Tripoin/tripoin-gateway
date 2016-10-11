@@ -17,7 +17,7 @@ import org.springframework.security.core.GrantedAuthority;
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
  */
 @Entity
-@Table(name=TableNameConstant.SEC_ROLE)
+@Table(name=TableNameConstant.Security.SEC_ROLE)
 public class Role implements IBasePojo, GrantedAuthority {
 	
 	/**
@@ -76,7 +76,7 @@ public class Role implements IBasePojo, GrantedAuthority {
 
 	@Override
 	public String tableName() {
-		return TableNameConstant.SEC_ROLE;
+		return TableNameConstant.Security.SEC_ROLE;
 	}
 
 	@Override

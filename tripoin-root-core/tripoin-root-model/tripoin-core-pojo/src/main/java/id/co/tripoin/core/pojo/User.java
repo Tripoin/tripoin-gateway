@@ -19,7 +19,7 @@ import id.co.tripoin.core.pojo.base.IBasePojo;
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
  */
 @Entity
-@Table(name=TableNameConstant.SEC_USER_DETAILS)
+@Table(name=TableNameConstant.Security.SEC_USER_DETAILS)
 public class User implements IBasePojo {
 
 	/**
@@ -112,7 +112,7 @@ public class User implements IBasePojo {
 
 	@Override
 	public String tableName() {
-		return TableNameConstant.SEC_USER_DETAILS;
+		return TableNameConstant.Security.SEC_USER_DETAILS;
 	}
 
 	@Override

@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:jaxws="http://cxf.apache.org/jaxws"
-    xmlns:jaxrs="http://cxf.apache.org/jaxrs"
-    xmlns:cxf="http://cxf.apache.org/core"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs" xmlns:cxf="http://cxf.apache.org/core"
 	xsi:schemaLocation="
            http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-4.2.xsd		   
@@ -14,44 +12,44 @@
 		   http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
 		   http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 
-    <jaxrs:server id="connectionWebService" address="/connection">
-        <jaxrs:serviceBeans>
-        	<ref bean="connectionEndpoint"/>
-        </jaxrs:serviceBeans>
-        <jaxrs:providers>
-			<ref bean="jsonProvider"/>
+	<jaxrs:server id="connectionWebService" address="/connection">
+		<jaxrs:serviceBeans>
+			<ref bean="connectionEndpoint" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
 		</jaxrs:providers>
-    </jaxrs:server>
+	</jaxrs:server>
 
-    <jaxrs:server id="authenticationWebService" address="/authentication">
-        <jaxrs:serviceBeans>
-        	<ref bean="authenticationEndpoint"/>
-        </jaxrs:serviceBeans>
-        <jaxrs:providers>
-			<ref bean="jsonProvider"/>
-			<ref bean="signatureHeaderInbound"/>
+	<jaxrs:server id="authenticationWebService" address="/authentication">
+		<jaxrs:serviceBeans>
+			<ref bean="authenticationEndpoint" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+			<!-- <ref bean="signatureHeaderInbound"/> -->
 		</jaxrs:providers>
-    </jaxrs:server>
+	</jaxrs:server>
 
-    <jaxrs:server id="profileWebService" address="/profile">
-        <jaxrs:serviceBeans>
-        	<ref bean="profileEndpoint"/>
-        	<ref bean="i18NLocaleProfileEndpoint"/>
-        </jaxrs:serviceBeans>
-        <jaxrs:providers>
-			<ref bean="jsonProvider"/>
-			<ref bean="signatureHeaderInbound"/>
+	<jaxrs:server id="profileWebService" address="/profile">
+		<jaxrs:serviceBeans>
+			<ref bean="profileEndpoint" />
+			<ref bean="i18NLocaleProfileEndpoint" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+			<!-- <ref bean="signatureHeaderInbound"/> -->
 		</jaxrs:providers>
-    </jaxrs:server>
-    
-    <jaxrs:server id="apiTypeWebService" address="/type">
-        <jaxrs:serviceBeans>
-        	<ref bean="apiTypeEndpoint"/>
-        </jaxrs:serviceBeans>
-        <jaxrs:providers>
-			<ref bean="jsonProvider"/>
-			<ref bean="signatureHeaderInbound"/>
+	</jaxrs:server>
+
+	<jaxrs:server id="apiTypeWebService" address="/type">
+		<jaxrs:serviceBeans>
+			<ref bean="apiTypeEndpoint" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+			<!-- <ref bean="signatureHeaderInbound"/> -->
 		</jaxrs:providers>
-    </jaxrs:server>
-    
+	</jaxrs:server>
+
 </beans>

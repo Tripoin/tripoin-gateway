@@ -49,7 +49,7 @@ public class ProfileEndpointImpl extends ABaseResponseHandler implements IProfil
 			profileDataResponse.setAuthority(roleDataResponse);
 			I18NLocaleDataResponse i18NLocaleDataResponse = new I18NLocaleDataResponse();
 			i18NLocaleDataResponse.setCode(profile.getI18NLocale().getCode());
-			i18NLocaleDataResponse.setLanguage(profile.getI18NLocale().getLanguage());
+			i18NLocaleDataResponse.setLanguage(profile.getI18NLocale().getName());
 			profileDataResponse.setLocale(i18NLocaleDataResponse);
 		} catch (Exception e) {
 			LOGGER.error(InfoMarkerConstant.ERR_ENDPOINT, e);

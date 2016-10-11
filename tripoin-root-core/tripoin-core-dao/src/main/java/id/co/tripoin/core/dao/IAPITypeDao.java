@@ -9,5 +9,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface IAPITypeDao extends JpaRepository<APIType, Long>{
 
-	public APIType findByApiTypeCode(String apiTypeCode);
+	public APIType findByCode(String code);
 }
