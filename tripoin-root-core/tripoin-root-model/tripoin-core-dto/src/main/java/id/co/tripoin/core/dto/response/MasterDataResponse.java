@@ -18,7 +18,7 @@ public class MasterDataResponse implements Serializable {
 	private String code;
 	private String name;
 	private String remarks;
-	private String status;
+	private Integer status;
 	
 	@JsonProperty("code")
 	public String getCode() {
@@ -45,10 +45,10 @@ public class MasterDataResponse implements Serializable {
 	}
 	
 	@JsonProperty("status")
-	public String getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 	

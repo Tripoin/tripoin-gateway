@@ -23,7 +23,8 @@ public final class InfoMarkerConstant {
 	public static final String DEB_LOCALE_RESOLVER_BEAN = "Unable to locate LocaleResolver with name '{}' using default [{}]";
 	public static final String INF_BAD_CREDENTIAL_EXCEPTION = "No client credentials presented";
 	public static final String ERR_ENDPOINT = "Error Endpoint";
-	public static final String ERR_PROFILE_ENDPOINT = "Error Profile Endpoint : {}"; 
+	public static final String ERR_PROFILE_ENDPOINT = "Error Profile Endpoint : {}";
+	public static final String ERR_MERCHANDISE_TYPE_ENDPOINT = "Error Merchandise Type Endpoint : {}"; 
 	public static final String ERR_AUTHENTICATION_ENDPOINT = "Error Authentication Endpoint : {}";
 	public static final String ERR_PASSWORD_NOT_VALID = "Error Password Not Valid";
 	public static final String ERR_LOCALE_CODE_NULL = "Error Locale Code Not Null";

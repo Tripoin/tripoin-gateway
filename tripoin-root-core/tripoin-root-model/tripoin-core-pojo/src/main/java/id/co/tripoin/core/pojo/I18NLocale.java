@@ -1,7 +1,5 @@
 package id.co.tripoin.core.pojo;
 
-import java.math.BigInteger;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,7 +26,6 @@ public class I18NLocale extends AAuditTrail {
 	private Long id;
 	private String code;
 	private String name;
-	private String language;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -73,8 +70,7 @@ public class I18NLocale extends AAuditTrail {
 		int result = super.hashCode();
 		result = prime * result + ((code == null) ? 0 : code.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result
-				+ ((language == null) ? 0 : language.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
 
@@ -97,17 +93,20 @@ public class I18NLocale extends AAuditTrail {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (language == null) {
-			if (other.language != null)
+		if (name == null) {
+			if (other.name != null)
 				return false;
-		} else if (!language.equals(other.language))
+		} else if (!name.equals(other.name))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "I18NLocale [id=" + id + ", code=" + code + ", language=" + language + "]";
+		return "I18NLocale [id=" + id + ", code=" + code + ", name=" + name
+				+ "]";
 	}
+
+	
 
 }

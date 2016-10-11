@@ -12,7 +12,8 @@
 		   http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
 		   http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 
-	<jaxrs:server id="connectionWebService" address="/connection">
+    <!-- API V1 -->
+	<jaxrs:server id="connectionWebService" address="/000000/1/connection">
 		<jaxrs:serviceBeans>
 			<ref bean="connectionEndpoint" />
 		</jaxrs:serviceBeans>
@@ -21,7 +22,7 @@
 		</jaxrs:providers>
 	</jaxrs:server>
 
-	<jaxrs:server id="authenticationWebService" address="/authentication">
+	<jaxrs:server id="authenticationWebService" address="/000000/1/authentication">
 		<jaxrs:serviceBeans>
 			<ref bean="authenticationEndpoint" />
 		</jaxrs:serviceBeans>
@@ -31,7 +32,7 @@
 		</jaxrs:providers>
 	</jaxrs:server>
 
-	<jaxrs:server id="profileWebService" address="/profile">
+	<jaxrs:server id="profileWebService" address="/000000/1/profile">
 		<jaxrs:serviceBeans>
 			<ref bean="profileEndpoint" />
 			<ref bean="i18NLocaleProfileEndpoint" />
@@ -42,9 +43,25 @@
 		</jaxrs:providers>
 	</jaxrs:server>
 
-	<jaxrs:server id="apiTypeWebService" address="/type">
+	<jaxrs:server id="apiTypeWebService" address="/000000/1/type">
 		<jaxrs:serviceBeans>
 			<ref bean="apiTypeEndpoint" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+			<!-- <ref bean="signatureHeaderInbound"/> -->
+		</jaxrs:providers>
+	</jaxrs:server>
+	
+	<!-- 
+	GROUPING BY 000000
+	GROUPING BY 1
+	GROUPING BY 130000
+	GROUPING BY 130002 -->
+	
+	<jaxrs:server id="merchandiseTypeWebService" address="/000000/1/130000/130002">
+		<jaxrs:serviceBeans>
+			<ref bean="merchandiseTypeEndpoint" />
 		</jaxrs:serviceBeans>
 		<jaxrs:providers>
 			<ref bean="jsonProvider" />
