@@ -20,3 +20,7 @@
 + *tripoin-root-web* module
 
 > ``mvn clean install -DskipTests``
+
++ *tripoin-root-web* for GWT Compile
+
+> ``mvn clean install -DskipTests -P production``
