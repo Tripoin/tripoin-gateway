@@ -56,7 +56,8 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Tripoin Integration CXF Servlet</servlet-name>
-		<url-pattern>/api/*</url-pattern>
+		<url-pattern>/000000/*</url-pattern>
+		<!--000000 means api-->
 	</servlet-mapping>
 
 	<servlet>
