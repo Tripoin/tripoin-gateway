@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:jaxrs="http://cxf.apache.org/jaxrs-client"
+    xmlns:cxf="http://cxf.apache.org/core"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-4.2.xsd		   
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-4.2.xsd
+           http://www.springframework.org/schema/util
+           http://www.springframework.org/schema/util/spring-util-4.2.xsd
+		   http://cxf.apache.org/jaxrs-client http://cxf.apache.org/schemas/jaxrs-client.xsd
+		   http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
+
+    <import resource="classpath:META-INF/cxf/cxf.xml" />
+    
+    <bean id="jacksonJsonProvider" class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider"/>
+    
+    <bean id="headerKeyGenerator" class="id.co.tripoin.web.service.security.HeaderKeyGenerator"/>
+    
+    <bean id="signatureHeaderOutbound" class="id.co.tripoin.web.service.provider.SignatureHeaderOutbound">
+    	<property name="headerKey" ref="headerKeyGenerator" />
+    </bean>
+    
+    <util:list id="providers">
+    	<ref bean="jacksonJsonProvider"/>
+    	<ref bean="signatureHeaderOutbound"/>
+    </util:list>
+	
+    <context:component-scan base-package="id.co.tripoin.web.service">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
+    </context:component-scan>
+	 
+</beans>

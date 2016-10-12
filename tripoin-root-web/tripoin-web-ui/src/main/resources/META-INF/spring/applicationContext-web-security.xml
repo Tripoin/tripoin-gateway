@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:security="http://www.springframework.org/schema/security"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security-3.2.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+    		
+	<security:global-method-security secured-annotations="enabled" />
+	
+	<bean id="tripoinAuthenticationProvider" class="id.co.tripoin.web.ui.provider.TripoinAuthenticationProvider"/>
+    
+	<security:authentication-manager alias="authenticationManager">
+		<security:authentication-provider ref="tripoinAuthenticationProvider"/>
+	</security:authentication-manager>
+	
+	<security:http auto-config="true" create-session="always">
+        <security:intercept-url pattern="/signin/" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <security:intercept-url pattern="/VAADIN/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <security:intercept-url pattern="/PUSH/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <security:intercept-url pattern="/UIDL/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <security:form-login login-page="/signin/" default-target-url="/" authentication-failure-url="/signin?error=true"/>
+        <security:intercept-url pattern="/*" access="ROLE_SUPERADMIN, ROLE_ADMIN, ROLE_USER"/>
+    </security:http>
+	
+</beans>

@@ -10,10 +10,10 @@
 		<artifactId>tripoin-root-web</artifactId>
 		<version>1.0.0</version>
 	</parent>
-	<description>Web User Interface Component</description>
+	<description>Web User Interface Vaadin Component</description>
 	<organization>
 		<name>Tripoin</name>
-		<url>http://www.tripoin.net</url>
+		<url>http://www.tripoin.co.id</url>
 	</organization>
 	<developers>
 		<developer>
@@ -21,6 +21,18 @@
 			<email>ridla.fadilah@gmail.com</email>
 		</developer>
 	</developers>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.vaadin</groupId>
+				<artifactId>vaadin-bom</artifactId>
+				<version>${vaadin.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<dependencies>
 		<!-- refer tripoin -->
@@ -43,78 +55,17 @@
 					<artifactId>slf4j-api</artifactId>
 					<groupId>org.slf4j</groupId>
 				</exclusion>
-			</exclusions>
-		</dependency>
-		<!-- refer spring portlet -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-beans</artifactId>
-			<version>${spring.version}</version>
-			<exclusions>
 				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-core</artifactId>
+					<artifactId>commons-codec</artifactId>
+					<groupId>commons-codec</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
 				</exclusion>
 			</exclusions>
 		</dependency>
-    	<dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-            <version>${spring.version}</version>
-            <exclusions>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-core</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-beans</artifactId>
-				</exclusion>
-            </exclusions>
-        </dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>${spring.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-core</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-beans</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-aop</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context-support</artifactId>
-			<version>${spring.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-beans</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-context</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-core</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+		<!-- refer spring data -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
@@ -181,41 +132,6 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-web</artifactId>
-			<version>${spring.security.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-core</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-beans</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-web</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-expression</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-context</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-aop</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>aopalliance</groupId>
-					<artifactId>aopalliance</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
 			<version>${spring.security.version}</version>
 			<exclusions>
@@ -264,16 +180,87 @@
 		</dependency>
 		<dependency>
 			<groupId>com.vaadin</groupId>
-			<artifactId>vaadin-sass-compiler</artifactId>
-			<version>${vaadin.sass.compiler.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-client</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>flute</artifactId>
+					<groupId>com.vaadin.external.flute</groupId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.w3c.css</groupId>
+					<artifactId>sac</artifactId>
+				</exclusion>
+				<exclusion>
+					<artifactId>vaadin-shared</artifactId>
+					<groupId>com.vaadin</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-client-compiler</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>vaadin-client</artifactId>
+					<groupId>com.vaadin</groupId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.vaadin</groupId>
+					<artifactId>vaadin-sass-compiler</artifactId>
+				</exclusion>
+				<exclusion>
+					<artifactId>asm</artifactId>
+					<groupId>org.ow2.asm</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>asm-tree</artifactId>
+					<groupId>org.ow2.asm</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>httpclient</artifactId>
+					<groupId>org.apache.httpcomponents</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>httpcore</artifactId>
+					<groupId>org.apache.httpcomponents</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jetty-annotations</artifactId>
+					<groupId>org.eclipse.jetty</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jetty-servlets</artifactId>
+					<groupId>org.eclipse.jetty</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jetty-util</artifactId>
+					<groupId>org.eclipse.jetty</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>sac</artifactId>
+					<groupId>org.w3c.css</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>vaadin-server</artifactId>
+					<groupId>com.vaadin</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>vaadin-shared</artifactId>
+					<groupId>com.vaadin</groupId>
+				</exclusion>
+				<exclusion>
+					<groupId>xerces</groupId>
+    				<artifactId>xercesImpl</artifactId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xml-apis</artifactId>
+					<groupId>xml-apis</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>com.vaadin</groupId>
@@ -300,12 +287,22 @@
 					<artifactId>slf4j-api</artifactId>
 					<groupId>org.slf4j</groupId>
 				</exclusion>
+				<exclusion>
+					<artifactId>vaadin-server</artifactId>
+					<groupId>com.vaadin</groupId>
+				</exclusion>
 			</exclusions>
 		</dependency>
         <dependency>
 		    <groupId>org.vaadin.addons</groupId>
 		    <artifactId>vaadin-grid-util</artifactId>
 		    <version>${vaadin.grid.util.version}</version>
+		    <exclusions>
+				<exclusion>
+					<artifactId>vaadin-server</artifactId>
+					<groupId>com.vaadin</groupId>
+				</exclusion>
+		    </exclusions>
 		</dependency>
 		<dependency>
 		    <groupId>org.vaadin.addons</groupId>
@@ -365,6 +362,16 @@
 		</dependency>
 		<!-- refer other data -->
 		<dependency>
+			<groupId>xerces</groupId>
+    		<artifactId>xercesImpl</artifactId>
+    		<version>${xerces.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.w3c.css</groupId>
+			<artifactId>sac</artifactId>
+			<version>${sac.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>com.google.code.kaptcha</groupId>
 			<artifactId>kaptcha</artifactId>
 			<version>${google.kaptcha.version}</version>
@@ -373,26 +380,16 @@
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>${httpclient.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.ow2.asm</groupId>
-			<artifactId>asm-util</artifactId>
-			<version>${asm.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.ow2.asm</groupId>
-			<artifactId>asm-commons</artifactId>
-			<version>${asm.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>xalan</groupId>
-			<artifactId>serializer</artifactId>
-			<version>${xalan.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>net.sourceforge.nekohtml</groupId>
-			<artifactId>nekohtml</artifactId>
-			<version>${nekohtml.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-codec</artifactId>
+					<groupId>commons-codec</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>javax.portlet</groupId>
