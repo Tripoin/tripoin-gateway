@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @param <ID>
  */
 @Transactional
-public interface ITransactionService<DATA, ID extends Serializable> extends ICancellation, IApproval{
+public interface ITransactionService<DATA, ID> extends ICancellation, IApproval{
 
 	void insert(List<DATA> p_DATA);
 	

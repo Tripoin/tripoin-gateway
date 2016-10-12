@@ -22,10 +22,16 @@
                            http://www.springframework.org/schema/data/jpa
                            http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 	
-    <jpa:repositories base-package="id.co.tripoin.core.dao"/>
+    <jpa:repositories base-package="id.co.tripoin.core.dao" entity-manager-factory-ref="entityManagerFactory" transaction-manager-ref="transactionManager">
+    	<!-- <repository:exclude-filter type="assignable" expression="org.springframework.data.jpa.repository.sample.AuditableUserRepository" /> -->
+    </jpa:repositories>
     
 	<context:component-scan base-package="id.co.tripoin.core.dao">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
+    </context:component-scan>
+    
+	<context:component-scan base-package="id.co.tripoin.core.dao">
+        <context:include-filter type="annotation" expression="org.springframework.data.repository.NoRepositoryBean" />
     </context:component-scan>
     
 	<context:component-scan base-package="id.co.tripoin.core.service">

@@ -11,11 +11,11 @@ import java.util.List;
  * @param<DATA>
  * @param <ID>
  */
-public interface ITransactionDAO<DATA, ID extends Serializable> {
+public interface ITransactionDAO<DATA, ID> {
 
-	/*void save(List<DATA> p_DATA) throws DAOExeption;*/
+	/*void save(List<DATA> p_DATA) throws DAOExeption;
 	
-	/*void update(List<DATA> p_DATA) throws DAOExeption;*/
+	void update(List<DATA> p_DATA) throws DAOExeption;
 	
-	/*void delete(List<Long> p_IDs) throws DAOExeption;*/	
+	void delete(List<Long> p_IDs) throws DAOExeption;	*/
 }

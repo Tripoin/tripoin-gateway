@@ -3,6 +3,7 @@ package id.co.tripoin.core.service.impl;
 import java.util.List;
 
 import id.co.tripoin.core.constant.statics.BeanNameConstant;
+import id.co.tripoin.core.dao.IMerchandiseTypeDAO;
 import id.co.tripoin.core.dao.IScaffoldingDAO;
 import id.co.tripoin.core.dao.exception.DAOExeption;
 import id.co.tripoin.core.pojo.pos.MerchandiseType;
@@ -21,23 +22,21 @@ import org.springframework.stereotype.Service;
  */
 @Service(BeanNameConstant.SCAFFOLDING_SERVICE_BEAN)
 public class ScaffoldingServiceImpl<DATA> implements
-		IScaffoldingService<DATA, Long> {
+		IScaffoldingService<DATA> {
 
-	private static Logger LOGGER = LoggerFactory
-			.getLogger(ScaffoldingServiceImpl.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(ScaffoldingServiceImpl.class);
 
-	@Autowired
-	private IScaffoldingDAO iScaffoldingDAO;
+	protected IScaffoldingDAO<DATA> scaffoldingDAO;
 
 	@Override
 	public List<DATA> findAll() {
-		return (List<DATA>) iScaffoldingDAO.findAll();
+		return (List<DATA>) scaffoldingDAO.findAll();
 	}
 
 	@Override
 	public DATA findById(Long p_ID) {
 		try {
-			return (DATA) iScaffoldingDAO.findById(p_ID);
+			return (DATA) scaffoldingDAO.findById(p_ID);
 		} catch (DAOExeption e) {
 			LOGGER.error(e.getMessage());
 			return null;
@@ -47,7 +46,7 @@ public class ScaffoldingServiceImpl<DATA> implements
 	@Override
 	public List<DATA> findByCode(String p_Code) {
 		try {
-			return (List<DATA>) iScaffoldingDAO.findByCode(p_Code);
+			return (List<DATA>) scaffoldingDAO.findByCode(p_Code);
 		} catch (DAOExeption e) {
 			LOGGER.error(e.getMessage());
 			return null;
@@ -57,7 +56,7 @@ public class ScaffoldingServiceImpl<DATA> implements
 	@Override
 	public List<DATA> findByName(String p_Name) {
 		try {
-			return (List<DATA>) iScaffoldingDAO.findByName(p_Name);
+			return (List<DATA>) scaffoldingDAO.findByName(p_Name);
 		} catch (DAOExeption e) {
 			LOGGER.error(e.getMessage());
 			return null;

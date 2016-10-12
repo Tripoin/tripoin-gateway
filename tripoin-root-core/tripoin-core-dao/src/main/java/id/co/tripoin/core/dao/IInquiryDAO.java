@@ -2,7 +2,6 @@ package id.co.tripoin.core.dao;
 
 import id.co.tripoin.core.dao.exception.DAOExeption;
 
-import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.data.domain.Pageable;
@@ -13,9 +12,9 @@ import org.springframework.data.domain.Pageable;
  * @param <DATA>
  * @param <ID>
  */
-public interface IInquiryDAO<DATA, ID extends Serializable> {
+public interface IInquiryDAO<DATA, ID> {
 
-	List<DATA> findAll() throws DAOExeption;
+	/*List<DATA> findAll() throws DAOExeption;*/
 
 	DATA findById(ID p_ID) throws DAOExeption;
 

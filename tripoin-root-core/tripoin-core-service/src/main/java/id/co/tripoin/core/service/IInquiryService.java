@@ -11,7 +11,7 @@ import org.springframework.data.domain.Pageable;
  * @param <DATA>
  * @param <ID>
  */
-public interface IInquiryService<DATA, ID extends Serializable> {
+public interface IInquiryService<DATA, ID> {
 
 	List<DATA> findAll();
 	
