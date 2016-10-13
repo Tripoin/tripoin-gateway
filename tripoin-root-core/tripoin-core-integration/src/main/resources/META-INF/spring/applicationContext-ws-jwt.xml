@@ -33,5 +33,15 @@
 			<ref bean="corsOutbound"/>
 		</jaxrs:providers>
     </jaxrs:server>
+	
+	<jaxrs:server id="merchandiseTypeWebServiceJWT" address="${tripoin.api.context.jwt.v1}/130000/130002">
+		<jaxrs:serviceBeans>
+			<ref bean="merchandiseTypeEndpoint" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+			<ref bean="corsOutbound"/>
+		</jaxrs:providers>
+	</jaxrs:server>	
     
 </beans>

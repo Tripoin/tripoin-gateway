@@ -52,19 +52,13 @@
 		</jaxrs:providers>
 	</jaxrs:server>
 	
-	<!-- 
-	GROUPING BY 000000
-	GROUPING BY 1
-	GROUPING BY 130000
-	GROUPING BY 130002 -->
-	
 	<jaxrs:server id="merchandiseTypeWebService" address="${tripoin.api.context.oauth2.v1}/130000/130002">
 		<jaxrs:serviceBeans>
 			<ref bean="merchandiseTypeEndpoint" />
 		</jaxrs:serviceBeans>
 		<jaxrs:providers>
 			<ref bean="jsonProvider" />
-			<!-- <ref bean="signatureHeaderInbound"/> -->
+			<ref bean="signatureHeaderInbound"/>
 		</jaxrs:providers>
 	</jaxrs:server>	
 
