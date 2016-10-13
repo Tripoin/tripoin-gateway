@@ -86,9 +86,9 @@
 		<sec:access-denied-handler ref="access-denied-oauth2"/>
 	</sec:http>
 	
-	<sec:http pattern="${tripoin.wscontext}${tripoin.api.context.oauth2.v1}/**" create-session="never" authentication-manager-ref="authenticationManager">
+	<sec:http pattern="${tripoin.wscontext}${tripoin.api.context.code.oauth2}/**" create-session="never" authentication-manager-ref="authenticationManager">
 		<sec:anonymous enabled="false" />
-		<sec:intercept-url pattern="${tripoin.wscontext}${tripoin.api.context.oauth2.v1}/**" access="ROLE_USER, ROLE_ADMIN, ROLE_SUPERADMIN, ROLE_THIRD_PARTY" />
+		<sec:intercept-url pattern="${tripoin.wscontext}${tripoin.api.context.code.oauth2}/**" access="ROLE_USER, ROLE_ADMIN, ROLE_SUPERADMIN, ROLE_THIRD_PARTY" />
 		<sec:custom-filter ref="resourceServerFilter" before="PRE_AUTH_FILTER" />
 		<sec:http-basic entry-point-ref="invalid-access-oauth2"/>
 		<sec:access-denied-handler ref="access-denied-oauth2"/>

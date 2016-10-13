@@ -24,8 +24,8 @@
 		<sec:access-denied-handler ref="access-denied-jwt"/>
 	</sec:http>
 		
-	<sec:http pattern="${tripoin.wscontext}/jwt/**" create-session="stateless" authentication-manager-ref="authenticationManager">
-		<sec:intercept-url pattern="${tripoin.wscontext}/jwt/**" access="ROLE_USER, ROLE_ADMIN, ROLE_SUPERADMIN, ROLE_THIRD_PARTY" />
+	<sec:http pattern="${tripoin.wscontext}${tripoin.api.context.code.jwt}/**" create-session="stateless" authentication-manager-ref="authenticationManager">
+		<sec:intercept-url pattern="${tripoin.wscontext}${tripoin.api.context.code.jwt}/**" access="ROLE_USER, ROLE_ADMIN, ROLE_SUPERADMIN, ROLE_THIRD_PARTY" />
 		<sec:custom-filter ref="authenticationTokenFilter" before="FORM_LOGIN_FILTER" />
 		<sec:http-basic entry-point-ref="invalid-access-jwt"/>
 		<sec:access-denied-handler ref="access-denied-jwt"/>

@@ -27,8 +27,8 @@
     <import resource="classpath*:META-INF/spring/applicationContext-scan.xml" />
 
     <import resource="classpath:META-INF/spring/applicationContext-cxf.xml" />
-    <import resource="classpath:META-INF/spring/applicationContext-ws.xml" />
     <import resource="classpath:META-INF/spring/applicationContext-ws-jwt.xml" />
+    <import resource="classpath:META-INF/spring/applicationContext-ws-oauth2.xml" />
     <import resource="classpath:META-INF/spring/applicationContext-security.xml" />
     <import resource="classpath:META-INF/spring/applicationContext-security-jwt.xml" />
     <import resource="classpath:META-INF/spring/applicationContext-security-oauth2.xml" />
