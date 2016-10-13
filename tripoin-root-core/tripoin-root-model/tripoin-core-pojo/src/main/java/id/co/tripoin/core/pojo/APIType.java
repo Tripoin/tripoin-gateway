@@ -1,7 +1,5 @@
 package id.co.tripoin.core.pojo;
 
-import java.math.BigInteger;
-
 import id.co.tripoin.core.constant.statics.TableNameConstant;
 import id.co.tripoin.core.pojo.base.AAuditTrail;
 
