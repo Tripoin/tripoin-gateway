@@ -46,7 +46,15 @@ public class ScaffoldingServiceImpl<DATA> implements
 	@Override
 	public List<DATA> findByCode(String p_Code) {
 		try {
-			return (List<DATA>) scaffoldingDAO.findByCode(p_Code);
+			LOGGER.info("code = "+p_Code);
+			List<DATA> result = (List<DATA>) scaffoldingDAO.findByCode(p_Code);
+			LOGGER.info("DATA size : "+result.size());
+			if (result.size() > 0){
+				LOGGER.info("size oke");
+			}else{
+				LOGGER.info("size problem");
+			}
+			return result;
 		} catch (DAOExeption e) {
 			LOGGER.error(e.getMessage());
 			return null;

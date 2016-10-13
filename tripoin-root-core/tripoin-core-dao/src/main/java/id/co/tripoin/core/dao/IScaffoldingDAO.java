@@ -17,11 +17,11 @@ import org.springframework.data.repository.NoRepositoryBean;
 @NoRepositoryBean
 public interface IScaffoldingDAO<DATA> extends JpaRepository<DATA, Long>, ITransactionDAO<DATA, Long>, IInquiryDAO<DATA, Long>{
 
-	@Query("SELECT a FROM #{#entityName} a where a.code =?1")
+	@Query("SELECT a FROM #{#entityName} a where a.code = ?1")
 	@Override
 	public List<DATA> findByCode(String p_Code) throws DAOExeption;
 	
-	@Query("SELECT a FROM #{#entityName} a where a.name =?1")
+	@Query("SELECT a FROM #{#entityName} a where a.name = ?1")
 	@Override
 	public List<DATA> findByName(String p_Name) throws DAOExeption;
 }

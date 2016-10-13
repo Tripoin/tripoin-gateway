@@ -9,6 +9,10 @@ import id.co.tripoin.core.dao.IMerchandiseTypeDAO;
 import id.co.tripoin.core.pojo.pos.MerchandiseType;
 import id.co.tripoin.core.service.IMerchandiseTypeService;
 
+/**
+ * 
+ * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
+ */
 @Service
 public class MerchandiseTypeServiceImpl extends ScaffoldingServiceImpl<MerchandiseType> implements IMerchandiseTypeService{
 
@@ -18,5 +22,5 @@ public class MerchandiseTypeServiceImpl extends ScaffoldingServiceImpl<Merchandi
 	@PostConstruct
 	public void initializeDAO(){
 		super.scaffoldingDAO = merchandiseTypeDAO;
-	}
+	}	
 }

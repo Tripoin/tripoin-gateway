@@ -12,5 +12,7 @@ public interface PathNameConstant {
 	String PARAM_API_TYPE_CODE = "apiTypeCode";
 	String PATH_API_TYPE_CODE = "{"+PARAM_API_TYPE_CODE+"}";
 	String PATH_INSERT_MERCHANDISE_TYPE = "/merchandise_type";
-	String PATH_SELECT_ALL= "/100003";
+	String PATH_SELECT_ALL = "/100003";
+	String PATH_FIND_BY_CODE = "/100008";
+	String PATH_FIND_BY_NAME = "/100009";
 }

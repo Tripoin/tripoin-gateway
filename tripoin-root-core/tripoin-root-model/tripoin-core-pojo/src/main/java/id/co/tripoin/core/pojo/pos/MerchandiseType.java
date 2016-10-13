@@ -36,14 +36,14 @@ public class MerchandiseType extends AAuditTrail{
 	}
 
 	@Size(max = 50)
-	@Column(name = "merchandise_type_code", length = 50, unique = true)	
+	@Column(name = "code", length = 50, unique = true)	
 	@Override
 	public String getCode() {			
 		return code;
 	}
 
 	@Size(max = 50)
-	@Column(name = "merchandise_type_name", length = 50)
+	@Column(name = "name", length = 50)
 	@Override
 	public String getName() {
 		return name;
@@ -51,7 +51,7 @@ public class MerchandiseType extends AAuditTrail{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="merchandise_type_id")
+	@Column(name="id")
 	@Override
 	public Long getId() {
 		return id;

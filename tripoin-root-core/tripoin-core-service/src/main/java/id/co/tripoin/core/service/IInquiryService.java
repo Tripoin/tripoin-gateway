@@ -1,6 +1,5 @@
 package id.co.tripoin.core.service;
 
-import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.data.domain.Pageable;
