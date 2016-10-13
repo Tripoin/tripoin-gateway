@@ -72,5 +72,6 @@ public class TripoinIntegrationServlet extends DispatcherServlet {
 		} catch (Exception e) {
 			LOGGER.error(InfoMarkerConstant.ERR_INITIALIZING_SERVLET, e);		
 		}
-}
+	}
+	
 }

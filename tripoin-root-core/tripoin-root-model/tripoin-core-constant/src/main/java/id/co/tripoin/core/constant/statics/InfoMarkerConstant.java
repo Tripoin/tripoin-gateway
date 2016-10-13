@@ -13,7 +13,9 @@ package id.co.tripoin.core.constant.statics;
  */
 public final class InfoMarkerConstant {
 
-	public static final String ERR_SIGNATURE = "Error Header";
+	public static final String ERR_SIGNATURE_UNDEFINED = "Error Header";
+	public static final String ERR_SIGNATURE = "Error Header : {}";
+	public static final String ERR_SIGNATURE_PARAM = "X-Tripoin Header not null";
 	public static final String ERR_USER_DETAILS_SERVICE = "Error User Details Service";
 	public static final String ERR_SYSTEM_PARAMETER_CONFIGURE = "System Parameter Initialized";
 	public static final String ERR_I18NLOCALE_CONFIGURE = "I18N Locale Initialized";

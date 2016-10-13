@@ -15,8 +15,7 @@
 	<import resource="classpath:META-INF/cxf/cxf.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
 
-	<bean id="headerKeyGenerator"
-		class="id.co.tripoin.core.integration.security.HeaderKeyGenerator" />
+	<bean id="headerKeyGenerator" class="id.co.tripoin.core.integration.security.HeaderKeyGenerator" />
 
 	<bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider" />
 
@@ -25,14 +24,18 @@
 		<property name="headerKey" ref="headerKeyGenerator" />
 	</bean>
 
+    <bean id="corsOutbound" class="id.co.tripoin.core.integration.provider.CORSOutbound"/>
+    
 	<context:component-scan base-package="id.co.tripoin.core.integration.endpoint">
-		<context:include-filter type="annotation"
-			expression="org.springframework.stereotype.Component" />
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
 	</context:component-scan>
+	
+	<context:component-scan base-package="id.co.tripoin.core.integration.endpoint">
+        <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.RestController" />
+    </context:component-scan>
 
 	<!-- Enable message logging using the CXF logging feature -->
-	<!-- <bean id="logOutbound" class="org.apache.cxf.interceptor.LoggingOutInterceptor" 
-		/> -->
+	<!-- <bean id="logOutbound" class="org.apache.cxf.interceptor.LoggingOutInterceptor"/> -->
 	<bean id="logInbound" class="org.apache.cxf.interceptor.LoggingInInterceptor" />
 
 	<cxf:bus>

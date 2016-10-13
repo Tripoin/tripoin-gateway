@@ -1,6 +1,5 @@
 package id.co.tripoin.core.pojo;
 
-import java.math.BigInteger;
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -68,14 +67,14 @@ public class Profile extends AAuditTrail {
 		this.email = email;
 	} 
 	
-	public void setCode(String code) {
-		this.code = code;
-	}
-	
 	@Column(name="profile_code", length=150)
 	@Override
 	public String getCode() {
 		return code;
+	}
+	
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	@Column(name="profile_name", length=150)

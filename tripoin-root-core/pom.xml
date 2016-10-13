@@ -66,6 +66,7 @@
 		<spring.security.version>3.2.6.RELEASE</spring.security.version>
 		<spring.security.oauth.version>2.0.1.RELEASE</spring.security.oauth.version>		
 		<spring.batch.version>2.2.1.RELEASE</spring.batch.version>
+		<spring.boot.parent.version>1.1.3.RELEASE</spring.boot.parent.version>
 		
         <!-- Convenience property to set the Hibernate version -->
 		<hibernate.validator.version>5.1.0.CR1</hibernate.validator.version>
@@ -84,6 +85,7 @@
         <slf4j.version>1.7.21</slf4j.version>
         <junit.version>4.11</junit.version>
         <quartz.version>2.2.1</quartz.version>
+        <jjwt.version>0.6.0</jjwt.version>
         <freemarker.version>2.3.20</freemarker.version>
 		<javax.servlet.version>3.0.1</javax.servlet.version>
 		<jasypt.version>1.7</jasypt.version>

@@ -87,10 +87,13 @@ public class SignatureHeaderInbound extends ABaseResponseHandler implements Cont
 				}				
 			}else{
 				this.responseCode = EResponseCode.RC_BAD_REQUEST;
-				throw new Exception();
+				throw new Exception(InfoMarkerConstant.ERR_SIGNATURE_PARAM);
 			}
 		} catch (Exception e) {
-			LOGGER.error(InfoMarkerConstant.ERR_SIGNATURE, e);
+			if(EResponseCode.RC_BAD_REQUEST.equals(this.responseCode))
+				LOGGER.error(InfoMarkerConstant.ERR_SIGNATURE_UNDEFINED, e);
+			else
+				LOGGER.error(InfoMarkerConstant.ERR_SIGNATURE, e.getMessage());
 			context.abortWith(this.abort());
 		}
 	}
@@ -106,7 +109,11 @@ public class SignatureHeaderInbound extends ABaseResponseHandler implements Cont
 		this.entity = TransformInputStream.toByteArray(context.getEntityStream());
 		this.apiKey = headerKey.key();
 		try {
-			this.accessToken = context.getHeaderString(CommonConstant.AUTHORIZATION).replace(CommonConstant.BEARER, "");			
+			String authorization = context.getHeaderString(CommonConstant.AUTHORIZATION);
+			if(authorization == null)
+				this.accessToken = context.getUriInfo().getQueryParameters().getFirst(CommonConstant.ACCESS_TOKEN);
+			else				
+				this.accessToken = authorization.replace(CommonConstant.BEARER_PREFIX, "");			
 		} catch (Exception e) {
 			this.responseCode = EResponseCode.RC_INVALID_TOKEN;
 			throw new Exception();
