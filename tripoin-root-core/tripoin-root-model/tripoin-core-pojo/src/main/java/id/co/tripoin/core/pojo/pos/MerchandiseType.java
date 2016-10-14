@@ -26,49 +26,8 @@ public class MerchandiseType extends AAuditTrail{
 	 */
 	private static final long serialVersionUID = -4170557373413141124L;
 
-	private Long id;
-	private String code;
-	private String name;
-	
 	@Override
-	public String tableName() {	
+	public String tableName() {
 		return TableNameConstant.Master.MST_MERCHANDISE_TYPE;
 	}
-
-	@Size(max = 50)
-	@Column(name = "code", length = 50, unique = true)	
-	@Override
-	public String getCode() {			
-		return code;
-	}
-
-	@Size(max = 50)
-	@Column(name = "name", length = 50)
-	@Override
-	public String getName() {
-		return name;
-	}
-
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id")
-	@Override
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	
-
 }

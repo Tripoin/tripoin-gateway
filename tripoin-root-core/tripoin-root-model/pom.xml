@@ -61,7 +61,8 @@
 		<spring.data.jpa.version>1.10.4.RELEASE</spring.data.jpa.version>
                 
         <!-- Convenience property to set the Data Source -->
-        <mysql.version>5.1.22</mysql.version>
+        <!-- <mysql.version>5.1.22</mysql.version> -->
+         <mysql.version>5.1.40</mysql.version>
 		
         <!-- Convenience property to set the Hibernate version -->                
 		<hibernate.core.version>4.3.7.Final</hibernate.core.version>               
@@ -87,8 +88,8 @@
     
     <modules> 
         <module>tripoin-core-constant</module>
+		<module>tripoin-core-dto</module>
         <module>tripoin-core-pojo</module> 
-        <module>tripoin-core-dto</module>
     </modules>
 
 </project>

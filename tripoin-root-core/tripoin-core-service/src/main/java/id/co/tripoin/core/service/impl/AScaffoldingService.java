@@ -3,15 +3,13 @@ package id.co.tripoin.core.service.impl;
 import java.util.List;
 
 import id.co.tripoin.core.constant.statics.BeanNameConstant;
-import id.co.tripoin.core.dao.IMerchandiseTypeDAO;
 import id.co.tripoin.core.dao.IScaffoldingDAO;
 import id.co.tripoin.core.dao.exception.DAOExeption;
-import id.co.tripoin.core.pojo.pos.MerchandiseType;
 import id.co.tripoin.core.service.IScaffoldingService;
+import id.co.tripoin.core.service.IServiceInitializer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -21,16 +19,15 @@ import org.springframework.stereotype.Service;
  * @param <DATA>
  */
 @Service(BeanNameConstant.SCAFFOLDING_SERVICE_BEAN)
-public class ScaffoldingServiceImpl<DATA> implements
-		IScaffoldingService<DATA> {
+public abstract class AScaffoldingService<DATA> implements IScaffoldingService<DATA>, IServiceInitializer {
 
-	private static Logger LOGGER = LoggerFactory.getLogger(ScaffoldingServiceImpl.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(AScaffoldingService.class);
 
 	protected IScaffoldingDAO<DATA> scaffoldingDAO;
 
 	@Override
 	public List<DATA> findAll() {
-		return (List<DATA>) scaffoldingDAO.findAll();
+		return scaffoldingDAO.findAll();
 	}
 
 	@Override
@@ -46,15 +43,7 @@ public class ScaffoldingServiceImpl<DATA> implements
 	@Override
 	public List<DATA> findByCode(String p_Code) {
 		try {
-			LOGGER.info("code = "+p_Code);
-			List<DATA> result = (List<DATA>) scaffoldingDAO.findByCode(p_Code);
-			LOGGER.info("DATA size : "+result.size());
-			if (result.size() > 0){
-				LOGGER.info("size oke");
-			}else{
-				LOGGER.info("size problem");
-			}
-			return result;
+			return scaffoldingDAO.findByCode(p_Code);
 		} catch (DAOExeption e) {
 			LOGGER.error(e.getMessage());
 			return null;
@@ -64,7 +53,7 @@ public class ScaffoldingServiceImpl<DATA> implements
 	@Override
 	public List<DATA> findByName(String p_Name) {
 		try {
-			return (List<DATA>) scaffoldingDAO.findByName(p_Name);
+			return scaffoldingDAO.findByName(p_Name);
 		} catch (DAOExeption e) {
 			LOGGER.error(e.getMessage());
 			return null;

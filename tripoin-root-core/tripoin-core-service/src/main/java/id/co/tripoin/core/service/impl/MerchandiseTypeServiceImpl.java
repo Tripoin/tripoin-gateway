@@ -14,13 +14,14 @@ import id.co.tripoin.core.service.IMerchandiseTypeService;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @Service
-public class MerchandiseTypeServiceImpl extends ScaffoldingServiceImpl<MerchandiseType> implements IMerchandiseTypeService{
+public class MerchandiseTypeServiceImpl extends AScaffoldingService<MerchandiseType> implements IMerchandiseTypeService{
 
 	@Autowired
 	IMerchandiseTypeDAO merchandiseTypeDAO;
 	
 	@PostConstruct
-	public void initializeDAO(){
+	public void init() {
 		super.scaffoldingDAO = merchandiseTypeDAO;
-	}	
+	}
+	
 }

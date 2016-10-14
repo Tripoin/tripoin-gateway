@@ -1,6 +1,5 @@
 package id.co.tripoin.core.pojo;
 
-import java.math.BigInteger;
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -30,10 +29,7 @@ public class Profile extends AAuditTrail {
 	 */
 	private static final long serialVersionUID = -1886133679857135012L;
 
-	private Long id;
     private String email;
-    private String code;
-    private String name;
     private String gender;
     private Date birthdate;
     private String address;
@@ -44,19 +40,7 @@ public class Profile extends AAuditTrail {
     private String forgotUUID;
     private Timestamp forgotExpired;
     private User user;
-    private I18NLocale i18NLocale;
-    
-    @Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="profile_id")
-    @Override
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+    private I18NLocale i18NLocale;   
 
 	@Column(name="profile_email", unique=true, length=150)
     @NotNull
@@ -66,26 +50,7 @@ public class Profile extends AAuditTrail {
 
 	public void setEmail(String email) {
 		this.email = email;
-	} 
-	
-	public void setCode(String code) {
-		this.code = code;
-	}
-	
-	@Column(name="profile_code", length=150)
-	@Override
-	public String getCode() {
-		return code;
-	}
-
-	@Column(name="profile_name", length=150)
-    public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
+	} 	
 	
 	@Column(name="profile_gender", length=10)
 	public String getGender() {
@@ -206,9 +171,23 @@ public class Profile extends AAuditTrail {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
+		result = prime * result + ((address == null) ? 0 : address.hashCode());
+		result = prime * result + ((bio == null) ? 0 : bio.hashCode());
+		result = prime * result
+				+ ((birthdate == null) ? 0 : birthdate.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result
+				+ ((forgotExpired == null) ? 0 : forgotExpired.hashCode());
+		result = prime * result
+				+ ((forgotUUID == null) ? 0 : forgotUUID.hashCode());
+		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
+		result = prime * result
+				+ ((i18NLocale == null) ? 0 : i18NLocale.hashCode());
 		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
+		result = prime * result + ((photo == null) ? 0 : photo.hashCode());
+		result = prime * result
+				+ ((resourcesUUID == null) ? 0 : resourcesUUID.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -221,27 +200,79 @@ public class Profile extends AAuditTrail {
 		if (getClass() != obj.getClass())
 			return false;
 		Profile other = (Profile) obj;
+		if (address == null) {
+			if (other.address != null)
+				return false;
+		} else if (!address.equals(other.address))
+			return false;
+		if (bio == null) {
+			if (other.bio != null)
+				return false;
+		} else if (!bio.equals(other.bio))
+			return false;
+		if (birthdate == null) {
+			if (other.birthdate != null)
+				return false;
+		} else if (!birthdate.equals(other.birthdate))
+			return false;
 		if (email == null) {
 			if (other.email != null)
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
-		if (name == null) {
-			if (other.name != null)
+		if (forgotExpired == null) {
+			if (other.forgotExpired != null)
 				return false;
-		} else if (!name.equals(other.name))
+		} else if (!forgotExpired.equals(other.forgotExpired))
+			return false;
+		if (forgotUUID == null) {
+			if (other.forgotUUID != null)
+				return false;
+		} else if (!forgotUUID.equals(other.forgotUUID))
+			return false;
+		if (gender == null) {
+			if (other.gender != null)
+				return false;
+		} else if (!gender.equals(other.gender))
+			return false;
+		if (i18NLocale == null) {
+			if (other.i18NLocale != null)
+				return false;
+		} else if (!i18NLocale.equals(other.i18NLocale))
 			return false;
 		if (phone == null) {
 			if (other.phone != null)
 				return false;
 		} else if (!phone.equals(other.phone))
 			return false;
+		if (photo == null) {
+			if (other.photo != null)
+				return false;
+		} else if (!photo.equals(other.photo))
+			return false;
+		if (resourcesUUID == null) {
+			if (other.resourcesUUID != null)
+				return false;
+		} else if (!resourcesUUID.equals(other.resourcesUUID))
+			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Profile [email=" + email + ", name=" + name + ", phone=" + phone + "]";
-	}	
+		return "Profile [email=" + email + ", gender=" + gender
+				+ ", birthdate=" + birthdate + ", address=" + address
+				+ ", phone=" + phone + ", photo=" + photo + ", bio=" + bio
+				+ ", resourcesUUID=" + resourcesUUID + ", forgotUUID="
+				+ forgotUUID + ", forgotExpired=" + forgotExpired + ", user="
+				+ user + ", i18NLocale=" + i18NLocale + "]";
+	}
+
+	
 
 }

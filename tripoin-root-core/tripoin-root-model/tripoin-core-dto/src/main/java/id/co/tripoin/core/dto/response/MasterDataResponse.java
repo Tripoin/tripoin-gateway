@@ -2,6 +2,8 @@ package id.co.tripoin.core.dto.response;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -9,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  *
  */
+@XmlRootElement
 public class MasterDataResponse implements Serializable {
 
 	/**

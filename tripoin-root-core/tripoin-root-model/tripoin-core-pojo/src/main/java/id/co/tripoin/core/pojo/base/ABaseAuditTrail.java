@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 /**
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
  */
-public abstract class ABaseAuditTrail implements IBasePojo, IBaseMapperDATA<Long> {
+public abstract class ABaseAuditTrail extends BaseMapperDATA<Long> implements IBasePojo {
 
 	/**
 	 * 
