@@ -13,25 +13,24 @@
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />
 
-	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
 	<mvc:resources mapping="/resources/images/**" location="${path.image}" />
 
-	<bean
-		class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
-	<bean
-		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+	<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
 		<property name="order" value="0" />
 	</bean>
+	
+    <import resource="classpath*:META-INF/spring/applicationContext-dataSource.xml" />
+    <import resource="classpath*:META-INF/spring/applicationContext-transaction.xml" />
+    <import resource="classpath*:META-INF/spring/applicationContext-scan.xml" />
 
-	<import resource="classpath*:META-INF/spring/applicationContext-dataSource.xml" />
-	<import resource="classpath*:META-INF/spring/applicationContext-transaction.xml" />
-	<import resource="classpath*:META-INF/spring/applicationContext-scan.xml" />
-
-	<import resource="classpath:META-INF/spring/applicationContext-cxf.xml" />
-	<import resource="classpath:META-INF/spring/applicationContext-ws.xml" />
-	<!-- <import resource="classpath:META-INF/spring/applicationContext-security.xml" 
-		/> -->
-
+    <import resource="classpath:META-INF/spring/applicationContext-cxf.xml" />
+    <import resource="classpath:META-INF/spring/applicationContext-ws-jwt.xml" />
+    <import resource="classpath:META-INF/spring/applicationContext-ws-oauth2.xml" />
+    <import resource="classpath:META-INF/spring/applicationContext-security.xml" />
+    <import resource="classpath:META-INF/spring/applicationContext-security-jwt.xml" />
+    <import resource="classpath:META-INF/spring/applicationContext-security-oauth2.xml" />
+    	 	
 </beans>

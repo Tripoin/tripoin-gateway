@@ -1,7 +1,6 @@
 package id.co.tripoin.core.integration.handler;
 
 import id.co.tripoin.core.constant.enums.EResponseCode;
-import id.co.tripoin.core.constant.statics.CommonConstant;
 import id.co.tripoin.core.integration.handler.base.AbstractHandler;
 
 import java.io.IOException;
@@ -16,7 +15,7 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 /**
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
  */
-public class TripoinAccessDeniedHandler extends AbstractHandler implements AccessDeniedHandler {
+public class TripoinInvalidAccessHandler extends AbstractHandler implements AccessDeniedHandler {
 
 	@Override
 	public EResponseCode getResponseCode() {
@@ -26,7 +25,6 @@ public class TripoinAccessDeniedHandler extends AbstractHandler implements Acces
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
 		super.handle(response);
-		response.setHeader(CommonConstant.WWW_AUTHANTICATE, CommonConstant.REALM_BASIC);
 	}
 
 }

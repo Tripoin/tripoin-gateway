@@ -12,8 +12,10 @@ package id.co.tripoin.core.constant.statics;
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
  */
 public interface InfoMarkerConstant {
-
-	String ERR_SIGNATURE = "Error Header";
+	
+	String ERR_SIGNATURE_UNDEFINED = "Error Header";
+	String ERR_SIGNATURE = "Error Header : {}";
+	String ERR_SIGNATURE_PARAM = "X-Tripoin Header not null";
 	String ERR_USER_DETAILS_SERVICE = "Error User Details Service";
 	String ERR_SYSTEM_PARAMETER_CONFIGURE = "System Parameter Initialized";
 	String ERR_I18NLOCALE_CONFIGURE = "I18N Locale Initialized";
@@ -24,7 +26,7 @@ public interface InfoMarkerConstant {
 	String INF_BAD_CREDENTIAL_EXCEPTION = "No client credentials presented";
 	String ERR_ENDPOINT = "Error Endpoint";
 	String ERR_PROFILE_ENDPOINT = "Error Profile Endpoint : {}";
-	String ERR_MERCHANDISE_TYPE_ENDPOINT = "Error Merchandise Type Endpoint : "; 
+	String ERR_MERCHANDISE_TYPE_ENDPOINT = "Error Merchandise Type Endpoint : {}"; 
 	String ERR_AUTHENTICATION_ENDPOINT = "Error Authentication Endpoint : {}";
 	String ERR_PASSWORD_NOT_VALID = "Error Password Not Valid";
 	String ERR_LOCALE_CODE_NULL = "Error Locale Code Not Null";

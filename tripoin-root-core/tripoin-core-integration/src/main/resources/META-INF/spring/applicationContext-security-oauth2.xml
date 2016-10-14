@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xmlns:oauth="http://www.springframework.org/schema/security/oauth2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-4.2.xsd		   
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-4.2.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security-3.2.xsd
+           http://www.springframework.org/schema/security/oauth2
+           http://www.springframework.org/schema/security/spring-security-oauth2-2.0.xsd">
+
+	<bean id="clientDetails" class="org.springframework.security.oauth2.provider.client.JdbcClientDetailsService">
+		<constructor-arg index="0">
+			<ref bean="dataSource" />
+		</constructor-arg>
+	</bean>
+
+	<bean id="tokenStore" class="org.springframework.security.oauth2.provider.token.store.JdbcTokenStore">
+		<constructor-arg ref="dataSource" />
+	</bean>
+	
+	<bean id="logoutContext" class="id.co.tripoin.core.integration.handler.base.LogoutContextImpl" >
+		<property name="tokenStore" ref="tokenStore"/>
+	</bean>
+	<bean id="logoutSuccessHandler" class="id.co.tripoin.core.integration.handler.TripoinLogoutHandler" >
+		<property name="logoutContext" ref="logoutContext"/>
+	</bean>
+
+	<!-- This the service class which is used to access the function of JdbcTokenStore class. This is like MVC structure JdbcTokenStore is Dao layer and DefaultTokenServices is service layer -->
+	<bean id="tokenServices" class="org.springframework.security.oauth2.provider.token.DefaultTokenServices">
+		<property name="tokenStore" ref="tokenStore" />
+		<property name="supportRefreshToken" value="true" />
+		<property name="clientDetailsService" ref="clientDetails" />
+		<property name="accessTokenValiditySeconds" value="4501" />
+	</bean>
+
+	<!-- A user approval handler that remembers approval decisions by consulting existing tokens -->
+	<bean id="oAuth2RequestFactory" class="org.springframework.security.oauth2.provider.request.DefaultOAuth2RequestFactory">
+		<constructor-arg ref="clientDetails" />
+	</bean>
+	
+	<bean id="userApprovalHandler" class="org.springframework.security.oauth2.provider.approval.TokenStoreUserApprovalHandler">
+		<property name="requestFactory" ref="oAuth2RequestFactory" />
+		<property name="tokenStore" ref="tokenStore" />
+	</bean>
+
+	<!-- Authorization Server Configuration of the server is used to provide implementations of the client details service and token services and to enable or disable certain aspects of the mechanism globally. -->
+	<oauth:authorization-server client-details-service-ref="clientDetails" token-services-ref="tokenServices"
+		user-approval-handler-ref="userApprovalHandler">
+		<oauth:authorization-code />
+		<oauth:implicit />
+		<oauth:refresh-token />
+		<oauth:client-credentials />
+		<oauth:password authentication-manager-ref="authenticationManager" />
+	</oauth:authorization-server>
+
+	<oauth:resource-server id="resourceServerFilter" entry-point-ref="invalid-access-oauth2" token-services-ref="tokenServices" resource-id="ws_api" />
+
+	<!-- Grants access if only grant (or abstain) votes were received. We can protect REST resource methods with JSR-250 annotations such as @RolesAllowed -->
+	<bean id="accessDecisionManager" class="org.springframework.security.access.vote.UnanimousBased">
+		<property name="decisionVoters">
+			<list>
+				<bean class="org.springframework.security.access.annotation.Jsr250Voter" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="clientCredentialsTokenEndpointFilter" class="id.co.tripoin.core.integration.handler.TripoinCredentialsTokenFilter">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="authenticationEntryPoint" ref="invalid-access-oauth2"/>
+	</bean>
+
+	<bean id="oAuth2ClientContextFilter" class="org.springframework.security.oauth2.client.filter.OAuth2ClientContextFilter">
+	</bean>
+
+	<sec:http pattern="/oauth/token" create-session="ifRequired" authentication-manager-ref="authenticationManager">
+		<sec:intercept-url pattern="/oauth/token" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<sec:custom-filter ref="clientCredentialsTokenEndpointFilter" before="BASIC_AUTH_FILTER" />
+		<sec:custom-filter ref="oAuth2ClientContextFilter" after="EXCEPTION_TRANSLATION_FILTER" />
+		<sec:http-basic entry-point-ref="bad-credential-oauth2"/>
+		<sec:access-denied-handler ref="access-denied-oauth2"/>
+	</sec:http>
+	
+	<sec:http pattern="${tripoin.wscontext}${tripoin.api.context.code.oauth2}/**" create-session="never" authentication-manager-ref="authenticationManager">
+		<sec:anonymous enabled="false" />
+		<sec:intercept-url pattern="${tripoin.wscontext}${tripoin.api.context.code.oauth2}/**" access="ROLE_USER, ROLE_ADMIN, ROLE_SUPERADMIN, ROLE_THIRD_PARTY" />
+		<sec:custom-filter ref="resourceServerFilter" before="PRE_AUTH_FILTER" />
+		<sec:http-basic entry-point-ref="invalid-access-oauth2"/>
+		<sec:access-denied-handler ref="access-denied-oauth2"/>
+	</sec:http>
+	
+	<sec:http pattern="${tripoin.wscontext}${tripoin.api.context.oauth2.v1}/logout" create-session="never" authentication-manager-ref="authenticationManager">
+		<sec:anonymous enabled="false" />
+		<sec:intercept-url pattern="${tripoin.wscontext}${tripoin.api.context.oauth2.v1}/logout" access="ROLE_USER, ROLE_ADMIN, ROLE_SUPERADMIN, ROLE_THIRD_PARTY" method="GET" />
+			<sec:logout invalidate-session="true" logout-url="${tripoin.wscontext}${tripoin.api.context.oauth2.v1}/logout" success-handler-ref="logoutSuccessHandler"/>
+		<sec:custom-filter ref="resourceServerFilter" before="PRE_AUTH_FILTER" />
+		<sec:http-basic entry-point-ref="invalid-access-oauth2"/>
+		<sec:access-denied-handler ref="access-denied-oauth2"/>
+	</sec:http>
+	
+</beans>

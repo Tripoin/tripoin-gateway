@@ -38,7 +38,11 @@ public class LogoutContextImpl implements ILogoutContext {
 	public void onLogoutSuccess() throws IOException, ServletException {
 		if(this.request == null)
 			this.setRequest((HttpServletRequest)PhaseInterceptorChain.getCurrentMessage().get(CommonConstant.HTTP_REQUEST));
-		String tokenValue = this.request.getHeader(CommonConstant.AUTHORIZATION).replace(CommonConstant.BEARER, "");
+		String tokenValue = this.request.getHeader(CommonConstant.AUTHORIZATION);
+		if(tokenValue == null)
+			tokenValue = this.request.getParameter(CommonConstant.ACCESS_TOKEN);
+		else
+			tokenValue = tokenValue.replace(CommonConstant.BEARER_PREFIX, "");
 		tokenStore.removeAccessToken(tokenValue);
 		try {
 			SecurityContextHolder.clearContext();
