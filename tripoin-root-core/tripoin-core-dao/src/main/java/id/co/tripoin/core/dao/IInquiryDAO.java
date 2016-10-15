@@ -1,9 +1,10 @@
 package id.co.tripoin.core.dao;
 
-import id.co.tripoin.core.dao.exception.DAOExeption;
+import id.co.tripoin.core.dao.exception.DAOException;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 /**
@@ -14,14 +15,30 @@ import org.springframework.data.domain.Pageable;
  */
 public interface IInquiryDAO<DATA, ID> {
 
-	/*List<DATA> findAll() throws DAOExeption;*/
+	/*Property CODE*/
+	List<DATA> findByCode(String p_Code) throws DAOException;
 
-	DATA findById(ID p_ID) throws DAOExeption;
+	List<DATA> findByCodeOrderByIdAsc(String p_Code) throws DAOException;
+	
+	List<DATA> findByCodeOrderByCodeAsc(String p_Code) throws DAOException;
 
-	List<DATA> findByCode(String p_Code) throws DAOExeption;
+	List<DATA> findByCodeOrderByCodeDesc(String p_Code) throws DAOException;
+	
+	Page<DATA> findByCodeOrderByCodeAsc(String p_Code, Pageable p_Pageable) throws DAOException;
 
-	List<DATA> findByName(String p_Name) throws DAOExeption;
+	/*Property NAME*/
+	List<DATA> findByName(String p_Name) throws DAOException;
 
+	List<DATA> findByNameOrderByIdAsc(String p_Name) throws DAOException;
+	
+	List<DATA> findByNameOrderByNameAsc(String p_Name) throws DAOException;
+
+	List<DATA> findByNameOrderByNameDesc(String p_Name) throws DAOException;
+	
+	Page<DATA> findByNameOrderByNameAsc(String p_Name, Pageable p_Pageable) throws DAOException;
+
+	/*Particular Property*/
+	
 	/*List<DATA> pagination(Pageable p_Pageable) throws DAOExeption;
 
 	List<DATA> advancedPagination(Pageable p_Pageable) throws DAOExeption;

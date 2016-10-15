@@ -26,7 +26,7 @@ public interface InfoMarkerConstant {
 	String INF_BAD_CREDENTIAL_EXCEPTION = "No client credentials presented";
 	String ERR_ENDPOINT = "Error Endpoint";
 	String ERR_PROFILE_ENDPOINT = "Error Profile Endpoint : {}";
-	String ERR_MERCHANDISE_TYPE_ENDPOINT = "Error Merchandise Type Endpoint : {}"; 
+	String ERR_SCAFFOLDING_ENDPOINT = "Error Scaffolding Endpoint : {}";
 	String ERR_AUTHENTICATION_ENDPOINT = "Error Authentication Endpoint : {}";
 	String ERR_PASSWORD_NOT_VALID = "Error Password Not Valid";
 	String ERR_LOCALE_CODE_NULL = "Error Locale Code Not Null";

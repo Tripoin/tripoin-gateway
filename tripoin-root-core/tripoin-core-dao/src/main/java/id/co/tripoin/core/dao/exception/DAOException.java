@@ -5,14 +5,14 @@ package id.co.tripoin.core.dao.exception;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  * 
  */
-public class DAOExeption extends ATripoinException {
+public class DAOException extends ATripoinException {
 
-	public DAOExeption(String p_Message) {
+	public DAOException(String p_Message) {
 		super(p_Message);
 		// TODO Auto-generated constructor stub
 	}
 
-	public DAOExeption(String p_Message, Throwable p_Throwable) {
+	public DAOException(String p_Message, Throwable p_Throwable) {
 		super(p_Message, p_Throwable);
 		// TODO Auto-generated constructor stub
 	}

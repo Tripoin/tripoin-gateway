@@ -1,10 +1,5 @@
 package id.co.tripoin.core.dao;
 
-import id.co.tripoin.core.dao.exception.DAOExeption;
-
-import java.io.Serializable;
-import java.util.List;
-
 /**
  * 
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>

@@ -2,6 +2,8 @@ package id.co.tripoin.core.service;
 
 import java.util.List;
 
+import org.hibernate.service.spi.ServiceException;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 /**
@@ -12,17 +14,33 @@ import org.springframework.data.domain.Pageable;
  */
 public interface IInquiryService<DATA, ID> {
 
-	List<DATA> findAll();
+	List<DATA> findAll() throws ServiceException;
+
+	Page<DATA> findAll(Pageable p_Pageable);
+
+	DATA findById(ID p_ID) throws ServiceException;
 	
-	DATA findById(ID p_ID);
+	/*Property Code*/
+	List<DATA> findByCode(String p_Code) throws ServiceException;
 	
-	List<DATA> findByCode(String p_Code);
+	List<DATA> findByCodeOrderByIdAsc(String p_Code) throws ServiceException;
 	
+	List<DATA> findByCodeOrderByCodeAsc(String p_Code) throws ServiceException;
+
+	List<DATA> findByCodeOrderByCodeDesc(String p_Code) throws ServiceException;
+	
+	Page<DATA> findByCodeOrderByCodeAsc(String p_Code, Pageable p_Pageable) throws ServiceException;
+	
+	/*Property Name*/
 	List<DATA> findByName(String p_Name);
 	
-	List<DATA> pagination(Pageable p_Pageable);
+	List<DATA> findByNameOrderByIdAsc(String p_Name) throws ServiceException;
 	
-	List<DATA> advancedPagination(Pageable p_Pageable);
+	List<DATA> findByNameOrderByNameAsc(String p_Name) throws ServiceException;
+
+	List<DATA> findByNameOrderByNameDesc(String p_Name) throws ServiceException;
+	
+	Page<DATA> findByNameOrderByNameAsc(String p_Name, Pageable p_Pageable) throws ServiceException;
 	
 	List<DATA> selectLOV();
 	

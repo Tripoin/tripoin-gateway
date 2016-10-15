@@ -4,17 +4,19 @@ import java.util.List;
 
 import id.co.tripoin.core.constant.statics.BeanNameConstant;
 import id.co.tripoin.core.dao.IScaffoldingDAO;
-import id.co.tripoin.core.dao.exception.DAOExeption;
+import id.co.tripoin.core.dao.exception.DAOException;
 import id.co.tripoin.core.service.IScaffoldingService;
 import id.co.tripoin.core.service.IServiceInitializer;
 
+import org.hibernate.service.spi.ServiceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 /**
- * 
+ *
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  * @param <DATA>
  */
@@ -26,50 +28,118 @@ public abstract class AScaffoldingService<DATA> implements IScaffoldingService<D
 	protected IScaffoldingDAO<DATA> scaffoldingDAO;
 
 	@Override
-	public List<DATA> findAll() {
+	public List<DATA> findAll() throws ServiceException {
 		return scaffoldingDAO.findAll();
 	}
 
 	@Override
-	public DATA findById(Long p_ID) {
-		try {
-			return (DATA) scaffoldingDAO.findById(p_ID);
-		} catch (DAOExeption e) {
-			LOGGER.error(e.getMessage());
-			return null;
-		}
+	public Page<DATA> findAll(Pageable p_Pageable) {
+		return scaffoldingDAO.findAll(p_Pageable);
 	}
 
 	@Override
-	public List<DATA> findByCode(String p_Code) {
+	public DATA findById(Long p_ID) throws ServiceException {
+		return scaffoldingDAO.findOne(p_ID);
+	}
+
+	@Override
+	public List<DATA> findByCode(String p_Code) throws ServiceException {
 		try {
 			return scaffoldingDAO.findByCode(p_Code);
-		} catch (DAOExeption e) {
+		} catch (DAOException e) {
 			LOGGER.error(e.getMessage());
 			return null;
 		}
 	}
 
 	@Override
-	public List<DATA> findByName(String p_Name) {
+	public List<DATA> findByCodeOrderByIdAsc(String p_Code) throws ServiceException {
+		try {
+			return scaffoldingDAO.findByCodeOrderByIdAsc(p_Code);
+		} catch (DAOException e) {
+			LOGGER.error(e.getMessage());
+			return null;
+		}
+	}
+
+	@Override
+	public List<DATA> findByCodeOrderByCodeAsc(String p_Code) throws ServiceException {
+		try {
+			return scaffoldingDAO.findByCodeOrderByCodeAsc(p_Code);
+		} catch (DAOException e) {
+			LOGGER.error(e.getMessage());
+			return null;
+		}
+	}
+
+	@Override
+	public List<DATA> findByCodeOrderByCodeDesc(String p_Code) throws ServiceException {
+		try {
+			return scaffoldingDAO.findByCodeOrderByCodeDesc(p_Code);
+		} catch (DAOException e) {
+			LOGGER.error(e.getMessage());
+			return null;
+		}
+	}
+
+	@Override
+	public Page<DATA> findByCodeOrderByCodeAsc(String p_Code, Pageable p_Pageable) throws ServiceException {
+		try {
+			return scaffoldingDAO.findByCodeOrderByCodeAsc(p_Code, p_Pageable);
+		} catch (DAOException e) {
+			LOGGER.error(e.getMessage());
+			return null;
+		}
+	}
+
+	@Override
+	public List<DATA> findByName(String p_Name) throws ServiceException {
 		try {
 			return scaffoldingDAO.findByName(p_Name);
-		} catch (DAOExeption e) {
+		} catch (DAOException e) {
 			LOGGER.error(e.getMessage());
 			return null;
 		}
 	}
 
 	@Override
-	public List<DATA> pagination(Pageable p_Pageable) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<DATA> findByNameOrderByIdAsc(String p_Name) throws ServiceException {
+		try {
+			return scaffoldingDAO.findByNameOrderByIdAsc(p_Name);
+		} catch (DAOException e) {
+			LOGGER.error(e.getMessage());
+			return null;
+		}
 	}
 
 	@Override
-	public List<DATA> advancedPagination(Pageable p_Pageable) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<DATA> findByNameOrderByNameAsc(String p_Name) throws ServiceException {
+		try {
+			return scaffoldingDAO.findByNameOrderByNameAsc(p_Name);
+		} catch (DAOException e) {
+			LOGGER.error(e.getMessage());
+			return null;
+		}
+	}
+
+	@Override
+	public List<DATA> findByNameOrderByNameDesc(String p_Name) throws ServiceException {
+		try {
+			return scaffoldingDAO.findByNameOrderByNameDesc(p_Name);
+		} catch (DAOException e) {
+			LOGGER.error(e.getMessage());
+			return null;
+		}
+	}
+
+	@Override
+	public Page<DATA> findByNameOrderByNameAsc(String p_Name, Pageable p_Pageable) throws ServiceException {
+		try {
+			return scaffoldingDAO.findByNameOrderByNameAsc(p_Name, p_Pageable);
+		} catch (DAOException e) {
+			LOGGER.error(e.getMessage());
+			return null;
+		}
 	}
 
 	@Override
@@ -86,27 +156,25 @@ public abstract class AScaffoldingService<DATA> implements IScaffoldingService<D
 
 	@Override
 	public void insert(List<DATA> p_DATA) {
-		/*try {
-			iScaffoldingDAO.insert((List<MerchandiseType>) p_DATA);
-		} catch (DAOExeption e) {
-			LOGGER.error(e.getMessage());
-		}*/
+		/*
+		 * try { iScaffoldingDAO.insert((List<MerchandiseType>) p_DATA); } catch
+		 * (DAOExeption e) { LOGGER.error(e.getMessage()); }
+		 */
 
 	}
 
 	@Override
 	public void update(List<DATA> p_DATA) {
-		/*iScaffoldingDAO.update((List<MerchandiseType>) p_DATA);*/
+		/* iScaffoldingDAO.update((List<MerchandiseType>) p_DATA); */
 		LOGGER.info("update");
 	}
 
 	@Override
 	public void delete(List<Long> p_ID) {
-		/*try {
-			iScaffoldingDAO.delete(p_ID);
-		} catch (DAOExeption e) {
-			LOGGER.error(e.getMessage());
-		}*/
+		/*
+		 * try { iScaffoldingDAO.delete(p_ID); } catch (DAOExeption e) {
+		 * LOGGER.error(e.getMessage()); }
+		 */
 
 	}
 
