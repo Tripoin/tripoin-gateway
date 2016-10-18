@@ -18,7 +18,8 @@ public interface TableNameConstant {
 	
 	interface Master{
 		String MST_API_TYPE = "mst_api_type";
-		String MST_MERCHANDISE_TYPE = "mst_merchandise_type";
-		String MST_MERCHANDISE_BRAND = "mst_merchandise_brand";
+		String MST_PRODUCT_TYPE = "mst_product_type";
+		String MST_PRODUCT_BRAND = "mst_product_brand";
+		String MST_BANK = "mst_bank";
 	}
 }
