@@ -1,10 +1,14 @@
 package id.co.tripoin.core.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
 /**
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
  */
+@XmlRootElement
 public class ResponseData implements Serializable {
 
 	/**
@@ -21,6 +25,7 @@ public class ResponseData implements Serializable {
 		this.responseMsg = responseMsg;
 	}
 
+	@JsonProperty("response_code")
 	public String getResponseCode() {
 		return responseCode;
 	}
@@ -29,6 +34,7 @@ public class ResponseData implements Serializable {
 		this.responseCode = responseCode;
 	}
 
+	@JsonProperty("response_msg")
 	public String getResponseMsg() {
 		return responseMsg;
 	}

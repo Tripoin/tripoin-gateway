@@ -1,9 +1,9 @@
 package id.co.tripoin.core.integration.endpoint.scaffolding.impl;
 
 import id.co.tripoin.core.constant.statics.InfoMarkerConstant;
-import id.co.tripoin.core.dto.request.SimpleTransactionDTO;
-import id.co.tripoin.core.integration.endpoint.scaffolding.IResponseConstructor;
+import id.co.tripoin.core.dto.ResponseData;
 import id.co.tripoin.core.integration.endpoint.exception.EndPointException;
+import id.co.tripoin.core.integration.endpoint.scaffolding.IResponseConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -67,12 +67,12 @@ public class ResponseConstructorImpl<DATA> implements IResponseConstructor<DATA>
     }
 
     @Override
-    public Response constructSimpleTransactionResponse(SimpleTransactionDTO p_SimpleTransactionDTO) {
+    public Response constructSimpleTransactionResponse(ResponseData p_ResponseData) {
         try{
-            if (p_SimpleTransactionDTO == null){
+            if (p_ResponseData == null){
                 LOGGER.info(InfoMarkerConstant.INFO_DATA_NOT_FOUND);
             }
-            return Response.ok(p_SimpleTransactionDTO).build();
+            return Response.ok(p_ResponseData).build();
         } catch (Exception e) {
             LOGGER.error(InfoMarkerConstant.ERR_SCAFFOLDING_ENDPOINT, e);
             return Response.serverError().build();

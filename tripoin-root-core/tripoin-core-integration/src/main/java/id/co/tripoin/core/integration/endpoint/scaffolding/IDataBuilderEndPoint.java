@@ -1,6 +1,7 @@
 package id.co.tripoin.core.integration.endpoint.scaffolding;
 
-import id.co.tripoin.core.dto.request.DTOPagination;
+import id.co.tripoin.core.dto.ResponseData;
+import id.co.tripoin.core.dto.request.PaginationDTO;
 import org.springframework.data.domain.PageRequest;
 
 /**
@@ -10,7 +11,11 @@ import org.springframework.data.domain.PageRequest;
  */
 public interface IDataBuilderEndPoint {
 
-    PageRequest buildPageRequest(DTOPagination p_DTOPagination);
+    PageRequest buildPageRequest(PaginationDTO p_PaginationDTO);
 
-    DTOPagination buildDTOPagination(int p_Limit, int p_Offset, String p_Order, String p_Sort);
+    PaginationDTO buildDTOPagination(int p_Limit, int p_Offset, String p_Order, String p_Sort);
+
+    ResponseData buildSuccessResponse();
+
+    ResponseData buildFailedResponse();
 }

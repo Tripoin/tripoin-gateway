@@ -1,11 +1,13 @@
 package id.co.tripoin.core.dao.scaffolding;
 
+import id.co.tripoin.core.constant.statics.sql.QueryConstant;
 import id.co.tripoin.core.dao.exception.DAOException;
 
 import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 
 /**
  * 
@@ -37,6 +39,7 @@ public interface IInquiryDAO<DATA> {
 	Page<DATA> findByNameLikeOrderByNameAsc(String p_Name, Pageable p_Pageable) throws DAOException;
 
 	/*List Of Value*/
+	@Query(QueryConstant.SELECT_LOV)
 	List<DATA> selectLOV() throws DAOException;
 
 	/*List<String> getPhysicalColumnNames() throws DAOException;*/

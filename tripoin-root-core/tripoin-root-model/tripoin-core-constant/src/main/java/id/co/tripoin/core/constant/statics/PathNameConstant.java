@@ -36,10 +36,17 @@ public interface PathNameConstant {
 		String PATH_DO_APPROVAL = "/100096";
 		String PATH_DO_CANCELLATION = "/100097";
 		String PATH_UPDATE = "100098";
+		String PATH_INSERT = "100099";
+		String PATH_INSERT_AND_FLUSH = "100010";
+		String PATH_INSERT_COLLECTION = "100011";
+
+		String PATH_DELETE = "100012";
+		String PATH_DELETE_BY_ENTITY = "100013";
+		String PATH_DELETE_COLLECTION = "100014";
 	}
 
 	interface ProductType {
-		String INSERT_DATA = "100099";
+
 	}
 	
 }

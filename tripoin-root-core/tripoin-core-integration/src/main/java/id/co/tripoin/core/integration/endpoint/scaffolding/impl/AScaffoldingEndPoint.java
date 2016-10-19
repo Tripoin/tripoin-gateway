@@ -1,6 +1,7 @@
 package id.co.tripoin.core.integration.endpoint.scaffolding.impl;
 
 import id.co.tripoin.core.constant.statics.InfoMarkerConstant;
+import id.co.tripoin.core.dto.ResponseData;
 import id.co.tripoin.core.dto.request.*;
 import id.co.tripoin.core.integration.endpoint.scaffolding.IEndPointInitializer;
 import id.co.tripoin.core.integration.endpoint.scaffolding.IDataBuilderEndPoint;
@@ -13,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 
 /**
@@ -20,7 +22,7 @@ import javax.ws.rs.core.Response;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  * @param <DATA>
  */
-public abstract class AScaffoldingEndPoint<DATA> implements IScaffoldingEndPoint, IEndPointInitializer {
+public abstract class AScaffoldingEndPoint<DATA> implements IScaffoldingEndPoint<DATA, Long>, IEndPointInitializer {
 
 	protected IScaffoldingService<DATA> scaffoldingService;
 	protected Logger LOGGER = LoggerFactory.getLogger(AScaffoldingEndPoint.class);
@@ -31,6 +33,7 @@ public abstract class AScaffoldingEndPoint<DATA> implements IScaffoldingEndPoint
 	@Autowired
 	IDataBuilderEndPoint iDataBuilderEndPoint;
 
+	/*===========================INQUIRY ENDPOINT IMPLEMENTATION===========================*/
 	@Override
 	public Response findAll(){
 		try {
@@ -42,7 +45,7 @@ public abstract class AScaffoldingEndPoint<DATA> implements IScaffoldingEndPoint
 	}
 
 	@Override
-	public Response findPaginationAll(RequestPaginationAll p_RequestPaginationAll) {
+	public Response findPaginationAll(RequestPaginationAllDTO p_RequestPaginationAll) {
 		try {
 			return scaffoldingResponseConstructor.constructPaginationResponse(scaffoldingService.findAll(
 					iDataBuilderEndPoint.buildPageRequest(
@@ -110,7 +113,7 @@ public abstract class AScaffoldingEndPoint<DATA> implements IScaffoldingEndPoint
 	}
 
 	@Override
-	public Response findPaginationByCodeOrderByCodeAsc(RequestPaginationByCode p_RequestPaginationByCode) {
+	public Response findPaginationByCodeOrderByCodeAsc(RequestPaginationByCodeDTO p_RequestPaginationByCode) {
 		try {
 			return scaffoldingResponseConstructor.constructPaginationResponse(scaffoldingService.findByCodeOrderByCodeAsc(
 					p_RequestPaginationByCode.getCode(),
@@ -169,7 +172,7 @@ public abstract class AScaffoldingEndPoint<DATA> implements IScaffoldingEndPoint
 	}
 
 	@Override
-	public Response findPaginationByNameOrderByNameAsc(RequestPaginationByName p_RequestPaginationByName) {
+	public Response findPaginationByNameOrderByNameAsc(RequestPaginationByNameDTO p_RequestPaginationByName) {
 		try {
 			return scaffoldingResponseConstructor.constructPaginationResponse(scaffoldingService.findByNameOrderByNameAsc(
 					p_RequestPaginationByName.getName(),
@@ -197,44 +200,105 @@ public abstract class AScaffoldingEndPoint<DATA> implements IScaffoldingEndPoint
 		}
 	}
 
+	/*===========================TRANSACTION ENDPOINT IMPLEMENTATION===========================*/
 	@Override
 	public Response doApproval() throws EndPointException {
-		SimpleTransactionDTO simpleTransactionDTO = new SimpleTransactionDTO();
 		try {
 			scaffoldingService.doApproval();
-			simpleTransactionDTO.setTransactionStatus(1);
-			return scaffoldingResponseConstructor.constructSimpleTransactionResponse(simpleTransactionDTO);
+			return scaffoldingResponseConstructor.constructSimpleTransactionResponse(iDataBuilderEndPoint.buildSuccessResponse());
 		}catch (EndPointException e){
 			LOGGER.error(InfoMarkerConstant.ERR_SCAFFOLDING_ENDPOINT);
-			return null;
+			return scaffoldingResponseConstructor.constructSimpleTransactionResponse(iDataBuilderEndPoint.buildFailedResponse());
 		}
 	}
 
 
 
 	@Override
-	public Response doCancellation() {
-		SimpleTransactionDTO simpleTransactionDTO = new SimpleTransactionDTO();
+	public Response doCancellation()throws EndPointException {
 		try {
 			scaffoldingService.doCancellation();
-			simpleTransactionDTO.setTransactionStatus(0);
-			return scaffoldingResponseConstructor.constructSimpleTransactionResponse(simpleTransactionDTO);
+			return scaffoldingResponseConstructor.constructSimpleTransactionResponse(iDataBuilderEndPoint.buildSuccessResponse());
 		}catch (EndPointException e){
 			LOGGER.error(InfoMarkerConstant.ERR_SCAFFOLDING_ENDPOINT);
-			return null;
+			return scaffoldingResponseConstructor.constructSimpleTransactionResponse(iDataBuilderEndPoint.buildFailedResponse());
 		}
 	}
 
 	@Override
-	public Response setBaseDataById(BaseUpdateDTO p_BaseUpdateDTO) {
-		SimpleTransactionDTO simpleTransactionDTO = new SimpleTransactionDTO();
+	public Response updateData(BaseRequestDTO p_BaseRequestDTO) throws EndPointException{
 		try {
-			scaffoldingService.updateBaseData(p_BaseUpdateDTO.getId(), p_BaseUpdateDTO.getCode(), p_BaseUpdateDTO.getName(), p_BaseUpdateDTO.getRemarks());
-			simpleTransactionDTO.setTransactionStatus(0);
-			return scaffoldingResponseConstructor.constructSimpleTransactionResponse(simpleTransactionDTO);
+			scaffoldingService.updateBaseData(p_BaseRequestDTO.getId(), p_BaseRequestDTO.getCode(), p_BaseRequestDTO.getName(), p_BaseRequestDTO.getRemarks());
+			return scaffoldingResponseConstructor.constructSimpleTransactionResponse(iDataBuilderEndPoint.buildSuccessResponse());
 		}catch (EndPointException e){
 			LOGGER.error(InfoMarkerConstant.ERR_SCAFFOLDING_ENDPOINT);
-			return null;
+			return scaffoldingResponseConstructor.constructSimpleTransactionResponse(iDataBuilderEndPoint.buildFailedResponse());
+		}
+	}
+
+	@Override
+	public Response insertData(DATA p_DATA) throws EndPointException {
+		try {
+			scaffoldingService.insert(p_DATA);
+			return scaffoldingResponseConstructor.constructSimpleTransactionResponse(iDataBuilderEndPoint.buildSuccessResponse());
+		}catch (EndPointException e){
+			LOGGER.error(InfoMarkerConstant.ERR_SCAFFOLDING_ENDPOINT);
+			return scaffoldingResponseConstructor.constructSimpleTransactionResponse(iDataBuilderEndPoint.buildFailedResponse());
+		}
+	}
+
+	@Override
+	public Response insertAndFlushData(DATA p_DATA) throws EndPointException {
+		try {
+			scaffoldingService.insert(p_DATA);
+			return scaffoldingResponseConstructor.constructSimpleTransactionResponse(iDataBuilderEndPoint.buildSuccessResponse());
+		}catch (EndPointException e){
+			LOGGER.error(InfoMarkerConstant.ERR_SCAFFOLDING_ENDPOINT);
+			return scaffoldingResponseConstructor.constructSimpleTransactionResponse(iDataBuilderEndPoint.buildFailedResponse());
+		}
+	}
+
+	@Override
+	public Response insertCollection(List<DATA> p_DATAs) throws EndPointException {
+		try {
+			scaffoldingService.insertCollection(p_DATAs);
+			return scaffoldingResponseConstructor.constructSimpleTransactionResponse(iDataBuilderEndPoint.buildSuccessResponse());
+		}catch (EndPointException e){
+			LOGGER.error(InfoMarkerConstant.ERR_SCAFFOLDING_ENDPOINT);
+			return scaffoldingResponseConstructor.constructSimpleTransactionResponse(iDataBuilderEndPoint.buildFailedResponse());
+		}
+	}
+
+	@Override
+	public Response delete(Long p_ID) throws EndPointException{
+		try {
+			scaffoldingService.delete(p_ID);
+			return scaffoldingResponseConstructor.constructSimpleTransactionResponse(iDataBuilderEndPoint.buildSuccessResponse());
+		}catch (EndPointException e){
+			LOGGER.error(InfoMarkerConstant.ERR_SCAFFOLDING_ENDPOINT);
+			return scaffoldingResponseConstructor.constructSimpleTransactionResponse(iDataBuilderEndPoint.buildFailedResponse());
+		}
+	}
+
+	@Override
+	public Response deleteByEntity(DATA p_DATA) throws EndPointException{
+		try {
+			scaffoldingService.deleteByEntity(p_DATA);
+			return scaffoldingResponseConstructor.constructSimpleTransactionResponse(iDataBuilderEndPoint.buildSuccessResponse());
+		}catch (EndPointException e){
+			LOGGER.error(InfoMarkerConstant.ERR_SCAFFOLDING_ENDPOINT);
+			return scaffoldingResponseConstructor.constructSimpleTransactionResponse(iDataBuilderEndPoint.buildFailedResponse());
+		}
+	}
+
+	@Override
+	public Response deleteCollection(List<DATA> p_DATAs) throws EndPointException{
+		try {
+			scaffoldingService.deleteCollection(p_DATAs);
+			return scaffoldingResponseConstructor.constructSimpleTransactionResponse(iDataBuilderEndPoint.buildSuccessResponse());
+		}catch (EndPointException e){
+			LOGGER.error(InfoMarkerConstant.ERR_SCAFFOLDING_ENDPOINT);
+			return scaffoldingResponseConstructor.constructSimpleTransactionResponse(iDataBuilderEndPoint.buildFailedResponse());
 		}
 	}
 }

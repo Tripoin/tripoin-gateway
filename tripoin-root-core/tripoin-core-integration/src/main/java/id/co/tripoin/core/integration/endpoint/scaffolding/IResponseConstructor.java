@@ -1,6 +1,6 @@
 package id.co.tripoin.core.integration.endpoint.scaffolding;
 
-import id.co.tripoin.core.dto.request.SimpleTransactionDTO;
+import id.co.tripoin.core.dto.ResponseData;
 import id.co.tripoin.core.integration.endpoint.exception.EndPointException;
 import org.springframework.data.domain.Page;
 
@@ -21,5 +21,5 @@ public interface IResponseConstructor<DATA> {
 
     Response constructPaginationResponse(Page<DATA> p_DATAPage) throws EndPointException;
 
-    Response constructSimpleTransactionResponse(SimpleTransactionDTO p_SimpleTransactionDTO) throws EndPointException;
+    Response constructSimpleTransactionResponse(ResponseData p_ResponseData) throws EndPointException;
 }

@@ -24,7 +24,7 @@ public interface IInquiryEndPoint {
 
     @POST
     @Path(PathNameConstant.PathScaffolding.PATH_FIND_ALL_PAGINATION)
-    public Response findPaginationAll(RequestPaginationAll p_RequestPaginationAll) throws EndPointException;
+    public Response findPaginationAll(RequestPaginationAllDTO p_RequestPaginationAll) throws EndPointException;
 
     /*Property ID*/
     @POST
@@ -56,7 +56,7 @@ public interface IInquiryEndPoint {
     @POST
     @Path(PathNameConstant.PathScaffolding.PATH_FIND_PAGINATION_BY_CODE)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public Response findPaginationByCodeOrderByCodeAsc(RequestPaginationByCode p_RequestPaginationByCode) throws EndPointException;
+    public Response findPaginationByCodeOrderByCodeAsc(RequestPaginationByCodeDTO p_RequestPaginationByCode) throws EndPointException;
 
 
     /*Property Name*/
@@ -83,7 +83,7 @@ public interface IInquiryEndPoint {
     @POST
     @Path(PathNameConstant.PathScaffolding.PATH_FIND_PAGINATION_BY_NAME)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public Response findPaginationByNameOrderByNameAsc(RequestPaginationByName p_RequestPaginationByName) throws EndPointException;
+    public Response findPaginationByNameOrderByNameAsc(RequestPaginationByNameDTO p_RequestPaginationByName) throws EndPointException;
 
     @GET
     @Path(PathNameConstant.PathScaffolding.PATH_SELECT_LOV)
