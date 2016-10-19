@@ -14,7 +14,7 @@ import javax.annotation.PostConstruct;
  * 
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
-@Component(BeanNameConstant.MERCHANDISE_TYPE_ENDPOINT_BEAN)
+@Component(BeanNameConstant.PRODUCT_TYPE_ENDPOINT_BEAN)
 public class ProductTypeEndPointImpl extends AScaffoldingEndPoint<ProductType> implements IProductTypeEndPoint {
 	
 	@Autowired

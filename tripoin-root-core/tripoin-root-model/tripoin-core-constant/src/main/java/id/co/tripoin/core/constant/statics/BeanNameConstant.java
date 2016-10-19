@@ -17,7 +17,8 @@ public interface BeanNameConstant {
 	String PROFILE_ENDPOINT_BEAN = "profileEndpoint";
 	String API_TYPE_SERVICE_BEAN = "apiTypeService";
 	String API_TYPE_ENDPOINT_BEAN = "apiTypeEndpoint";
-	String MERCHANDISE_TYPE_ENDPOINT_BEAN = "merchandiseTypeEndpoint";
+	String PRODUCT_TYPE_ENDPOINT_BEAN = "productTypeEndpoint";
+	String PRODUCT_BRAND_ENDPOINT_BEAN = "productBrandEndpoint";
 	
 	String SCAFFOLDING_SERVICE_BEAN = "scaffoldingService";
 	
