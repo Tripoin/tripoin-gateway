@@ -24,6 +24,7 @@
 	
     <import resource="classpath*:META-INF/spring/applicationContext-dataSource.xml" />
     <import resource="classpath*:META-INF/spring/applicationContext-transaction.xml" />
+    <import resource="classpath*:META-INF/spring/applicationContext-cache.xml" />
     <import resource="classpath*:META-INF/spring/applicationContext-scan.xml" />
 
     <import resource="classpath:META-INF/spring/applicationContext-cxf.xml" />

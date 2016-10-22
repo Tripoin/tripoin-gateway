@@ -37,7 +37,10 @@
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
                     <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
+                    <target>${maven.compiler.target}</target>				
+                    <manifest>
+                        <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                    </manifest>
                 </configuration>
             </plugin>
         </plugins>
@@ -63,6 +66,10 @@
             		<artifactId>slf4j-log4j12</artifactId>
             		<groupId>org.slf4j</groupId>
             	</exclusion>
+            	<exclusion>
+            		<artifactId>tripoin-core-pojo</artifactId>
+            		<groupId>id.co.tripoin.core</groupId>
+            	</exclusion>
             </exclusions>
         </dependency>	
         <!-- refer Hibernate c3p0 connection pool -->
@@ -84,7 +91,35 @@
 					<artifactId>jboss-logging-annotations</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>    
+		</dependency>
+		<!-- refer hazelcast -->
+		<dependency>
+			<groupId>com.hazelcast</groupId>
+			<artifactId>hazelcast</artifactId>
+			<version>${com.hazelcast.version}</version>
+		</dependency>	
+		<dependency>
+			<groupId>com.hazelcast</groupId>
+			<artifactId>hazelcast-spring</artifactId>
+			<version>${com.hazelcast.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>hazelcast</artifactId>
+					<groupId>com.hazelcast</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>	
+		<dependency>
+			<groupId>com.hazelcast</groupId>
+			<artifactId>hazelcast-hibernate4</artifactId>
+			<version>${com.hazelcast.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>hazelcast</artifactId>
+					<groupId>com.hazelcast</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 		<!-- refer apache cxf -->
 		<dependency>
 			<artifactId>cxf-rt-bindings-soap</artifactId>

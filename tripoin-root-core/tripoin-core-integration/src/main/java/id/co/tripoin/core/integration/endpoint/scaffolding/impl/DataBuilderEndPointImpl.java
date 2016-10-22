@@ -1,13 +1,12 @@
 package id.co.tripoin.core.integration.endpoint.scaffolding.impl;
 
-import id.co.tripoin.core.constant.statics.InfoMarkerConstant;
-import id.co.tripoin.core.dto.ResponseData;
-import id.co.tripoin.core.dto.request.PaginationDTO;
-import id.co.tripoin.core.integration.endpoint.exception.EndPointException;
-import id.co.tripoin.core.integration.endpoint.scaffolding.IDataBuilderEndPoint;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import id.co.tripoin.core.dto.ResponseData;
+import id.co.tripoin.core.dto.request.PaginationDTO;
+import id.co.tripoin.core.integration.endpoint.scaffolding.IDataBuilderEndPoint;
 
 /**
  * created on 10/17/2016

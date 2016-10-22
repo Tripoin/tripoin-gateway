@@ -34,18 +34,9 @@
 		</jaxrs:providers>
     </jaxrs:server>
 	
-	<jaxrs:server id="productTypeWebServiceJWT" address="${tripoin.api.context.jwt.v1}/130000/130002">
+	<jaxrs:server id="productTypeWebServiceJWT" address="${tripoin.api.context.jwt.v1}/130000">
 		<jaxrs:serviceBeans>
 			<ref bean="productTypeEndpoint" />
-		</jaxrs:serviceBeans>
-		<jaxrs:providers>
-			<ref bean="jsonProvider" />
-			<ref bean="corsOutbound"/>
-		</jaxrs:providers>
-	</jaxrs:server>
-
-	<jaxrs:server id="productBrandWebServiceJWT" address="${tripoin.api.context.jwt.v1}/130000/130003">
-		<jaxrs:serviceBeans>
 			<ref bean="productBrandEndpoint" />
 		</jaxrs:serviceBeans>
 		<jaxrs:providers>

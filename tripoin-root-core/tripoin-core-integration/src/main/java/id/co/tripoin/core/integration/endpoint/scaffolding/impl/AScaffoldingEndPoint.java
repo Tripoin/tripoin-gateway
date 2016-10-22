@@ -1,20 +1,27 @@
 package id.co.tripoin.core.integration.endpoint.scaffolding.impl;
 
-import id.co.tripoin.core.constant.statics.InfoMarkerConstant;
-import id.co.tripoin.core.dto.ResponseData;
-import id.co.tripoin.core.dto.request.*;
-import id.co.tripoin.core.integration.endpoint.scaffolding.IEndPointInitializer;
-import id.co.tripoin.core.integration.endpoint.scaffolding.IDataBuilderEndPoint;
-import id.co.tripoin.core.integration.endpoint.scaffolding.IScaffoldingEndPoint;
-import id.co.tripoin.core.integration.endpoint.scaffolding.IResponseConstructor;
-import id.co.tripoin.core.integration.endpoint.exception.EndPointException;
-import id.co.tripoin.core.service.scaffolding.IScaffoldingService;
+import java.util.List;
+
+import javax.ws.rs.core.Response;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.ws.rs.core.Response;
-import java.util.List;
+import id.co.tripoin.core.constant.statics.InfoMarkerConstant;
+import id.co.tripoin.core.dto.request.BaseRequestDTO;
+import id.co.tripoin.core.dto.request.RequestFindByCode;
+import id.co.tripoin.core.dto.request.RequestFindById;
+import id.co.tripoin.core.dto.request.RequestFindByName;
+import id.co.tripoin.core.dto.request.RequestPaginationAllDTO;
+import id.co.tripoin.core.dto.request.RequestPaginationByCodeDTO;
+import id.co.tripoin.core.dto.request.RequestPaginationByNameDTO;
+import id.co.tripoin.core.integration.endpoint.exception.EndPointException;
+import id.co.tripoin.core.integration.endpoint.scaffolding.IDataBuilderEndPoint;
+import id.co.tripoin.core.integration.endpoint.scaffolding.IEndPointInitializer;
+import id.co.tripoin.core.integration.endpoint.scaffolding.IResponseConstructor;
+import id.co.tripoin.core.integration.endpoint.scaffolding.IScaffoldingEndPoint;
+import id.co.tripoin.core.service.scaffolding.IScaffoldingService;
 
 
 /**

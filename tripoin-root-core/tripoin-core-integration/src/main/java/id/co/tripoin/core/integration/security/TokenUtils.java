@@ -51,7 +51,6 @@ public class TokenUtils {
 		Date expiration;
 		try {
 			final Claims claims = this.getClaimsFromToken(token);
-			System.err.println(claims);
 			expiration = claims.getExpiration();
 		} catch (Exception e) {
 			expiration = null;
@@ -91,8 +90,6 @@ public class TokenUtils {
 	private Boolean isTokenExpired(String token) {
 		final Date expiration = this.getExpirationDateFromToken(token);
 		final Date current = this.generateCurrentDate();
-		System.err.println(expiration);
-		System.err.println(current);
 		return expiration.before(current);
 	}
 

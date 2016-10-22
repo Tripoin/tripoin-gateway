@@ -46,7 +46,11 @@ public interface PathNameConstant {
 	}
 
 	interface ProductType {
+		String PATH = "/130002";
+	}
 
+	interface ProductBrand {
+		String PATH = "/130003";
 	}
 	
 }

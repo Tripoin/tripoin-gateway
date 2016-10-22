@@ -109,6 +109,7 @@
         <cxf.api.version>2.7.18</cxf.api.version>
         <c3p0.version>0.9.1.2</c3p0.version>
         <asm.version>5.0.4</asm.version>
+        <com.hazelcast.version>3.6</com.hazelcast.version>
     </properties>
     
     <modules>
