@@ -1,14 +1,13 @@
 package id.co.tripoin.web.service;
 
-import id.co.tripoin.web.constant.enums.EHTTPMethod;
-import id.co.tripoin.web.dto.TokenData;
-
 import java.util.Map;
 
 import javax.ws.rs.core.MultivaluedMap;
 
 import org.apache.cxf.jaxrs.client.WebClient;
 import org.springframework.security.core.Authentication;
+
+import id.co.tripoin.web.constant.enums.EHTTPMethod;
 
 
 /**
@@ -26,11 +25,11 @@ public interface IWebClientService {
 	
 	public void clearCookies();
 	
-	public void updateAuthentication(Authentication authentication, TokenData tokenData);
+	public void updateAuthentication(Authentication authentication, Object data);
 	
-	public void updateAuthentication(String authentication, TokenData tokenData);
+	public void updateAuthentication(String authentication, Object data);
 	
-	public TokenData loadAuthentication(Authentication authentication);
+	public Object loadAuthentication(Authentication authentication);
 	
 	public void clearAuthentication();
 	

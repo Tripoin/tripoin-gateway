@@ -27,7 +27,7 @@
     
     <util:list id="providers">
     	<ref bean="jacksonJsonProvider"/>
-    	<ref bean="signatureHeaderOutbound"/>
+    	<!-- <ref bean="signatureHeaderOutbound"/> -->
     </util:list>
 	
     <context:component-scan base-package="id.co.tripoin.web.service">

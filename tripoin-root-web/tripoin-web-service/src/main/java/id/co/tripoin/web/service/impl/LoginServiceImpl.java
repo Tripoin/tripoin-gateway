@@ -7,14 +7,14 @@ import org.springframework.stereotype.Service;
 import id.co.tripoin.web.constant.statics.BeanNameConstant;
 import id.co.tripoin.web.constant.statics.PathNameConstant;
 import id.co.tripoin.web.dto.response.ProfileDataResponse;
-import id.co.tripoin.web.service.AOauthService;
+import id.co.tripoin.web.service.AJWTService;
 import id.co.tripoin.web.service.ILoginService;
 
 /**
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
  */
 @Service(BeanNameConstant.LOGIN_SERVICE_BEAN)
-public class LoginServiceImpl extends AOauthService implements ILoginService {
+public class LoginServiceImpl extends AJWTService implements ILoginService {
 
 	@Override
 	public ProfileDataResponse loginMe(String username, String password) throws Exception {

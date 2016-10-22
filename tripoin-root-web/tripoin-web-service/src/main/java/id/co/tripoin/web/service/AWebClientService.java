@@ -1,9 +1,5 @@
 package id.co.tripoin.web.service;
 
-import id.co.tripoin.web.constant.enums.EHTTPMethod;
-import id.co.tripoin.web.constant.statics.CommonConstant;
-import id.co.tripoin.web.dto.TokenData;
-
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -12,13 +8,16 @@ import javax.ws.rs.core.Response;
 
 import org.springframework.security.core.Authentication;
 
+import id.co.tripoin.web.constant.enums.EHTTPMethod;
+import id.co.tripoin.web.constant.statics.CommonConstant;
+
 /**
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
  */
 public abstract class AWebClientService implements IWebClientService {
 	
 	private Map<String, String> cookies = new ConcurrentHashMap<String, String>();	
-	private Map<String, TokenData> authentication = new ConcurrentHashMap<String, TokenData>();
+	private Map<String, Object> authentication = new ConcurrentHashMap<String, Object>();
 
 	@Override
 	public Map<String, String> getCookies() {
@@ -36,17 +35,17 @@ public abstract class AWebClientService implements IWebClientService {
 	}
 	
 	@Override
-	public void updateAuthentication(Authentication authentication, TokenData tokenData) {
-		this.authentication.put(authentication.getName(), tokenData);
+	public void updateAuthentication(Authentication authentication, Object data) {
+		this.authentication.put(authentication.getName(), data);
 	}
 	
 	@Override
-	public void updateAuthentication(String authentication, TokenData tokenData) {
-		this.authentication.put(authentication, tokenData);
+	public void updateAuthentication(String authentication, Object data) {
+		this.authentication.put(authentication, data);
 	}
 	
 	@Override
-	public TokenData loadAuthentication(Authentication authentication) {
+	public Object loadAuthentication(Authentication authentication) {
 		return this.authentication.get(authentication.getName());
 	}
 

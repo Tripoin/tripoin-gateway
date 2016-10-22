@@ -9,6 +9,8 @@ public final class PathNameConstant {
 	public static final String PATH_OAUTH = "/oauth";
 	public static final String PATH_TOKEN = "/token";
 	public static final String PATH_OAUTH_TOKEN = "/oauth/token";
+	public static final String PATH_JWT_AUTH = "/auth";
+	public static final String PATH_JWT_REFRESH = PATH_JWT_AUTH+"/refresh";
 	public static final String PATH_PROFILE = "/me";
 	public static final String PATH_ROOT_API = "/api";
 	public static final String PATH_CONNECTION = "/connection";

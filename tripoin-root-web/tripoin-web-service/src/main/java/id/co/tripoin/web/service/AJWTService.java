@@ -5,21 +5,20 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 
-import org.apache.cxf.common.util.Base64Utility;
 import org.apache.cxf.jaxrs.impl.MetadataMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import id.co.tripoin.web.constant.enums.EHTTPMethod;
-import id.co.tripoin.web.constant.enums.EResponseCode;
 import id.co.tripoin.web.constant.statics.CommonConstant;
 import id.co.tripoin.web.constant.statics.PathNameConstant;
-import id.co.tripoin.web.dto.TokenData;
+import id.co.tripoin.web.dto.request.AuthTokenDataRequest;
+import id.co.tripoin.web.dto.response.AuthTokenDataResponse;
 
 /**
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
  */
-public abstract class AOauthService {
+public abstract class AJWTService {
 	
 	@Autowired
 	private IWebClientService webClientService;
@@ -27,15 +26,9 @@ public abstract class AOauthService {
 	private MultivaluedMap<String, String> headers;
 
 	public <T> T execute(String path, EHTTPMethod httpMethod, Object body, Class<T> responseClass, MultivaluedMap<String, String> headers) throws Exception {
-		TokenData tokenData = (TokenData)this.webClientService.loadAuthentication(SecurityContextHolder.getContext().getAuthentication());
-		headers.putSingle(CommonConstant.AUTHORIZATION, CommonConstant.BEARER_PREFIX+tokenData.getAccessToken());
+		AuthTokenDataResponse tokenData = (AuthTokenDataResponse)this.webClientService.loadAuthentication(SecurityContextHolder.getContext().getAuthentication());
+		headers.putSingle(CommonConstant.X_AUTH_TOKEN, tokenData.getToken());
 		Response response = this.webClientService.execute(path, httpMethod, body, Response.class, headers);
-		if(response.getStatus() == EResponseCode.RC_ACCESS_DENIED.getHttpResponse()){
-			tokenData = this.reLogin();
-			headers = new MetadataMap<String, String>();
-			headers.putSingle(CommonConstant.AUTHORIZATION, CommonConstant.BEARER_PREFIX+tokenData.getAccessToken());
-			response = this.webClientService.execute(path, httpMethod, body, Response.class, headers);
-		}
 		return response.readEntity(responseClass);
 	}
 	
@@ -75,32 +68,33 @@ public abstract class AOauthService {
 		return execute(path, EHTTPMethod.DELETE, null, responseClass, this.headers);
 	}
 	
-	public TokenData login(String username, String password) throws Exception {
+	public AuthTokenDataResponse login(String username, String password) throws Exception {
+		AuthTokenDataRequest authTokenDataRequest = new AuthTokenDataRequest();
+		authTokenDataRequest.setUsername(username);
+		authTokenDataRequest.setPassword(password);
 		this.headers = new MetadataMap<String, String>();
-		this.headers.putSingle(CommonConstant.AUTHORIZATION, CommonConstant.BASIC_PREFIX.concat(Base64Utility.encode((username+":"+password).getBytes())));
 		this.headers.putSingle(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON);
-		this.headers.putSingle(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_FORM_URLENCODED);
-		Response response  = this.webClientService.execute(PathNameConstant.PATH_OAUTH_TOKEN, EHTTPMethod.POST, CommonConstant.GRANT_TYPE_CREDENTIALS, Response.class, this.headers);
-		TokenData tokenData = response.readEntity(TokenData.class);
-		if(response.getStatus() == 200)
-			this.webClientService.updateAuthentication(username, tokenData);		
+		this.headers.putSingle(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON);
+		AuthTokenDataResponse tokenData  = this.webClientService.execute(PathNameConstant.PATH_JWT_AUTH, EHTTPMethod.POST, authTokenDataRequest, AuthTokenDataResponse.class, this.headers);
+		this.webClientService.updateAuthentication(username, tokenData);		
 		return tokenData;
 	}
 	
-	public TokenData reLogin() throws Exception {
+	public AuthTokenDataResponse refresh() throws Exception {
+		AuthTokenDataResponse tokenData = (AuthTokenDataResponse)this.webClientService.loadAuthentication(SecurityContextHolder.getContext().getAuthentication());
 		this.headers = new MetadataMap<String, String>();
-		this.headers.putSingle(CommonConstant.COOKIE, this.webClientService.getCookies().get(CommonConstant.SET_COOKIE));
 		this.headers.putSingle(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON);
-		this.headers.putSingle(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_FORM_URLENCODED);
-		Response response  = this.webClientService.execute(PathNameConstant.PATH_OAUTH_TOKEN, EHTTPMethod.POST, CommonConstant.GRANT_TYPE_CREDENTIALS, Response.class, this.headers);
-		TokenData tokenData = response.readEntity(TokenData.class);
+		this.headers.putSingle(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON);
+		headers.putSingle(CommonConstant.X_AUTH_TOKEN, tokenData.getToken());
+		Response response  = this.webClientService.execute(PathNameConstant.PATH_JWT_REFRESH, EHTTPMethod.GET, null, Response.class, this.headers);
+		AuthTokenDataResponse tokenDataResponse = response.readEntity(AuthTokenDataResponse.class);
 		if(response.getStatus() == 200)
 			this.webClientService.updateAuthentication(SecurityContextHolder.getContext().getAuthentication(), tokenData);		
-		return tokenData;
+		return tokenDataResponse;
 	}
 	
 	protected void clearSession() {
 		this.webClientService.clearAll();
 	}
-
+	
 }

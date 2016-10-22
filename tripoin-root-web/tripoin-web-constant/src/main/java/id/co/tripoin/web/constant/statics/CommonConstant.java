@@ -15,5 +15,6 @@ public final class CommonConstant {
 	public static final String SET_COOKIE = "Set-Cookie";
 	public static final String COOKIE = "Cookie";
 	public static final String GRANT_TYPE_CREDENTIALS = "grant_type=client_credentials";
+	public static final String X_AUTH_TOKEN = "X-Auth-Token";
 	
 }

@@ -7,14 +7,14 @@ import org.springframework.stereotype.Service;
 import id.co.tripoin.web.constant.statics.BeanNameConstant;
 import id.co.tripoin.web.constant.statics.PathNameConstant;
 import id.co.tripoin.web.dto.response.ProfileDataResponse;
-import id.co.tripoin.web.service.AOauthService;
+import id.co.tripoin.web.service.AJWTService;
 import id.co.tripoin.web.service.IProfileService;
 
 /**
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
  */
 @Service(BeanNameConstant.PROFILE_SERVICE_BEAN)
-public class ProfileServiceImpl extends AOauthService implements IProfileService {
+public class ProfileServiceImpl extends AJWTService implements IProfileService {
 
 	@Override
 	public ProfileDataResponse me() throws Exception {
