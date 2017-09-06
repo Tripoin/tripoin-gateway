@@ -1,11 +1,11 @@
 package id.co.tripoin.core.service.scaffolding;
 
-import java.util.List;
-
-import id.co.tripoin.core.service.IServiceApproval;
-import id.co.tripoin.core.service.IServiceCancellation;
-import org.hibernate.service.spi.ServiceException;
+import id.co.tripoin.core.service.IApprovalService;
+import id.co.tripoin.core.service.ICancellationService;
+import id.co.tripoin.core.service.exception.ServiceException;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * 
@@ -14,25 +14,29 @@ import org.springframework.transaction.annotation.Transactional;
  * @param <ID>
  */
 @Transactional
-public interface ITransactionService<DATA, ID> extends IServiceCancellation, IServiceApproval {
+public interface ITransactionService<DATA, ID> extends ICancellationService<ID>, IApprovalService<ID> {
 
-	/*Insert*/
+	@Transactional
 	void insert(DATA p_DATA) throws ServiceException;
 
+	@Transactional
 	void insertAndFlush(DATA p_DATA) throws ServiceException;
 
+	@Transactional
 	void insertCollection(List<DATA> p_DATA)  throws ServiceException;
 
-	/*Update*/
-	void updateBaseData(ID p_Id, String p_Code, String p_Name, String p_Remarks)  throws ServiceException;
+	void update(DATA p_DATA)  throws ServiceException;
 
-
-	/*Delete*/
+	@Transactional
 	void delete(ID p_ID)  throws ServiceException;
 
-	void deleteByEntity(DATA p_DATA)  throws ServiceException;
+	@Transactional
+	void deleteByEntity(String p_Code)  throws ServiceException;
 
-	void deleteCollection(List<DATA> p_DATA)  throws ServiceException;
+	@Transactional
+	void deleteCollection(List<String> p_Codes)  throws ServiceException;
 
-	
+	@Transactional
+	void deleteCollectionById(List<ID> p_ID)  throws ServiceException;
+
 }

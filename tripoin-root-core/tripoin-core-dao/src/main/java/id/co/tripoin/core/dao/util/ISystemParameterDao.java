@@ -2,7 +2,7 @@ package id.co.tripoin.core.dao.util;
 
 import java.util.List;
 
-import id.co.tripoin.core.pojo.SystemParameter;
+import id.co.tripoin.core.pojo.system.SystemParameter;
 
 /**
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>

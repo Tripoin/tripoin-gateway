@@ -1,14 +1,16 @@
 package id.co.tripoin.core.service;
 
+import id.co.tripoin.core.pojo.security.I18NLocale;
+import id.co.tripoin.core.service.scaffolding.IScaffoldingService;
+
 import java.util.List;
 import java.util.Map;
 
-import id.co.tripoin.core.pojo.I18NLocale;
-
 /**
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
+ * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
-public interface II18NLocaleService {
+public interface II18NLocaleService extends IScaffoldingService<I18NLocale> {
 
 	public List<I18NLocale> getAll();
 	
@@ -18,4 +20,5 @@ public interface II18NLocaleService {
 	
 	public I18NLocale getLocaleCode(String code);
 
+	I18NLocale findById(Long p_ID);
 }

@@ -12,15 +12,17 @@ import id.co.tripoin.core.integration.handler.base.ILogoutContext;
 import id.co.tripoin.core.integration.servlet.UserAuthenticationContext;
 import id.co.tripoin.core.pojo.SecurityUserDetails;
 import id.co.tripoin.core.service.util.IAuthenticationService;
-
-import javax.ws.rs.core.Response;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.ServletException;
+import javax.ws.rs.core.Response;
+import java.io.IOException;
+
 /**
+ * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
  */
 @Component(BeanNameConstant.AUTHENTICATION_ENDPOINT_BEAN)
@@ -65,4 +67,35 @@ public class AuthenticationEndpointImpl extends ABaseResponseHandler implements 
 		return responseCode;
 	}
 
+	@Override
+	public Response logout() {
+		try {
+			logoutContext.onLogoutSuccess();
+		} catch (IOException e) {
+			e.printStackTrace();
+			this.responseCode = EResponseCode.RC_ACCESS_NOT_VALID;
+			return abort();
+		} catch (ServletException e) {
+			e.printStackTrace();
+			this.responseCode = EResponseCode.RC_BAD_REQUEST;
+			return abort();
+		}
+		return Response.ok(new ResponseData(EResponseCode.RC_LOGOUT_SUCCESS.getResponseCode(), EResponseCode.RC_LOGOUT_SUCCESS.getResponseMsg())).build();
+	}
+
+	@Override
+	public Response logoutJwt() {
+		try {
+			logoutContext.onLogoutSuccessJwt();
+		} catch (IOException e) {
+			e.printStackTrace();
+			this.responseCode = EResponseCode.RC_ACCESS_NOT_VALID;
+			return abort();
+		} catch (ServletException e) {
+			e.printStackTrace();
+			this.responseCode = EResponseCode.RC_BAD_REQUEST;
+			return abort();
+		}
+		return Response.ok(new ResponseData(EResponseCode.RC_LOGOUT_SUCCESS.getResponseCode(), EResponseCode.RC_LOGOUT_SUCCESS.getResponseMsg())).build();
+	}
 }

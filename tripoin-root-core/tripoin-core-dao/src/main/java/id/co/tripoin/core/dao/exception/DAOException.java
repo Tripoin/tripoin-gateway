@@ -1,5 +1,7 @@
 package id.co.tripoin.core.dao.exception;
 
+import id.co.tripoin.core.exception.ATripoinException;
+
 /**
  * 
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>

@@ -1,6 +1,6 @@
 package id.co.tripoin.core.service.util;
 
-import id.co.tripoin.core.pojo.SystemParameter;
+import id.co.tripoin.core.pojo.system.SystemParameter;
 
 import java.util.List;
 import java.util.Map;

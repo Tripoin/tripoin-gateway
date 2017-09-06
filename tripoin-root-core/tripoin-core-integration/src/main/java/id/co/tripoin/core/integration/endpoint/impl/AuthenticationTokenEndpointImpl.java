@@ -1,7 +1,14 @@
 package id.co.tripoin.core.integration.endpoint.impl;
 
-import javax.servlet.http.HttpServletRequest;
-
+import id.co.tripoin.core.constant.enums.EResponseCode;
+import id.co.tripoin.core.constant.statics.InfoMarkerConstant;
+import id.co.tripoin.core.constant.statics.PathNameConstant;
+import id.co.tripoin.core.dto.ResponseData;
+import id.co.tripoin.core.dto.request.AuthTokenDataRequest;
+import id.co.tripoin.core.dto.response.AuthTokenDataResponse;
+import id.co.tripoin.core.integration.endpoint.IAuthenticationTokenEndpoint;
+import id.co.tripoin.core.integration.security.TokenUtils;
+import id.co.tripoin.core.integration.security.TripoinUserDetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,17 +28,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import id.co.tripoin.core.constant.enums.EResponseCode;
-import id.co.tripoin.core.constant.statics.InfoMarkerConstant;
-import id.co.tripoin.core.constant.statics.PathNameConstant;
-import id.co.tripoin.core.dto.ResponseData;
-import id.co.tripoin.core.dto.request.AuthTokenDataRequest;
-import id.co.tripoin.core.dto.response.AuthTokenDataResponse;
-import id.co.tripoin.core.integration.endpoint.IAuthenticationTokenEndpoint;
-import id.co.tripoin.core.integration.security.TokenUtils;
-import id.co.tripoin.core.integration.security.TripoinUserDetailsService;
+import javax.servlet.http.HttpServletRequest;
 
 /**
+ * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
  */
 @RestController
@@ -40,7 +40,7 @@ public class AuthenticationTokenEndpointImpl implements IAuthenticationTokenEndp
 	
 	private static Logger LOGGER = LoggerFactory.getLogger(AuthenticationTokenEndpointImpl.class);
 
-	@Value("${tripoin.token.header}")
+	@Value("${eth.token.header}")
 	private String tokenHeader;
 
 	@Autowired

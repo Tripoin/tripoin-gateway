@@ -1,6 +1,6 @@
 package id.co.tripoin.core.integration.endpoint.exception;
 
-import id.co.tripoin.core.dao.exception.ATripoinException;
+import id.co.tripoin.core.exception.ATripoinException;
 
 /**
  * 

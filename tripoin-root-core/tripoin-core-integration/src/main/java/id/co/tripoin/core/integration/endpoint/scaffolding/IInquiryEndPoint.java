@@ -88,4 +88,9 @@ public interface IInquiryEndPoint {
     @GET
     @Path(PathNameConstant.PathScaffolding.PATH_SELECT_LOV)
     public Response selectLOV() throws EndPointException;
+    
+    /*@POST
+    @Path(PathNameConstant.PathScaffolding.PATH_ADVANCED_PAGINATION)
+    @Consumes({ MediaType.APPLICATION_JSON })
+    public Response advancedPagination(RequestAdvancedPaginationDTO p_RequestAdvancedPaginationDTO) throws EndPointException;*/
 }

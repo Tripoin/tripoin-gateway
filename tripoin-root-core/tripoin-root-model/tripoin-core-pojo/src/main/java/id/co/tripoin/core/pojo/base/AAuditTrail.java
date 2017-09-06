@@ -1,10 +1,13 @@
 package id.co.tripoin.core.pojo.base;
 
-import java.sql.Date;
-import java.sql.Timestamp;
+import id.co.tripoin.core.constant.statics.CommonConstant;
+import org.springframework.data.annotation.Version;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+import java.util.Date;
 
 /**
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
@@ -12,11 +15,43 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public abstract class AAuditTrail extends ABaseAuditTrail {
 
+	private TripoinAuditorAware tripoinAuditorAware;
+
+	public AAuditTrail() {
+		tripoinAuditorAware = new TripoinAuditorAware();
+	}
+
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -5401587542468260575L;
-	
+
+	@Version
+	private Long version;
+
+	/**
+	 * Before persist data into Database
+	 */
+	@PrePersist
+	public void onPrePersist(){
+		setCreatedBy(tripoinAuditorAware.getCurrentAuditor().getUserName());
+		setStatus(CommonConstant.GeneralValue.ONE);
+		setCreatedOn(new Date());
+		setCreatedIP(tripoinAuditorAware.getCurrentAuditor().getIpAddress());
+		setCreatedPlatform(tripoinAuditorAware.getCurrentAuditor().getPlatform());
+	}
+
+	/**
+	 * Before update data into db
+	 */
+	@PreUpdate
+	public void onPreUpdate(){
+		setModifiedOn(new Date());
+		setModifiedBy(tripoinAuditorAware.getCurrentAuditor().getUserName());
+		setModifiedIP(tripoinAuditorAware.getCurrentAuditor().getIpAddress());
+		setModifiedPlatform(tripoinAuditorAware.getCurrentAuditor().getPlatform());
+	}
+
 	@Column(name="status")
 	public Integer getStatus() {
 		return status;
@@ -54,18 +89,22 @@ public abstract class AAuditTrail extends ABaseAuditTrail {
 		this.createdIP = createdIP;
 	}
 
-	@Column(name="created_time")
-	public Timestamp getCreatedTime() {
-		return createdTime;
+	@Column(name="created_on")
+	public Date getCreatedOn() {
+		return createdOn;
 	}
 
-	public void setCreatedTime(Timestamp createdTime) {
-		this.createdTime = createdTime;
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
 	}
 
-	public void setCreatedTime(Date createdTime) {
-		if(createdTime != null)
-			this.createdTime = new Timestamp(createdTime.getTime());
+	@Column(name="modified_on")
+	public Date getModifiedOn() {
+		return modifiedOn;
+	}
+
+	public void setModifiedOn(Date modifiedOn) {
+		this.modifiedOn = modifiedOn;
 	}
 
 	@Column(name="created_platform")
@@ -95,20 +134,6 @@ public abstract class AAuditTrail extends ABaseAuditTrail {
 		this.modifiedIP = modifiedIP;
 	}
 
-	@Column(name="modified_time")
-	public Timestamp getModifiedTime() {
-		return modifiedTime;
-	}
-
-	public void setModifiedTime(Timestamp modifiedTime) {
-		this.modifiedTime = modifiedTime;
-	}
-
-	public void setModifiedTime(Date modifiedTime) {
-		if(modifiedTime != null)
-			this.modifiedTime = new Timestamp(modifiedTime.getTime());
-	}
-
 	@Column(name="modified_platform")
 	public String getModifiedPlatform() {
 		return modifiedPlatform;
@@ -117,5 +142,4 @@ public abstract class AAuditTrail extends ABaseAuditTrail {
 	public void setModifiedPlatform(String modifiedPlatform) {
 		this.modifiedPlatform = modifiedPlatform;
 	}
-	
 }

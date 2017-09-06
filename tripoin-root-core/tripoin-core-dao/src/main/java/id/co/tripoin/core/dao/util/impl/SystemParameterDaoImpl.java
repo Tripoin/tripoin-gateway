@@ -11,7 +11,7 @@ import id.co.tripoin.core.constant.statics.BeanNameConstant;
 import id.co.tripoin.core.constant.statics.sql.QueryConstant;
 import id.co.tripoin.core.dao.util.ISystemParameterDao;
 import id.co.tripoin.core.mapper.SystemParameterMapper;
-import id.co.tripoin.core.pojo.SystemParameter;
+import id.co.tripoin.core.pojo.system.SystemParameter;
 
 /**
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>

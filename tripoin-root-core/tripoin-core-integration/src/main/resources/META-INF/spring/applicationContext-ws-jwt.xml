@@ -24,6 +24,24 @@
 		</jaxrs:providers>
     </jaxrs:server>
 
+	<jaxrs:server id="securityWebServiceJWT" address="${tripoin.api.context.jwt.v1}/190000">
+		<jaxrs:serviceBeans>
+			<ref bean="securityCompanyBean"/>
+			<ref bean="securityBranchBean"/>
+			<ref bean="securityGroupBean"/>
+			<ref bean="securityFunctionBean"/>
+			<ref bean="securityFunctionAssignmentBean"/>
+			<ref bean="securityUserProfileEndPointBean"/>
+			<ref bean="securityLocaleBean"/>
+			<ref bean="menuAdminGeneratorBean"/>
+			<ref bean="authenticationEndpoint"/>
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jsonProvider"/>
+			<ref bean="corsOutbound"/>
+		</jaxrs:providers>
+	</jaxrs:server>
+
     <jaxrs:server id="profileWebServiceJWT" address="${tripoin.api.context.jwt.v1}/me">
         <jaxrs:serviceBeans>
         	<ref bean="profileEndpoint"/>
@@ -45,4 +63,13 @@
 		</jaxrs:providers>
 	</jaxrs:server>
 
+	<jaxrs:server id="unAuthorizedSecurityWebServiceJWT" address="/1/190000">
+		<jaxrs:serviceBeans>
+			<ref bean="securityForgotPasswordEndPointBean"/>
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jsonProvider"/>
+			<ref bean="corsOutbound"/>
+		</jaxrs:providers>
+	</jaxrs:server>
 </beans>

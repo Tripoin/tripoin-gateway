@@ -18,4 +18,6 @@ public interface IDataBuilderEndPoint {
     ResponseData buildSuccessResponse();
 
     ResponseData buildFailedResponse();
+    
+    ResponseData buildFailedResponse(String p_ErrorMessage);
 }

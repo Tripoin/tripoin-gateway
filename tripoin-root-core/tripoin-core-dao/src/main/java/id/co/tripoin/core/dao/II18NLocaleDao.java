@@ -1,15 +1,15 @@
 package id.co.tripoin.core.dao;
 
+import id.co.tripoin.core.dao.scaffolding.IScaffoldingDAO;
+import id.co.tripoin.core.pojo.security.I18NLocale;
+
 import java.util.List;
 
-import id.co.tripoin.core.pojo.I18NLocale;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
 /**
+ * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
  */
-public interface II18NLocaleDao extends JpaRepository<I18NLocale, Long> {
+public interface II18NLocaleDao extends IScaffoldingDAO<I18NLocale> {
 
 	public List<I18NLocale> findAllByOrderByNameAsc();
 

@@ -1,12 +1,13 @@
 package id.co.tripoin.core.integration.endpoint.scaffolding.impl;
 
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Service;
-
+import id.co.tripoin.core.constant.enums.EResponseCode;
+import id.co.tripoin.core.constant.statics.CommonConstant;
 import id.co.tripoin.core.dto.ResponseData;
 import id.co.tripoin.core.dto.request.PaginationDTO;
 import id.co.tripoin.core.integration.endpoint.scaffolding.IDataBuilderEndPoint;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 /**
  * created on 10/17/2016
@@ -19,7 +20,7 @@ public class DataBuilderEndPointImpl implements IDataBuilderEndPoint {
     @Override
     public PageRequest buildPageRequest(PaginationDTO p_PaginationDTO) {
         return new PageRequest(
-                p_PaginationDTO.getLimit()/ p_PaginationDTO.getOffset(),
+                p_PaginationDTO.getOffset(),
                 p_PaginationDTO.getLimit(),
                 Sort.Direction.fromString(p_PaginationDTO.getOrder()),
                 p_PaginationDTO.getSort()
@@ -38,11 +39,16 @@ public class DataBuilderEndPointImpl implements IDataBuilderEndPoint {
 
     @Override
     public ResponseData buildSuccessResponse() {
-        return new ResponseData("1", "oke");
+        return new ResponseData(EResponseCode.RC_SUCCESS.getResponseCode(), EResponseCode.RC_SUCCESS.getResponseMsg());
     }
 
     @Override
     public ResponseData buildFailedResponse() {
-        return new ResponseData("-1", "failed");
+        return new ResponseData(EResponseCode.RC_FAILURE.getResponseCode(), EResponseCode.RC_FAILURE.getResponseMsg());
+    }
+    
+    @Override
+    public ResponseData buildFailedResponse(String p_ErrorMessage) {
+        return new ResponseData(EResponseCode.RC_FAILURE.getResponseCode(), EResponseCode.RC_FAILURE.getResponseMsg().concat(CommonConstant.Punctuation.HYPHEN).concat(p_ErrorMessage));
     }
 }

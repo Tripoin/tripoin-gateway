@@ -1,6 +1,6 @@
 package id.co.tripoin.core.pojo.base;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
@@ -8,18 +8,19 @@ import java.sql.Timestamp;
 public abstract class ABaseAuditTrail extends BaseMapperDATA<Long> implements IBasePojo {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -4888747591156741211L;
+
 	protected Integer status;
 	protected String remarks;
 	protected String createdBy;
 	protected String createdIP;
-	protected Timestamp createdTime;
+	protected Date createdOn;
 	protected String createdPlatform;
 	protected String modifiedBy;
 	protected String modifiedIP;
-	protected Timestamp modifiedTime;
+	protected Date modifiedOn;
 	protected String modifiedPlatform;
 
 	@Override
@@ -31,7 +32,7 @@ public abstract class ABaseAuditTrail extends BaseMapperDATA<Long> implements IB
 		result = prime * result
 				+ ((createdIP == null) ? 0 : createdIP.hashCode());
 		result = prime * result
-				+ ((createdTime == null) ? 0 : createdTime.hashCode());
+				+ ((createdOn == null) ? 0 : createdOn.hashCode());
 		return result;
 	}
 
@@ -54,22 +55,22 @@ public abstract class ABaseAuditTrail extends BaseMapperDATA<Long> implements IB
 				return false;
 		} else if (!createdIP.equals(other.createdIP))
 			return false;
-		if (createdTime == null) {
-			if (other.createdTime != null)
+		if (createdOn == null) {
+			if (other.createdOn != null)
 				return false;
-		} else if (!createdTime.equals(other.createdTime))
+		} else if (!createdOn.equals(other.createdOn))
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "ABaseAuditTrail [status=" + status + ", remarks=" + remarks
+		return super.toString()+" ABaseAuditTrail [status=" + status + ", remarks=" + remarks
 				+ ", createdBy=" + createdBy + ", createdIP=" + createdIP
-				+ ", createdTime=" + createdTime + ", createdPlatform="
+				+ ", createdTime=" + createdOn + ", createdPlatform="
 				+ createdPlatform + ", modifiedBy=" + modifiedBy
 				+ ", modifiedIP=" + modifiedIP + ", modifiedTime="
-				+ modifiedTime + ", modifiedPlatform=" + modifiedPlatform + "]";
+				+ modifiedOn + ", modifiedPlatform=" + modifiedPlatform + "]";
 	}
 
 }

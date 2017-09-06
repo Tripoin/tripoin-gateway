@@ -17,13 +17,13 @@ import java.io.Serializable;
  */
 @Transactional
 public interface ICancellationDAO<ID extends Serializable> {
-	
-	@Modifying
+
+    @Modifying
     @Query("UPDATE #{#entityName} a set a.status = "+QueryConstant.STATUS_CANCELLED)
     void cancelAll() throws DAOException;
-	
-	@Modifying
+
+    @Modifying
     @Query("UPDATE #{#entityName} a set a.status = "+QueryConstant.STATUS_CANCELLED+" where a.id = ?1")
-	void cancelSingleData(ID p_Id) throws DAOException;
+    void cancelSingleData(ID p_Id) throws DAOException;
 
 }

@@ -39,9 +39,9 @@
 					<encoding>${project.build.sourceEncoding}</encoding>
 					<source>${maven.compiler.source}</source>
 					<target>${maven.compiler.target}</target>				
-                    <manifest>
+                    <!--<manifest>
                         <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                    </manifest>
+                    </manifest>-->
 				</configuration>
 			</plugin>
 		</plugins>

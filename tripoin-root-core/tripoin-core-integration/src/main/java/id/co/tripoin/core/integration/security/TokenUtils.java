@@ -1,16 +1,15 @@
 package id.co.tripoin.core.integration.security;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mobile.device.Device;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TokenUtils {
 
@@ -45,6 +44,18 @@ public class TokenUtils {
 			created = null;
 		}
 		return created;
+	}
+
+	public void setTokenToBeExpired(String token) {
+		Claims claims = this.getClaimsFromToken(token);
+		System.err.println("Expiration "+claims.getExpiration());
+		Date reverseExpiration = generateReverseExpirationDate(token);
+		System.err.println("Expiration set To "+reverseExpiration);
+		claims.setExpiration(reverseExpiration);
+	}
+
+	private Date generateReverseExpirationDate(String p_Token) {
+		return new Date(getCreatedDateFromToken(p_Token).getTime() - this.expiration * 1000);
 	}
 
 	public Date getExpirationDateFromToken(String token) {

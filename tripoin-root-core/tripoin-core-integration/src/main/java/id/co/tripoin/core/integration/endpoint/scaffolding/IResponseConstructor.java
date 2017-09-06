@@ -17,9 +17,15 @@ public interface IResponseConstructor<DATA> {
 
     Response constructSingleFindResponse(DATA p_DATA) throws EndPointException;
 
+    Response constructDTOSingleFindResponse(Object p_DATA) throws EndPointException;
+
     Response constructListFindResponse(List<DATA> p_DATA) throws EndPointException;
 
+    Response constructDTOListFindResponse(List<?> p_DATA) throws EndPointException;
+
     Response constructPaginationResponse(Page<DATA> p_DATAPage) throws EndPointException;
+
+    Response constructDTOPaginationResponse(Page<?> p_DATAPage) throws EndPointException;
 
     Response constructSimpleTransactionResponse(ResponseData p_ResponseData) throws EndPointException;
 }

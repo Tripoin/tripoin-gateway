@@ -38,9 +38,9 @@
                     <encoding>${project.build.sourceEncoding}</encoding>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>				
-                    <manifest>
+                    <!--<manifest>
                         <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                    </manifest>
+                    </manifest>-->
                 </configuration>
             </plugin>
         </plugins>
@@ -312,6 +312,17 @@
         		</exclusion>
     		</exclusions>
         </dependency>
-    </dependencies>
+
+		<dependency>
+			<groupId>id.co.tripoin.util</groupId>
+			<artifactId>tripoin-util-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>id.co.tripoin.util</groupId>
+			<artifactId>tripoin-util-multiplex</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
 
 </project>

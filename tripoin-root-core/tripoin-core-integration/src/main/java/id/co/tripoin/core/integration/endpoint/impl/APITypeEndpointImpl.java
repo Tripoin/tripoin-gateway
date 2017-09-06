@@ -1,24 +1,26 @@
 package id.co.tripoin.core.integration.endpoint.impl;
 
-import javax.ws.rs.core.Response;
-
+import id.co.tripoin.core.constant.statics.BeanNameConstant;
+import id.co.tripoin.core.constant.statics.InfoMarkerConstant;
+import id.co.tripoin.core.dto.request.MediaResponseDTO;
+import id.co.tripoin.core.integration.endpoint.IAPITypeEndpoint;
+import id.co.tripoin.core.integration.endpoint.scaffolding.impl.AScaffoldingEndPoint;
+import id.co.tripoin.core.pojo.master.APIType;
+import id.co.tripoin.core.service.IAPITypeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import id.co.tripoin.core.constant.statics.BeanNameConstant;
-import id.co.tripoin.core.constant.statics.InfoMarkerConstant;
-import id.co.tripoin.core.dto.response.MediaDataResponse;
-import id.co.tripoin.core.integration.endpoint.IAPITypeEndpoint;
-import id.co.tripoin.core.pojo.APIType;
-import id.co.tripoin.core.service.IAPITypeService;
+import javax.annotation.PostConstruct;
+import javax.ws.rs.core.Response;
 
 /**
  * @author <a href="mailto:rudy.fridian91@gmail.com">Rudy Fridian</a>
+ * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @Component(BeanNameConstant.API_TYPE_ENDPOINT_BEAN)
-public class APITypeEndpointImpl implements IAPITypeEndpoint {
+public class APITypeEndpointImpl extends AScaffoldingEndPoint<APIType> implements IAPITypeEndpoint {
 
 	private static Logger LOGGER = LoggerFactory
 			.getLogger(APITypeEndpointImpl.class);
@@ -28,24 +30,30 @@ public class APITypeEndpointImpl implements IAPITypeEndpoint {
 
 	@Override
 	public Response getMedia(String apiTypeCode) {
-		MediaDataResponse mediaDataResponse = new MediaDataResponse();
+		MediaResponseDTO mediaResponseDTO = new MediaResponseDTO();
 		try {
 			LOGGER.info("API TYPE CODE : {}".concat(apiTypeCode));
 			APIType aPIType = apiTypeService.findByApiTypeCode(apiTypeCode);
-			mediaDataResponse.setApiTypeCode(aPIType.getCode());
-			mediaDataResponse.setApiTypeName(aPIType.getName());
-			mediaDataResponse.setApiTypeIdentifier(aPIType.getApiTypeIdentifier());
-			mediaDataResponse.setApiTypeSecret(aPIType.getApiTypeSecret());
-			mediaDataResponse.setApiTypeHost(aPIType.getApiTypeHost());
-			mediaDataResponse.setApiTypePort(aPIType.getApiTypePort());
-			mediaDataResponse.setApiTypeProtocol(aPIType.getApiTypeProtocol());
-			mediaDataResponse.setApiTypeRedirect(aPIType.getApiTypeRedirect());
-			mediaDataResponse.setApiTypeExpired(aPIType.getApiTypeExpired());
+			mediaResponseDTO.setApiTypeCode(aPIType.getCode());
+			mediaResponseDTO.setApiTypeName(aPIType.getName());
+			mediaResponseDTO.setApiTypeIdentifier(aPIType.getApiTypeIdentifier());
+			mediaResponseDTO.setApiTypeSecret(aPIType.getApiTypeSecret());
+			mediaResponseDTO.setApiTypeHost(aPIType.getApiTypeHost());
+			mediaResponseDTO.setApiTypePort(aPIType.getApiTypePort());
+			mediaResponseDTO.setApiTypeProtocol(aPIType.getApiTypeProtocol());
+			mediaResponseDTO.setApiTypeRedirect(aPIType.getApiTypeRedirect());
+			mediaResponseDTO.setApiTypeExpired(aPIType.getApiTypeExpired());
 		} catch (Exception e) {
 			LOGGER.error(InfoMarkerConstant.ERR_PROFILE_ENDPOINT, e);
 			return Response.serverError().build();
 		}
-		return Response.ok(mediaDataResponse).build();
+		return Response.ok(mediaResponseDTO).build();
+	}
+
+	@PostConstruct
+	@Override
+	public void init() {
+		scaffoldingService = apiTypeService;
 	}
 
 }

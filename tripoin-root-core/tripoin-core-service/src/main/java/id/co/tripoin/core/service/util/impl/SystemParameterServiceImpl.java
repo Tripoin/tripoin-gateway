@@ -1,16 +1,15 @@
 package id.co.tripoin.core.service.util.impl;
 
+import id.co.tripoin.core.constant.statics.BeanNameConstant;
+import id.co.tripoin.core.dao.util.ISystemParameterDao;
+import id.co.tripoin.core.pojo.system.SystemParameter;
+import id.co.tripoin.core.service.util.ISystemParameterService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import id.co.tripoin.core.constant.statics.BeanNameConstant;
-import id.co.tripoin.core.dao.util.ISystemParameterDao;
-import id.co.tripoin.core.pojo.SystemParameter;
-import id.co.tripoin.core.service.util.ISystemParameterService;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 /**
  * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
@@ -40,7 +39,7 @@ public class SystemParameterServiceImpl implements ISystemParameterService {
 	public Map<String, String> getMapSystemParameter() throws Exception {
 		Map<String, String> mapSystemParameter = new HashMap<String, String>();
 		for(SystemParameter systemParameter : systemParameterDao.getAllSystemParameter()){
-			mapSystemParameter.put(systemParameter.getCode(), systemParameter.getValue());
+			mapSystemParameter.put(systemParameter.getCode(), systemParameter.getName());
 		}
 		return mapSystemParameter;
 	}

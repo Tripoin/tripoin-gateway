@@ -1,40 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
-<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
-
-    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
-        <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="tripoin. inc, | %d %5p| %c.%M(%L) | %m%n"/>
-        </layout>
-    </appender>
-
-    <logger name="org.springframework">
-        <level value="ERROR"/>
-    </logger>
-
-    <logger name="org.hibernate">
-        <level value="ERROR"/>
-    </logger>
-
-    <logger name="org.apache">
-        <level value="ERROR"/>
-    </logger>
-
-    <logger name="net.sf.jasperreports">
-        <level value="DEBUG"/>
-    </logger>
-    
-    <logger name="com.mchange.v2">
-        <level value="ERROR"/>
-    </logger>
-
-    <logger name="id.co.tripoin.core">
-        <level value="ALL"/>
-    </logger>
-
-    <root>
-        <level value="ALL"/> <!--set ALL (aktif) atau OFF (inaktif)-->
-        <appender-ref ref="CONSOLE"/>
-    </root>
-
-</log4j:configuration>
+5¹	]^¸ÂU¦BÍmkèíd†ÃjtžÃÂîÍë	6RîxnžÔ]äÖXïµgÌSê 5ÂÕöo§é	'š¦S™÷§ÉÀ?Sä/~Èº×®,å&¨pyçlÈŽhcù.-Ž,\Mï®@WMïIzá^ý‚Ö6Éˆ"zŸ»¯_‡j©µÉ_K¨v¥™ë ×‰üþÿ^Àï?‘€ŸP»MJÕ\¥uk·´:Ãê’áÚ$
+Z8…$­¢¦P
+ÀF‚ÅF`×A˜†íÙMÐ‰ƒ³Ø-Ð“Ý}ØPÂþ	cØ]0ŽÝ±û¡ŒM‚gY)¬bÃ:ölfSáuö(ì`Ó`{ö±™°ŸÍ†ŸYüÅæ‹Í#õÙ|Ò”•“^l1¹ˆ-!ƒÙRRÂ–‘Øsd)[IV±J²‰U‘×X5ù†­&Ùzò;{‘šlmÍ6ÒvlíË¶Ð«ÙËt$ÛJÇ±Wé?Ùët{ƒÎcoÒ%ì-º…m§o²wè‡lÝÅÞ§{Ù‡°Ûi¶Ë²ÏlÑ†}at`{.lŸqûÖèË¾3ú³ïAl¿1œ0n`©ìˆQÆþ4–±£Æ*vÌx‘£EÃMãmî3>æÆgœ{¹0pÇø…ûÍF¼žy˜ÞÀlÏƒæ™­ÞØìÃ›˜Cy¶9–ç˜·ò\s?ÉœÇ[˜KxKs9oe®á'›[ø)æ›¼ù›Ÿòˆù%Ï3ðvæ¯ü4ó(ïheò3¬6¼‹ÕX¼Ð:‡ŸeõãÝ­ü\k0ïe•ð­Ñ¼¯u3¿Ø*çWX1~¥µ‰±¶ñ«¬wø0k'¿ÆÚËK|>~­ÏÏ‡ûÚò‘¾Î|”ï~o8ã+å7ú¦ñq¾9üfßB~«¯‚ÿ¨1=nNŽzq‡“’ü÷@,Øœ°9”­áñ{7þW„ëÖ{Ih8\ïÚ"¢-¢=TéC®)2Aýî>ˆ?ÇÅZ­ç•iìîÃg½£‹"µOõŠ=îU&f´úbQu²{š569	v€>ìn÷pÝõëŒX×§…Mtp7´nŸ(¸›N9A+ À{ßÿIóHòýºÃÂ“ûnq…95mÓj¸ÚÿäwBs~„ù}ÐžO„^
+Ýùƒp1ò©0”?
+7ñip;Ÿ¥|&<ÂŸ€™|6,æePÉçÀ|á	áå¤_BÎæKÉüY2ž/'wòä~þZŸ3Œ™Þ®Ü!—`uû9qÔ«s"Dûè W ÝëpøÉK áÑø™lÒ§'’2õI²Ü´ø£:¸ÕKœ‰Õ©kù5ódòjhÀ×"7@!ß#øË0‘oELÕÀs|TóW³»Ô“½ÍdT?Õ}.§ÏïšÐéútÂMöªœVS³–|P;kI­$Mü-p;Hþ6„ø;Ð‚¿=ù¸ˆ¿øØÆlÏ;¢£ëNç0K§ÇŽ‚N<œ¡‘ÎÔ³Ô¬$ÒR’òþîh±ÖæE%»¦D%§Í`O¤v

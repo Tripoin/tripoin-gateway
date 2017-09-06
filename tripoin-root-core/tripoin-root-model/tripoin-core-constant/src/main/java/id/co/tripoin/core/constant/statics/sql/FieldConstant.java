@@ -5,6 +5,7 @@ package id.co.tripoin.core.constant.statics.sql;
  */
 public final class FieldConstant {
 
+	public static final String FIELD_EMAIL  = "email";
 	public static final String FIELD_USERNAME = "username";
 	public static final String FIELD_I18NLOCALE = "i18NLocale";
 	

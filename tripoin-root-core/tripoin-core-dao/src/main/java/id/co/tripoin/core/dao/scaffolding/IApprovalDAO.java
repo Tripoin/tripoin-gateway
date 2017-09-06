@@ -18,11 +18,11 @@ import java.io.Serializable;
 @Transactional
 public interface IApprovalDAO<ID extends Serializable> {
 
-	@Modifying
+    @Modifying
     @Query("UPDATE #{#entityName} a set a.status = "+QueryConstant.STATUS_APPROVED)
     void approveAll() throws DAOException;
 
     @Modifying
     @Query("UPDATE #{#entityName} a set a.status = "+QueryConstant.STATUS_APPROVED+" where a.id = ?1")
-    void approveSingleData(ID p_Id);
+    void approveSingleData(ID p_Id) throws DAOException;
 }
